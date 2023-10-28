@@ -7,15 +7,42 @@ using UnityEngine;
 
 public class PlayerAnimationController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    /// <summary>
+    /// PlayerのAnimatorを格納している
+    /// </summary>
+    [SerializeField] Animator animator;
+
+    /// <summary>
+    /// 歩くアニメーションのパラメータの名前を
+    /// </summary>
+    const string WALK_ANIMATION_NAME = "isWalk";
+
+    const string ITEM_HAVE_ANIMATION_NAME = "hasItem";
+
+    /// <summary>
+    /// 歩くアニメーションを管理するメソッド
+    /// </summary>
+    /// <param name="result"></param>
+    public void walkAnimator(bool result)
     {
-        
+        animator.SetBool(WALK_ANIMATION_NAME, result);
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// アイテムを持つか管理するメソッド
+    /// </summary>
+    /// <param name="result"></param>
+    public void pickUpItem(bool result)
     {
-        
+        if(!result)
+        {
+            animator.SetBool(ITEM_HAVE_ANIMATION_NAME, false);
+        }
+        //AnimationEventでアイテムを拾う処理を行う予定
+        else
+        {
+            animator.SetBool(ITEM_HAVE_ANIMATION_NAME, true);
+        }
     }
 }

@@ -34,20 +34,33 @@ public class PlayerController : MonoBehaviour
     bool isGround = true;
 
     /// <summary>
+    /// アイテムを持っているかどうか
+    /// </summary>
+    bool hasItem = false;
+
+
+    /// <summary>
     /// プレイヤーのモデルを格納している
     /// </summary>
     [SerializeField] GameObject playerModel;
 
-    
+    /// <summary>
+    /// プレイヤーのアニメーションを管理するクラス
+    /// </summary>
+    [SerializeField] PlayerAnimationController playerAnimationController;
 
+    [SerializeField,Tooltip("最大の重力量")] float maxGravity;
+    [SerializeField, Tooltip("加える重力の量")] float upGravity;
 
 
     // Update is called once per frame
+    [System.Obsolete]
     void Update()
     {
-        OnMove();
+        OnMove();  //キャラクターを移動させる
+        isItemHeld();//アイテムを持つ処理
         if (!isGround) return;
-        OnJump();
+        OnJump();//ジャンプする処理
     }
 
     /// <summary>
@@ -61,6 +74,7 @@ public class PlayerController : MonoBehaviour
         OnRotate(inputVec);
         //ここで実際に移動する
         rb2D.velocity = new Vector2(inputVec.x, 0) * moveSpeed + new Vector2(0, rb2D.velocity.y);
+        playerAnimationController.walkAnimator(true);
     }
 
     /// <summary>
@@ -91,6 +105,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void isItemHeld()
+    {
+        if (hasItem) return;
+        playerAnimationController.pickUpItem(true);
+    }
+
+    public void OnDie()
+    {
+        Debug.Log("死ぬ");
+    }
     /// <summary>
     /// 地面にいるかどうかの情報を取得するメソッド
     /// </summary>

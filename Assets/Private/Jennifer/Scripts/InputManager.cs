@@ -25,6 +25,16 @@ public class InputManager : MonoBehaviour
     public bool isHold { get; private set; }
 
     /// <summary>
+    /// 自爆ボタンを押した時間
+    /// </summary>
+    float dieTimer = 0.0f;
+
+    [SerializeField] float dieTime;
+
+    [SerializeField] PlayerController playerController;
+
+
+    /// <summary>
     /// 移動ボタンが押されたら入力値を変数に格納する。
     /// </summary>
     /// <param name="context"></param>
@@ -44,6 +54,17 @@ public class InputManager : MonoBehaviour
         isJump = context.ReadValueAsButton();
     }
 
+   void Update()
+    {
+        if(inputVec.y < 0)
+        {
+            dieTimer += Time.deltaTime;
+            if(dieTimer >= dieTime)
+            {
+
+            }
+        }
+    }
 
     public void InputPut(InputAction.CallbackContext context)
     {
