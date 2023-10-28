@@ -4,6 +4,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// キャラクターが向いている向き
+/// </summary>
+public enum DIRECTION
+{
+    RIGHT=0,
+    LEFT,
+}
 public class PlayerController : MonoBehaviour
 {
     /// <summary>
@@ -37,6 +45,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     bool hasItem = false;
 
+    DIRECTION direction = DIRECTION.RIGHT;
 
     /// <summary>
     /// プレイヤーのモデルを格納している
@@ -51,7 +60,7 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// このゲームオブジェクトに触れているアイテムを拾う
     /// </summary>
-    [SerializeField] BoxCollider2D itemCollider2D;
+    [SerializeField] GameObject itemColliderObj;
 
     /// <summary>
     /// 死んでいるかどうか
@@ -79,16 +88,16 @@ public class PlayerController : MonoBehaviour
         OnRotate(inputVec);
         //ここで実際に移動する Y座標を0にするとジャンプができないようになるため、別途現在のY座標を足している
         rb2D.velocity = new Vector2(inputVec.x, 0) * moveSpeed + new Vector2(0, rb2D.velocity.y);
-
         //キャラクターが動いているかどうか調べてアニメーションを設定する
         if (Mathf.Abs(rb2D.velocity.x) > 0)
         {
             playerAnimationController.walkAnimator(true);
         }
-        else if(Mathf.Abs(rb2D.velocity.x) <=0)
+        else if (Mathf.Abs(rb2D.velocity.x) <= 0)
         {
             playerAnimationController.walkAnimator(false);
         }
+
     }
 
     /// <summary>
@@ -101,10 +110,14 @@ public class PlayerController : MonoBehaviour
         if (inputVec.x > 0)
         {
             playerModel.transform.rotation = Quaternion.Euler(0, 140, 0);
+            itemColliderObj.transform.rotation = Quaternion.Euler(0, 0, 0);
+            direction = DIRECTION.RIGHT;
         }
         if (inputVec.x < 0)
         {
             playerModel.transform.rotation = Quaternion.Euler(0, -140, 0);
+            itemColliderObj.transform.rotation = Quaternion.Euler(0, -145, 0);
+            direction = DIRECTION.LEFT;
         }
     }
     /// <summary>
@@ -128,14 +141,17 @@ public class PlayerController : MonoBehaviour
     {
         switch (itemAction)
         {
+            //行えるアクションがアイテムを持つ状態だったら
             case ITEMACTION.HOLD:
+                //アイテムをすでに持っていたら何もしない
                 if (hasItem) return;
-                itemCollider2D.enabled = true;
-                playerAnimationController.pickUpItem(true,itemCollider2D);
+                //アイテムを持つメソッド呼ぶ
+                playerAnimationController.pickUpItem(direction);
                 break;
+            //行えるアクションがアイテムを投げる状態だったら
             case ITEMACTION.THROW:
-                playerAnimationController.pickUpItem(false, null);
-                playerAnimationController.Throw(true);
+                //アイテムを投げるメソッド呼ぶ
+                playerAnimationController.Throw(direction);
                 break;
         }
     }
@@ -145,9 +161,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void OnDie()
     {
-        if (isDie) return;
-        Debug.Log("死ぬ");
-        isDie = true;
+        rb2D.velocity = Vector2.zero;
     }
 
     /// <summary>

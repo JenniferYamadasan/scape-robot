@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// 現在行えるアクション　アイテムを持つかアイテムを投げるか
+/// </summary>
 public enum ITEMACTION
 {
     HOLD = 0,
@@ -78,8 +81,15 @@ public class InputManager : MonoBehaviour
     {
         isJump = false;
     }
-
-   void Update()
+    /// <summary>
+    /// 移動の入力値をfalseにするメソッド
+    /// </summary>
+    public void IsMoveFinish()
+    {
+        inputVec = Vector2.zero;
+        playerController.OnDie();
+    }
+    void Update()
     {
         DieTimeCount();//自爆ボタンを押している秒数をカウントする
     }
@@ -106,17 +116,19 @@ public class InputManager : MonoBehaviour
     /// <param name="context"></param>
     public void InputHold_Throw(InputAction.CallbackContext context)
     {
-        switch (itemAction)
+        //ボタンが押された瞬間にアイテムを持つ又は投げる
+        if(context.started)
         {
-            case ITEMACTION.HOLD:
-                playerController.IsItemHeld(itemAction);
-                itemAction = ITEMACTION.THROW;
-                break;
-            case ITEMACTION.THROW:
-                itemAction = ITEMACTION.HOLD;
-                break;
+            playerController.IsItemHeld(itemAction);
         }
-        //ボタンが押されたらtrue離されたらfalseが返る
-        isHold = context.ReadValueAsButton();
+    }
+
+    /// <summary>
+    /// ステートの更新
+    /// </summary>
+    /// <param name="itemAction"></param>
+    public void ChangeState(ITEMACTION itemAction)
+    {
+        this.itemAction = itemAction;
     }
 }

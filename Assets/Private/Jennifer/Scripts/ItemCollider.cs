@@ -29,6 +29,8 @@ public class ItemCollider : MonoBehaviour
     /// <returns></returns>
     public GameObject GetNearestObject()
     {
+        if (items.Count == 0) return null;
+
         //1番近いゲームオブジェクトを格納する変数を宣言
         Transform nearestTransform =null;
 
@@ -39,7 +41,7 @@ public class ItemCollider : MonoBehaviour
             if (i == 0) nearestTransform = items[0].gameObject.transform;
             else
             {
-                //nearestTransformとitems[i]どっちが近いか調べて近い方をnearestTransformに入れるようにしている
+                //nearestTransformとitems[i]どっちが近いか調べて近い方をnearestTransformに入れるようにしている。
                 if (Vector2.Distance(nearestTransform.position, player.position) > Vector2.Distance(items[i].transform.position, player.position))
                 {
                     nearestTransform = items[i].transform;
@@ -48,5 +50,13 @@ public class ItemCollider : MonoBehaviour
         }
         //1番近くにあったゲームオブジェクト返すようにしている
         return nearestTransform.gameObject;
+    }
+
+    /// <summary>
+    /// リストの中身を削除
+    /// </summary>
+    public void ItemReset()
+    {
+        items.Clear();
     }
 }
