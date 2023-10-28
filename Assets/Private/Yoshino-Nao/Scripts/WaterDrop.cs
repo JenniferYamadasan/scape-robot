@@ -63,6 +63,6 @@ public class WaterDrop : MonoBehaviour
 
         }
 
-        
+        Debug.Log(this.gameObject.name + "‚ÉHit!");
     }
 }
