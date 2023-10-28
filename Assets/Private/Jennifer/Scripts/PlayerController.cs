@@ -1,6 +1,5 @@
 //プレイヤーの挙動を制御している
 
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -50,6 +49,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] PlayerAnimationController playerAnimationController;
 
     /// <summary>
+    /// このゲームオブジェクトに触れているアイテムを拾う
+    /// </summary>
+    [SerializeField] BoxCollider2D itemCollider2D;
+
+    /// <summary>
     /// 死んでいるかどうか
     /// </summary>
     bool isDie =false;
@@ -74,7 +78,7 @@ public class PlayerController : MonoBehaviour
         //入力値を変数に格納している
         Vector2 inputVec = inputManager.inputVec;
         OnRotate(inputVec);
-        //ここで実際に移動する
+        //ここで実際に移動する Y座標を0にするとジャンプができないようになるため、別途現在のY座標を足している
         rb2D.velocity = new Vector2(inputVec.x, 0) * moveSpeed + new Vector2(0, rb2D.velocity.y);
         playerAnimationController.walkAnimator(true);
     }
@@ -85,6 +89,7 @@ public class PlayerController : MonoBehaviour
     /// <param name="inputVec"></param>
     void OnRotate(Vector2 inputVec)
     {
+        //入力値に応じてキャラクターの向く方向を変更している
         if (inputVec.x > 0)
         {
             playerModel.transform.rotation = Quaternion.Euler(0, 140, 0);
@@ -107,12 +112,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// アイテムを持つメソッドアイテムをすでに持っていたら何もしないようにする。
+    /// </summary>
     void isItemHeld()
     {
         if (hasItem) return;
+        itemCollider2D.enabled = true;
         playerAnimationController.pickUpItem(true);
     }
 
+    /// <summary>
+    /// 死んだ際に呼ぶメソッドここで
+    /// </summary>
     public void OnDie()
     {
         if (isDie) return;

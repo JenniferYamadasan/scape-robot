@@ -20,6 +20,8 @@ public class PlayerAnimationController : MonoBehaviour
 
     const string ITEM_HAVE_ANIMATION_NAME = "hasItem";
 
+    const string DIE_ANIMATION = "isDie";
+
     /// <summary>
     /// 歩くアニメーションを管理するメソッド
     /// </summary>
@@ -44,5 +46,13 @@ public class PlayerAnimationController : MonoBehaviour
         {
             animator.SetBool(ITEM_HAVE_ANIMATION_NAME, true);
         }
+    }
+
+    /// <summary>
+    /// 死んだ瞬間に流すアニメーション
+    /// </summary>
+    public void DieAnimation()
+    {
+        animator.SetBool(DIE_ANIMATION, true);
     }
 }
