@@ -1,3 +1,6 @@
+//このクラスで地面に足がついているか確かめている
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +12,7 @@ public class FootCollsion : MonoBehaviour
     /// プレイヤーの挙動を管理するスクリプトを格納
     /// </summary>
     [SerializeField] PlayerController playerController;
-    private void OnTriggerStay2D(Collider2D collider)
+    void OnTriggerStay2D(Collider2D collider)
     {
         //地面に触れていたら
         if (collider.gameObject.CompareTag("Ground"))
@@ -19,7 +22,7 @@ public class FootCollsion : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collider)
+    void OnTriggerExit2D(Collider2D collider)
     {
         //地面から離れたら
         if (collider.gameObject.CompareTag("Ground"))

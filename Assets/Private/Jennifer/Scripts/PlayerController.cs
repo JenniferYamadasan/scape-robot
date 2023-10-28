@@ -1,3 +1,6 @@
+//プレイヤーの挙動を制御している
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,9 +31,14 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// 地面にいるかどうか
     /// </summary>
-    bool isGround = false;
+    bool isGround = true;
 
+    /// <summary>
+    /// プレイヤーのモデルを格納している
+    /// </summary>
     [SerializeField] GameObject playerModel;
+
+    
 
 
 
@@ -78,7 +86,7 @@ public class PlayerController : MonoBehaviour
         //ジャンプボタンが押されていて、地面に足がついている
         if (inputManager.isJump && isGround)
         {
-            rb2D.AddForce(Vector2.up * jumpPower);
+            rb2D.AddForce(transform.up * jumpPower,ForceMode2D.Impulse);
             isGround = false;
         }
     }
