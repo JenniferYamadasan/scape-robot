@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
         //ジャンプボタンが押されていて、地面に足がついている
         if (inputManager.isJump && isGround)
         {
-            rb2D.AddForce(transform.up * jumpPower,ForceMode2D.Impulse);
+            rb2D.AddForce(transform.up * jumpPower);
             isGround = false;
         }
     }
