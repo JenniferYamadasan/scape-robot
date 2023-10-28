@@ -51,8 +51,9 @@ public class PlayerAnimationController : MonoBehaviour
     /// <summary>
     /// 死んだ瞬間に流すアニメーション
     /// </summary>
-    public void DieAnimation()
+    public Animator DieAnimation()
     {
         animator.SetBool(DIE_ANIMATION, true);
+        return animator;
     }
 }
