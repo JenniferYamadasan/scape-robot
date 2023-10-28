@@ -17,13 +17,19 @@ public class waterDeath : MonoBehaviour
     {
 
     }
-    private void OnTriggerEnter2D(Collider2D water)
+    private void OnTriggerEnter2D(Collider2D hit)
     {
-        
-        if (water.gameObject.tag.Equals("water") == true)
+
+        if (hit.gameObject.tag.Equals("water") == true)
         {
             deathscript.Death();
             Debug.Log("WATER");
+        }
+        if (hit.gameObject.tag.Equals("mine") == true)
+        {
+            deathscript.Death();
+            Debug.Log("MINE");
+            Destroy(hit.gameObject);
         }
     }
 }   
