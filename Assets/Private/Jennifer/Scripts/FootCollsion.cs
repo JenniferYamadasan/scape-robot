@@ -12,16 +12,23 @@ public class FootCollsion : MonoBehaviour
     /// プレイヤーの挙動を管理するスクリプトを格納
     /// </summary>
     [SerializeField] PlayerController playerController;
+
+
     void OnTriggerStay2D(Collider2D collider)
     {
         //地面に触れていたら
         if (collider.gameObject.CompareTag("Ground"))
         {
-            //プレイヤーコントローラーに地面にいることを伝える
+            //プレイヤーコントローラーに地面にいることを伝える(ジャンプ中だったらFlagをtrueにしない)
+            if (playerController.rb2D.velocity.y > 0) return;
             playerController.IsGround(true);
         }
     }
 
+    /// <summary>
+    /// 地面から離れたら
+    /// </summary>
+    /// <param name="collider"></param>
     void OnTriggerExit2D(Collider2D collider)
     {
         //地面から離れたら

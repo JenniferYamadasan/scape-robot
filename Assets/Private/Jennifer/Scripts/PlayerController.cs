@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// RigidBodyを格納する変数
     /// </summary>
-    [SerializeField] Rigidbody2D rb2D;
+    [field: SerializeField] public Rigidbody2D rb2D { get; private set; }
 
     /// <summary>
     /// 移動スピードを調整する変数
@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// 死んでいるかどうか
     /// </summary>
-    bool isDie =false;
+    bool isDie = false;
 
 
     // Update is called once per frame
@@ -64,7 +64,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         OnMove();  //キャラクターを移動させる
-        isItemHeld();//アイテムを持つ処理
         if (!isGround) return;
         OnJump();//ジャンプする処理
     }
@@ -115,7 +114,7 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// アイテムを持つメソッドアイテムをすでに持っていたら何もしないようにする。
     /// </summary>
-    void isItemHeld()
+    public void IsItemHeld()
     {
         if (hasItem) return;
         itemCollider2D.enabled = true;
@@ -131,6 +130,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("死ぬ");
         isDie = true;
     }
+
     /// <summary>
     /// 地面にいるかどうかの情報を取得するメソッド
     /// </summary>

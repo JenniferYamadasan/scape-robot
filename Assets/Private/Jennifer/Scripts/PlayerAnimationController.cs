@@ -37,6 +37,7 @@ public class PlayerAnimationController : MonoBehaviour
     /// <param name="result"></param>
     public void pickUpItem(bool result)
     {
+        //アイテムを持っていない場合falseにする。
         if(!result)
         {
             animator.SetBool(ITEM_HAVE_ANIMATION_NAME, false);

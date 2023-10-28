@@ -6,6 +6,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+public enum ITEMACTION
+{
+    HOLD = 0,
+    THROW,
+}
 public class InputManager : MonoBehaviour
 {
 
@@ -29,9 +34,20 @@ public class InputManager : MonoBehaviour
     /// </summary>
     float dieTimer = 0.0f;
 
+    /// <summary>
+    /// 自殺するまでに必要な時間
+    /// </summary>
     [SerializeField] float dieTime;
 
+    /// <summary>
+    /// プレイヤーの挙動を管理するスクリプト
+    /// </summary>
     [SerializeField] PlayerController playerController;
+
+    /// <summary>
+    /// 現在アイテムを持っている状態か投げている状態かのステータス
+    /// </summary>
+    public ITEMACTION itemAction { get; private set; } = ITEMACTION.HOLD;
 
 
     /// <summary>
@@ -74,8 +90,23 @@ public class InputManager : MonoBehaviour
             playerController.OnDie();//死んだことをプレイヤーコントローラーに伝える
         }
     }
-    public void InputPut(InputAction.CallbackContext context)
+
+    /// <summary>
+    /// アイテムを持つボタンを押された際に呼ばれるメソッド
+    /// </summary>
+    /// <param name="context"></param>
+    public void InputHold_Throw(InputAction.CallbackContext context)
     {
+        switch (itemAction)
+        {
+            case ITEMACTION.HOLD:
+                playerController.IsItemHeld();
+                itemAction = ITEMACTION.THROW;
+                break;
+            case ITEMACTION.THROW:
+                itemAction = ITEMACTION.HOLD;
+                break;
+        }
         //ボタンが押されたらtrue離されたらfalseが返る
         isHold = context.ReadValueAsButton();
     }
