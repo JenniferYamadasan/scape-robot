@@ -1383,7 +1383,7 @@ MonoBehaviour:
   inputManager: {fileID: 788991411941423305}
   <rb2D>k__BackingField: {fileID: 6456093436455586033}
   moveSpeed: 6
-  jumpPower: 550
+  jumpPower: 600
   playerModel: {fileID: 1659564622}
   playerAnimationController: {fileID: 632579173}
   itemCollider2D: {fileID: 6617549298422209677}

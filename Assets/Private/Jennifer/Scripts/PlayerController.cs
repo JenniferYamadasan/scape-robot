@@ -122,11 +122,20 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// アイテムを持つメソッドアイテムをすでに持っていたら何もしないようにする。
     /// </summary>
-    public void IsItemHeld()
+    public void IsItemHeld(ITEMACTION itemAction)
     {
-        if (hasItem) return;
-        itemCollider2D.enabled = true;
-        playerAnimationController.pickUpItem(true);
+        switch (itemAction)
+        {
+            case ITEMACTION.HOLD:
+                if (hasItem) return;
+                itemCollider2D.enabled = true;
+                playerAnimationController.pickUpItem(true,itemCollider2D);
+                break;
+            case ITEMACTION.THROW:
+                playerAnimationController.pickUpItem(false, null);
+                playerAnimationController.Throw(true);
+                break;
+        }
     }
 
     /// <summary>

@@ -14,13 +14,23 @@ public class PlayerAnimationController : MonoBehaviour
     [SerializeField] Animator animator;
 
     /// <summary>
-    /// 歩くアニメーションのパラメータの名前を
+    /// 現在持っているアイテムを保持しているクラス
     /// </summary>
-    const string WALK_ANIMATION_NAME = "isWalk";
+    [SerializeField] PlayerHaveItem playerHaveItem;
 
-    const string ITEM_HAVE_ANIMATION_NAME = "hasItem";
+    /// <summary>
+    /// 持つアイテムを決めているスクリプト
+    /// </summary>
+    [SerializeField] ItemCollider itemCollider;
 
+    
+    /// アニメーションのパラメータを変数に入れている
+    const string WALK_ANIMATION = "isWalk";
+    const string ITEM_HAVE_ANIMATION= "hasItem";
     const string DIE_ANIMATION = "isDie";
+    const string THROW_ANIMATION = "isThrow";
+
+    BoxCollider2D itemCollider2D;
 
     /// <summary>
     /// 歩くアニメーションを管理するメソッド
@@ -28,25 +38,42 @@ public class PlayerAnimationController : MonoBehaviour
     /// <param name="result"></param>
     public void walkAnimator(bool result)
     {
-        animator.SetBool(WALK_ANIMATION_NAME, result);
+        animator.SetBool(WALK_ANIMATION, result);
     }
 
     /// <summary>
-    /// アイテムを持つか管理するメソッド
+    /// アイテムを持つアニメーションを流すメソッド
     /// </summary>
     /// <param name="result"></param>
-    public void pickUpItem(bool result)
+    public void pickUpItem(bool result, BoxCollider2D itemCollider2D)
     {
-        //アイテムを持っていない場合falseにする。
-        if(!result)
-        {
-            animator.SetBool(ITEM_HAVE_ANIMATION_NAME, false);
-        }
-        //AnimationEventでアイテムを拾う処理を行う予定
-        else
-        {
-            animator.SetBool(ITEM_HAVE_ANIMATION_NAME, true);
-        }
+        this.itemCollider2D = itemCollider2D;
+        animator.SetBool(ITEM_HAVE_ANIMATION, result);
+    }
+
+    /// <summary>
+    /// 持つアイテムが決まった際に呼ばれるメソッド
+    /// </summary>
+    public void AcquireItem()
+    {
+        //持つオブジェクトが決まったため、
+        //ここで持つオブジェクトを決めているコライダーを無効化する
+        itemCollider2D.enabled = false;
+        //持つアイテムを取得
+        GameObject item = itemCollider.GetNearestObject();
+        //アイテムの情報をクラスに引き渡す。
+        playerHaveItem.hasItem = item;
+        //子オブジェクトに設定する
+        playerHaveItem.transform.parent = item.transform;
+    }
+
+    /// <summary>
+    /// アイテムを投げるアニメーションを流すメソッド
+    /// </summary>
+    /// <param name="result"></param>
+    public void Throw(bool result)
+    {
+        animator.SetBool(THROW_ANIMATION, result);
     }
 
     /// <summary>

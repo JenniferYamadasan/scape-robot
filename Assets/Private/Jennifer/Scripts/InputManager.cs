@@ -106,7 +106,7 @@ public class InputManager : MonoBehaviour
         switch (itemAction)
         {
             case ITEMACTION.HOLD:
-                playerController.IsItemHeld();
+                playerController.IsItemHeld(itemAction);
                 itemAction = ITEMACTION.THROW;
                 break;
             case ITEMACTION.THROW:
