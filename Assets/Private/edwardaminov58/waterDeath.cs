@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class waterDeath : MonoBehaviour
 {
-    public GameObject brokenRobot;
-    public PlayerAnimationController animationController;
-    Vector3 deathPosition;
+    public DeathScript deathscript;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,11 +21,7 @@ public class waterDeath : MonoBehaviour
     {
         if (water.gameObject.tag.Equals("water") == true)
         {
-            Animator animator;
-            animator = animationController.DieAnimation();
-            deathPosition = new Vector3(transform.position.x, transform.position.y, 0);
-            Instantiate(brokenRobot, deathPosition, Quaternion.identity);
-            Destroy(gameObject);
+            deathscript.Death();
 
         }
     }

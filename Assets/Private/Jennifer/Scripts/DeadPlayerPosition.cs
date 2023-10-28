@@ -8,5 +8,5 @@ public class DeadPlayerPosition
 
     public static DeadPlayerPosition deadPlayerPosition => deadPlayer;
 
-    public List<GameObject> deadPeople = new List<GameObject>();
+    public List<Transform> deadPeople = new List<Transform>();
 }
