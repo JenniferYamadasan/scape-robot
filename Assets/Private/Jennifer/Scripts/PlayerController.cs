@@ -79,7 +79,14 @@ public class PlayerController : MonoBehaviour
         OnRotate(inputVec);
         //ここで実際に移動する Y座標を0にするとジャンプができないようになるため、別途現在のY座標を足している
         rb2D.velocity = new Vector2(inputVec.x, 0) * moveSpeed + new Vector2(0, rb2D.velocity.y);
-        playerAnimationController.walkAnimator(true);
+        if (Mathf.Abs(rb2D.velocity.x) > 0)
+        {
+            playerAnimationController.walkAnimator(true);
+        }
+        else if(Mathf.Abs(rb2D.velocity.x) <=0)
+        {
+            playerAnimationController.walkAnimator(false);
+        }
     }
 
     /// <summary>
