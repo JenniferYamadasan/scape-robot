@@ -73,6 +73,7 @@ public class PlayerAnimationController : MonoBehaviour
     /// <param name="result"></param>
     public void Throw(bool result)
     {
+        playerHaveItem.hasItem = null;
         animator.SetBool(THROW_ANIMATION, result);
     }
 

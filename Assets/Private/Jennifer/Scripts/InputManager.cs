@@ -71,6 +71,9 @@ public class InputManager : MonoBehaviour
         if (context.canceled) isJump = false;
     }
 
+    /// <summary>
+    /// ジャンプの入力値をfalseにするメソッド
+    /// </summary>
     public void IsJumpFinish()
     {
         isJump = false;
