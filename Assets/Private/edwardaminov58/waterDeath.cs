@@ -19,10 +19,11 @@ public class waterDeath : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D water)
     {
+        
         if (water.gameObject.tag.Equals("water") == true)
         {
             deathscript.Death();
-
+            Debug.Log("WATER");
         }
     }
 }   

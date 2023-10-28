@@ -9,7 +9,7 @@ public class DeathScript : MonoBehaviour
     public GameObject brokenRobot;
     public PlayerAnimationController animationController;
     public GameObject playerRobot;
-    bool brokenRobotSpawn = false;
+ 
     // Start is called before the first frame update
     void Start()
     {
@@ -25,15 +25,13 @@ public class DeathScript : MonoBehaviour
     public void Death()
     {
         
-        if (brokenRobotSpawn) return; 
-        brokenRobotSpawn = true;
+        
         Animator animator;
         animator = animationController.DieAnimation();
         deathPosition = new Vector3(transform.position.x, transform.position.y, 0);
-        
         Instantiate(brokenRobot, deathPosition, Quaternion.identity);
         gameObject.transform.position = startPosition;
-        brokenRobotSpawn = false;
+
 
 
     }
