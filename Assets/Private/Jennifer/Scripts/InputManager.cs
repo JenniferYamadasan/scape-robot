@@ -56,16 +56,24 @@ public class InputManager : MonoBehaviour
 
    void Update()
     {
-        if(inputVec.y < 0)
-        {
-            dieTimer += Time.deltaTime;
-            if(dieTimer >= dieTime)
-            {
-
-            }
-        }
+        DieTimeCount();//自爆ボタンを押している秒数をカウントする
     }
 
+    /// <summary>
+    /// 自爆ボタンを押している秒数を数えるメソッド
+    /// </summary>
+    void DieTimeCount()
+    {
+        //自爆ボタンを押していなかったら何もしない
+        if (inputVec.y >= 0) return;
+
+        //押していたら数える
+        dieTimer += Time.deltaTime;
+        if (dieTimer >= dieTime)
+        {
+            playerController.OnDie();//死んだことをプレイヤーコントローラーに伝える
+        }
+    }
     public void InputPut(InputAction.CallbackContext context)
     {
         //ボタンが押されたらtrue離されたらfalseが返る

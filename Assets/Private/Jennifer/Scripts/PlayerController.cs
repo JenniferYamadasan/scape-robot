@@ -49,8 +49,10 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     [SerializeField] PlayerAnimationController playerAnimationController;
 
-    [SerializeField,Tooltip("最大の重力量")] float maxGravity;
-    [SerializeField, Tooltip("加える重力の量")] float upGravity;
+    /// <summary>
+    /// 死んでいるかどうか
+    /// </summary>
+    bool isDie =false;
 
 
     // Update is called once per frame
@@ -113,7 +115,9 @@ public class PlayerController : MonoBehaviour
 
     public void OnDie()
     {
+        if (isDie) return;
         Debug.Log("死ぬ");
+        isDie = true;
     }
     /// <summary>
     /// 地面にいるかどうかの情報を取得するメソッド
