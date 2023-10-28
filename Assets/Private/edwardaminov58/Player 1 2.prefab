@@ -322,7 +322,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 3
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: dc4ebec12a5761340a2b10448a6cddc0, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -360,9 +360,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputManager: {fileID: 570583920546646952}
-  rb2D: {fileID: 5813022648309100534}
+  <rb2D>k__BackingField: {fileID: 5813022648309100534}
   moveSpeed: 6
-  jumpPower: 170
+  jumpPower: 600
   playerModel: {fileID: 5355514184121624672}
   playerAnimationController: {fileID: 7125344968960416491}
   itemCollider2D: {fileID: 0}
