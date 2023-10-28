@@ -28,7 +28,7 @@ public class PlayerDestroyCounter : MonoBehaviour
         m_destroyCounter++;
     }
     /// <summary>死亡カウントをリセット</summary>
-    /// <param name="value">初期化後の値</param>
+    /// <param name="value">初期化値</param>
     public void DestroyCounterReset(int value)
     {
         m_destroyCounter = value;
