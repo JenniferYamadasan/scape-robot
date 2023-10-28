@@ -108,6 +108,7 @@ public class PlayerController : MonoBehaviour
         {
             rb2D.AddForce(transform.up * jumpPower);
             isGround = false;
+            inputManager.IsJumpFinish();
         }
     }
 

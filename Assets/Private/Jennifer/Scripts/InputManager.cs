@@ -67,7 +67,13 @@ public class InputManager : MonoBehaviour
     public void InputJump(InputAction.CallbackContext context)
     {
         //ボタンが押されたらtrue離されたらfalseが返る
-        isJump = context.ReadValueAsButton();
+        if (context.started) isJump = true;
+        if (context.canceled) isJump = false;
+    }
+
+    public void IsJumpFinish()
+    {
+        isJump = false;
     }
 
    void Update()
