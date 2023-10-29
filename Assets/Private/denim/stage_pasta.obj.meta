@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: stage_pastaMat
-    second: {fileID: 2100000, guid: 37f19b748bffb0245b870075ce9433f6, type: 2}
+    second: {fileID: 2100000, guid: 049499f22e04218418e69471eca6259b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
