@@ -552,6 +552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 012e5469337e78240ab73157b5b9f2db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particlemanager: {fileID: 0}
   playerModel: {fileID: 9002386605808310726}
   brokenRobot: {fileID: 8729228059890758992, guid: a608c30282a554ae0b9c9df695a5f94e,
     type: 3}
@@ -572,9 +573,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathscript: {fileID: 4099253338722219758}
+  particlemanager: {fileID: 0}
   m_sePlayer: {fileID: 0}
   m_seWater: {fileID: 8300000, guid: 2799f89fef5a45242ad812260427fe00, type: 3}
   m_seExplosion: {fileID: 8300000, guid: a51ee87bfa5fe8d418e93f84512436b6, type: 3}
+  m_seElectricShock: {fileID: 8300000, guid: daa8b39a8c092794fa8e612d274cfc93, type: 3}
 --- !u!114 &3135605642690614112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -828,6 +831,7 @@ MonoBehaviour:
   inputManager: {fileID: 3770679777537182921}
   deathScript: {fileID: 4099253338722219758}
   playerInput: {fileID: 4336539824210389068}
+  playerController: {fileID: 0}
   leftRotate: 72.5
   RightRotate: 0
   timeToWaitAfterDeathAnimation: 0.5
