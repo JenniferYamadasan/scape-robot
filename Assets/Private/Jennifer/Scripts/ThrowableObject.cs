@@ -28,6 +28,8 @@ public class ThrowableObject : MonoBehaviour
 
     public Vector3 pos { get; private set; }
 
+    [SerializeField] float xPower;
+
     void Start()
     {
         itemCollider = FindObjectOfType<ItemCollider>();
@@ -43,11 +45,11 @@ public class ThrowableObject : MonoBehaviour
         Debug.Log("direction"+direction);
         if(direction == DIRECTION.RIGHT)
         {
-            flightDirection = new Vector2(1, yVec) * power;
+            flightDirection = new Vector2(xPower, yVec) * power;
         }
         else
         {
-            flightDirection = new Vector2(-1, yVec) * power;
+            flightDirection = new Vector2(-xPower, yVec) * power;
         }
         rb2D.AddForce(flightDirection, ForceMode2D.Impulse);
         transform.position = new Vector3(this.transform.position.x, this.transform.position.y, 0);
