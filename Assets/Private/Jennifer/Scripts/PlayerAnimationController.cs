@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.SceneManagement;
 public class PlayerAnimationController : MonoBehaviour
 {
 
@@ -193,6 +193,17 @@ public class PlayerAnimationController : MonoBehaviour
         //animator.SetBool(DIE_ANIMATION, false);
     }
 
+
+    public void Goal()
+    {
+        animator.Play("Goal");
+        StartCoroutine(test());
+    }
+    IEnumerator test()
+    {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(InputManager.goalNum);
+    }
     /// <summary>
     /// 死ぬアニメーションを流す
     /// </summary>
