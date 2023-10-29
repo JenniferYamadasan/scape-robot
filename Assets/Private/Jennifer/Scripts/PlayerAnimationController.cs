@@ -163,7 +163,6 @@ public class PlayerAnimationController : MonoBehaviour
     IEnumerator die()
     {
         yield return wait;
-        deathScript.PosSetthing();
         //移動出来きるようにする。
         playerInput.enabled = true;
         //アイテムを持ったまま死ぬとバグの原因になるため、回避するようにしている。
@@ -175,6 +174,7 @@ public class PlayerAnimationController : MonoBehaviour
             playerHaveItem.throwableObject = null;
             inputManager.ChangeState(ITEMACTION.HOLD);
         }
+        deathScript.PosSetthing();
         animator.Play("None");
     }
     /// <summary>
