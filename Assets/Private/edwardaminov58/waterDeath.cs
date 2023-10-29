@@ -5,7 +5,9 @@ using UnityEngine;
 public class waterDeath : MonoBehaviour
 {
     public DeathScript deathscript;
-
+    [SerializeField] private SEPlayer m_sePlayer = null;
+    [SerializeField] private AudioClip m_seWater = null;
+    [SerializeField] private AudioClip m_seExplosion = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,14 +24,16 @@ public class waterDeath : MonoBehaviour
 
         if (hit.gameObject.tag.Equals("water") == true)
         {
+            m_sePlayer.PlaySE(m_seWater);
             deathscript.Death();
             Debug.Log("WATER");
         }
         if (hit.gameObject.tag.Equals("mine") == true)
         {
+            m_sePlayer.PlaySE(m_seExplosion);
             deathscript.Death();
             Debug.Log("MINE");
             Destroy(hit.gameObject);
         }
     }
-}   
+}

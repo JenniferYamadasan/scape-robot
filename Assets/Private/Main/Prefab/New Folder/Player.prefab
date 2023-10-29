@@ -572,6 +572,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathscript: {fileID: 4099253338722219758}
+  m_sePlayer: {fileID: 0}
+  m_seWater: {fileID: 8300000, guid: 2799f89fef5a45242ad812260427fe00, type: 3}
+  m_seExplosion: {fileID: 8300000, guid: a51ee87bfa5fe8d418e93f84512436b6, type: 3}
 --- !u!114 &3135605642690614112
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,6 +5,10 @@ public class Mine : MonoBehaviour
 {
     /// <summary>爆発エフェクト</summary>
     [SerializeField] private GameObject m_effectObj = null;
+    /// <summary>SEプレイヤー</summary>
+    [SerializeField]private SEPlayer m_sePlayer;
+    /// <summary>SE</summary>
+    [SerializeField]private AudioClip m_se;
     /// <summary>目標地点リスト</summary>
     [SerializeField] private List<GameObject> m_offsetPoses = new List<GameObject>();
     /// <summary>目標まで移動する</summary>
@@ -74,6 +78,7 @@ public class Mine : MonoBehaviour
         }
         Debug.Log(this.gameObject.name + "にHit!");
         Instantiate(m_effectObj, transform.position, Quaternion.identity);
+        m_sePlayer.PlaySE(m_se);
         Destroy(this.gameObject);
     }
     public static float CubicOut(float t, float totaltime, float min, float max)

@@ -114,6 +114,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_effectObj: {fileID: 4166323465112947271, guid: 40458c9043e3b0e49aaf6379165513ac,
     type: 3}
+  m_sePlayer: {fileID: 0}
+  m_se: {fileID: 8300000, guid: a51ee87bfa5fe8d418e93f84512436b6, type: 3}
   m_offsetPoses:
   - {fileID: 2125389440435646904}
   - {fileID: 9169544600845369887}
