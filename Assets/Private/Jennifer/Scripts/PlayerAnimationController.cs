@@ -223,7 +223,7 @@ public class PlayerAnimationController : MonoBehaviour
         playerInput.enabled = false;
         playerController.OnMoveStop();
         yield return new WaitForSeconds(1);
-        if (InputManager.goalNum >= 3) InputManager.goalNum = 0;
+        if (InputManager.goalNum >= 4) InputManager.goalNum = 0;
         SceneManager.LoadScene(InputManager.goalNum);
     }
     /// <summary>
