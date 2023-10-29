@@ -211,12 +211,12 @@ public class PlayerAnimationController : MonoBehaviour
     public void Goal()
     {
         animator.Play("Goal");
-        playerInput.enabled = false;
-        playerController.OnMoveStop();
         StartCoroutine(test());
     }
     IEnumerator test()
     {
+        playerInput.enabled = false;
+        playerController.OnMoveStop();
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(InputManager.goalNum);
     }
