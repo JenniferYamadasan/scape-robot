@@ -4,53 +4,42 @@ using UnityEngine;
 
 public class WaterDrop : MonoBehaviour
 {
-    /// <summary>当たり判定の半径</summary>
-    private　float m_radius = 0.5f;
+    /// <summary>スケール</summary>
+    private　float m_scale = 0.5f;
     /// <summary>水滴の落下速度</summary>
     private float m_dropSpeed = 1.0f;
 
-
-    private Rigidbody m_rb = null;
-    private SphereCollider m_collider = null;
+    private Transform m_tf = null;
+    private Rigidbody2D m_rb = null;
     // Start is called before the first frame update
     void Start()
-    {
-        m_collider = GetComponent<SphereCollider>();
-        m_rb = GetComponent<Rigidbody>();
-        if (m_collider != null)
+    { 
+        m_rb = GetComponent<Rigidbody2D>();
+        m_tf = GetComponent<Transform>();
+        if(m_tf != null)
         {
-            m_collider.radius = m_radius;
-        }
-        if(m_rb != null)
-        {
-            m_rb.useGravity = false;
+            m_tf.localScale = new Vector3(m_scale, m_scale, m_scale);
         }
     }
     private void Update()
     {
         if (m_rb != null)
         {
-            m_rb.AddForce(-Vector3.up * m_dropSpeed, ForceMode.Acceleration);
+            m_rb.AddForce(-Vector3.up * m_dropSpeed, ForceMode2D.Force);
         }
     }
     //初期化関数、水滴生成時に呼ばれる
     public void SetUp(float radius,float dropSpeed)
     {
         m_dropSpeed = dropSpeed;
-        m_radius = radius;
-        m_collider = GetComponent<SphereCollider>();
-        m_rb = GetComponent<Rigidbody>();
-        if (m_collider != null)
+        m_scale = radius;
+        m_rb = GetComponent<Rigidbody2D>();
+        if (m_tf != null)
         {
-            m_collider.radius = m_radius;
-        }
-        if(m_rb != null)
-        {
-            m_rb.useGravity = false;
+            m_tf.localScale = new Vector3(m_scale, m_scale, m_scale);
         }
     }
-
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other != null)
         {
@@ -59,7 +48,10 @@ public class WaterDrop : MonoBehaviour
             {
 
             }
-
+            if (other.GetComponent<WaterDrop>() == null)
+            {
+                Destroy(this.gameObject);
+            }
 
         }
 
