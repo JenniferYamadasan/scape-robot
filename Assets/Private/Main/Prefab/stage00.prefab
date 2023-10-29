@@ -1944,6 +1944,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: effect_repop
       objectReference: {fileID: 0}
+    - target: {fileID: 1011991047878555255, guid: 35b89baf92034884a8bf6c1cf33f5bf1,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5212553222983504001, guid: 35b89baf92034884a8bf6c1cf33f5bf1,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6143606681300286890, guid: 35b89baf92034884a8bf6c1cf33f5bf1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1994,6 +2004,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8917972166665522863, guid: 35b89baf92034884a8bf6c1cf33f5bf1,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2019,6 +2034,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 122547203113427135}
     m_Modifications:
+    - target: {fileID: 4099253338722219758, guid: 4ac4d659acb214ccd97b64250e8c26c2,
+        type: 3}
+      propertyPath: particlemanager
+      value: 
+      objectReference: {fileID: 1910160396122855397}
     - target: {fileID: 4611405808613859374, guid: 4ac4d659acb214ccd97b64250e8c26c2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6309,10 +6329,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8006281093008439345}
     m_Modifications:
+    - target: {fileID: 329197326228467253, guid: b26d6cd578f194e46b5c0d4a11088ed7,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446898520163033879, guid: b26d6cd578f194e46b5c0d4a11088ed7,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4166323465112947271, guid: b26d6cd578f194e46b5c0d4a11088ed7,
         type: 3}
       propertyPath: m_Name
       value: effect_explosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709042426774054909, guid: b26d6cd578f194e46b5c0d4a11088ed7,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4836949043732012588, guid: b26d6cd578f194e46b5c0d4a11088ed7,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5393972175461353434, guid: b26d6cd578f194e46b5c0d4a11088ed7,
         type: 3}
@@ -6362,6 +6402,11 @@ PrefabInstance:
     - target: {fileID: 5393972175461353434, guid: b26d6cd578f194e46b5c0d4a11088ed7,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8714143419538296627, guid: b26d6cd578f194e46b5c0d4a11088ed7,
+        type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -9202,6 +9247,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8006281093008439345}
     m_Modifications:
+    - target: {fileID: 2421802461664231831, guid: cf87549fb94adc3429c065e06e008a04,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2599059997348159521, guid: cf87549fb94adc3429c065e06e008a04,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6123952470134758093, guid: cf87549fb94adc3429c065e06e008a04,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9250,6 +9305,11 @@ PrefabInstance:
     - target: {fileID: 6123952470134758093, guid: cf87549fb94adc3429c065e06e008a04,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8489084949922857641, guid: cf87549fb94adc3429c065e06e008a04,
+        type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9113889334656528335, guid: cf87549fb94adc3429c065e06e008a04,
