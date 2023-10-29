@@ -12,7 +12,7 @@ public class FootCollsion : MonoBehaviour
     /// プレイヤーの挙動を管理するスクリプトを格納
     /// </summary>
     [SerializeField] PlayerController playerController;
-
+    [SerializeField] private WalkSEPlayer m_walkSEPlayer = null;
 
     void OnTriggerStay2D(Collider2D collider)
     {
@@ -22,6 +22,7 @@ public class FootCollsion : MonoBehaviour
             //プレイヤーコントローラーに地面にいることを伝える(ジャンプ中だったらFlagをtrueにしない)
             if (playerController.rb2D.velocity.y > 0) return;
             playerController.IsGround(true);
+            m_walkSEPlayer.SetIsGround(true);
         }
     }
 
@@ -36,6 +37,7 @@ public class FootCollsion : MonoBehaviour
         {
             //プレイヤーコントローラーに地面にいないを伝える
             playerController.IsGround(false);
+            m_walkSEPlayer.SetIsGround(false);
         }
     }
 }
