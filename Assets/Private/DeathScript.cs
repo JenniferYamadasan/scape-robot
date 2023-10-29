@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DeathScript : MonoBehaviour
 {
+    public PlayerDestroyCounter destroycounter;
     public particleManager particlemanager;
     public GameObject playerModel;
     Vector3 startPosition;
@@ -42,6 +43,7 @@ public class DeathScript : MonoBehaviour
         // deathRotation = transform.rotation;
         particlemanager.respawnParticle.Play();
         Instantiate(brokenRobot, deathPosition, model.localRotation);
+        destroycounter.DestroyCounterAdd();
         gameObject.transform.position = startPosition;
         playerModel.transform.rotation = Quaternion.Euler(0, 140, 0);
     }

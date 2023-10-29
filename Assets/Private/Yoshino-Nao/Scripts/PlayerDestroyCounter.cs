@@ -10,7 +10,6 @@ public class PlayerDestroyCounter : MonoBehaviour
     private void Start()
     {
         m_tmp = GetComponentInChildren<TextMeshProUGUI>();
-        m_destroyCounter = 0;
     }
     private void Update()
     {
