@@ -10,18 +10,23 @@ public class DeathScript : MonoBehaviour
     public GameObject brokenRobot;
     public PlayerAnimationController animationController;
     public GameObject playerRobot;
-    public float yPosUp;
+    Quaternion deathRotation;
+    [SerializeField] Transform model;
+    
+
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
-        startPosition= new Vector3(transform.position.x, transform.position.y, 0);
+
+        startPosition = new Vector3(model.transform.position.x, model.transform.position.y, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public void Death()
     {
@@ -30,8 +35,9 @@ public class DeathScript : MonoBehaviour
 
     public void PosSetthing()
     {
-        deathPosition = new Vector3(transform.position.x, transform.position.y+ yPosUp, 0);
-        Instantiate(brokenRobot, deathPosition, Quaternion.identity);
+        deathPosition = new Vector3(model.transform.position.x, model.transform.position.y, 0);
+       // deathRotation = transform.rotation;
+        Instantiate(brokenRobot, deathPosition, model.localRotation);
         gameObject.transform.position = startPosition;
         playerModel.transform.rotation = Quaternion.Euler(0, 140, 0);
     }
