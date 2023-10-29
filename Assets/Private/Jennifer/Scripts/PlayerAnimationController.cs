@@ -55,6 +55,7 @@ public class PlayerAnimationController : MonoBehaviour
     {
         wait = new WaitForSeconds(timeToWaitAfterDeathAnimation);
         animator.SetFloat(SPEED_ANIMATION, -1);
+        animator.Play("Spawn");
     }
 
     /// <summary>

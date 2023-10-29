@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1208837048887083150}
   m_Layer: 6
   m_Name: CollsionDetector
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -286,6 +286,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5153575753273093019, guid: 7d9423d1a94223c4ca1fd158c8bcf467,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 5534639698323501345, guid: 7d9423d1a94223c4ca1fd158c8bcf467,
         type: 3}
