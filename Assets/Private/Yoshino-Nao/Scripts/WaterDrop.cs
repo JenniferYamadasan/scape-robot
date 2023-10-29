@@ -19,7 +19,7 @@ public class WaterDrop : MonoBehaviour
             m_tf.localScale = new Vector3(m_scale, m_scale, m_scale);
         }
     }
-    private void Update()
+    private void FixedUpdate()
     {
         if (m_rb != null)
         {
