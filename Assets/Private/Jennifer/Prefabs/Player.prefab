@@ -323,6 +323,7 @@ MonoBehaviour:
     type: 3}
   animationController: {fileID: 904606475905229393}
   playerRobot: {fileID: 6595260360802826090}
+  yPosUp: 0
 --- !u!114 &3458604496348032536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -710,6 +711,8 @@ MonoBehaviour:
   inputManager: {fileID: 5808936387325964680}
   deathScript: {fileID: 1384010182070242730}
   playerInput: {fileID: 1286313497773094073}
+  leftRotate: 0
+  RightRotate: 0
   timeToWaitAfterDeathAnimation: 0.5
 --- !u!95 &8372727262160801499 stripped
 Animator:

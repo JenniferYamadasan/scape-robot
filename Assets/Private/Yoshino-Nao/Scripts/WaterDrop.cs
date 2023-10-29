@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class WaterDrop : MonoBehaviour
 {
-    /// <summary>ƒXƒP[ƒ‹</summary>
-    private@float m_scale = 0.5f;
-    /// <summary>…“H‚Ì—‰º‘¬“x</summary>
+    /// <summary>ï¿½Xï¿½Pï¿½[ï¿½ï¿½</summary>
+    private float m_scale = 0.5f;
+    /// <summary>ï¿½ï¿½ï¿½Hï¿½Ì—ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½x</summary>
     private float m_dropSpeed = 1.0f;
 
     private Transform m_tf = null;
@@ -26,7 +26,7 @@ public class WaterDrop : MonoBehaviour
             m_rb.AddForce(-Vector3.up * m_dropSpeed, ForceMode2D.Force);
         }
     }
-    //‰Šú‰»ŠÖ”A…“H¶¬‚ÉŒÄ‚Î‚ê‚é
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öï¿½ï¿½Aï¿½ï¿½ï¿½Hï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÉŒÄ‚Î‚ï¿½ï¿½
     public void SetUp(float radius,float dropSpeed)
     {
         m_dropSpeed = dropSpeed;
@@ -41,7 +41,7 @@ public class WaterDrop : MonoBehaviour
     {
         if (other != null)
         {
-            //ƒvƒŒƒCƒ„[‚ª“–‚½‚Á‚½‚Ìˆ—
+            //ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
             if (other.tag == "Player")
             {
 
@@ -53,6 +53,6 @@ public class WaterDrop : MonoBehaviour
 
         }
 
-        Debug.Log(this.gameObject.name + "‚ÉHit!");
+        Debug.Log(this.gameObject.name + "ï¿½ï¿½Hit!");
     }
 }
