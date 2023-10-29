@@ -398,6 +398,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a608c30282a554ae0b9c9df695a5f94e, type: 3}
+--- !u!4 &575049015 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8155965265674827165, guid: 3d3e5221cf4ae4c39bcb854ab15b2853,
+    type: 3}
+  m_PrefabInstance: {fileID: 1712638712}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &691279371
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1759,6 +1765,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2570714057985382030, guid: 3d3e5221cf4ae4c39bcb854ab15b2853,
+        type: 3}
+      propertyPath: model
+      value: 
+      objectReference: {fileID: 575049015}
+    - target: {fileID: 2570714057985382030, guid: 3d3e5221cf4ae4c39bcb854ab15b2853,
+        type: 3}
+      propertyPath: brokenRobot
+      value: 
+      objectReference: {fileID: 8898447566378934527, guid: 97796b8747c454368bac806d894a10c6,
+        type: 3}
     - target: {fileID: 7439834709762157860, guid: 3d3e5221cf4ae4c39bcb854ab15b2853,
         type: 3}
       propertyPath: m_LocalPosition.x
