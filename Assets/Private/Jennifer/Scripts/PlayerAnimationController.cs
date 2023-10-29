@@ -175,7 +175,7 @@ public class PlayerAnimationController : MonoBehaviour
             inputManager.ChangeState(ITEMACTION.HOLD);
         }
         deathScript.PosSetthing();
-        animator.Play("None");
+        animator.Play("Spawn");
     }
     /// <summary>
     /// 死んだ瞬間に流すアニメーション

@@ -12,7 +12,8 @@ public class DeathScript : MonoBehaviour
     public GameObject playerRobot;
     Quaternion deathRotation;
     [SerializeField] Transform model;
-    
+
+    [SerializeField] float yUp;
 
 
 
@@ -35,7 +36,8 @@ public class DeathScript : MonoBehaviour
 
     public void PosSetthing()
     {
-        deathPosition = new Vector3(model.transform.position.x, model.transform.position.y, 0);
+        
+        deathPosition = new Vector3(model.transform.position.x, model.transform.position.y+ yUp, 0);
        // deathRotation = transform.rotation;
         Instantiate(brokenRobot, deathPosition, model.localRotation);
         gameObject.transform.position = startPosition;
