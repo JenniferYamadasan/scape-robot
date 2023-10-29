@@ -110,7 +110,12 @@ public class PlayerAnimationController : MonoBehaviour
         item.gameObject.TryGetComponent<BoxCollider2D>(out playerHaveItem.itemsCollider2D);
         item.gameObject.TryGetComponent<Rigidbody2D>(out playerHaveItem.itemRB2D);
         item.gameObject.TryGetComponent<ThrowableObject>(out playerHaveItem.throwableObject);
-
+        if(playerHaveItem.itemsCollider2D ==null || playerHaveItem.itemRB2D ==null || playerHaveItem.throwableObject ==null)
+        {
+            //投げることが確定している為、ここでステートの変更
+            inputManager.ChangeState(ITEMACTION.HOLD);
+            return false;
+        }
         //当たり判定をisTriggerにして貫通するようにする。
         playerHaveItem.itemsCollider2D.isTrigger = true;
         //isKinematicをtrueにして重力を無視している
