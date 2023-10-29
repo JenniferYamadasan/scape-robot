@@ -47,6 +47,9 @@ public class PlayerAnimationController : MonoBehaviour
     //BoxCollider2D itemCollider2D;
     WaitForSeconds wait;
 
+    [SerializeField] float leftRotate;
+    [SerializeField] float RightRotate;
+
     [SerializeField,Header("死んでからこの秒数待ってリスポーン")] float timeToWaitAfterDeathAnimation;
     void Start()
     {
@@ -145,6 +148,18 @@ public class PlayerAnimationController : MonoBehaviour
         StartCoroutine(die());
     }
 
+    public void OnRotate(DIRECTION direction)
+    {
+        if (playerHaveItem.hasItem == null) return;
+        if(direction == DIRECTION.RIGHT)
+        {
+            playerHaveItem.hasItem.transform.rotation = Quaternion.Euler(0,RightRotate,0);
+        }
+        else
+        {
+            playerHaveItem.hasItem.transform.rotation = Quaternion.Euler(0, leftRotate, 0);
+        }
+    }
     IEnumerator die()
     {
         yield return wait;
