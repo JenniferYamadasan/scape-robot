@@ -57,13 +57,10 @@ public class ThrowableObject : MonoBehaviour
         itemCollider.ItemReset();
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    public void OnStop()
     {
-        if(collision.gameObject.CompareTag("Ground"))
-        {
-            //投げた物を滑らないようにしている
-            flightDirection = rb2D.velocity = new Vector2(0, 0);
-            rb2D.isKinematic = true;
-        }
+        //投げた物を滑らないようにしている
+        flightDirection = rb2D.velocity = new Vector2(0, 0);
+        rb2D.isKinematic = true;
     }
 }
