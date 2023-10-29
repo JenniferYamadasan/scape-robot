@@ -52,6 +52,7 @@ public class InputManager : MonoBehaviour
     /// </summary>
     public ITEMACTION itemAction { get; private set; } = ITEMACTION.HOLD;
 
+    public static int goalNum = 0;
 
     /// <summary>
     /// 移動ボタンが押されたら入力値を変数に格納する。

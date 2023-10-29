@@ -3,6 +3,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// キャラクターが向いている向き
@@ -67,6 +68,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     bool isDie = false;
 
+    public static int goalNum = 0;
 
     // Update is called once per frame
     [System.Obsolete]
@@ -173,5 +175,13 @@ public class PlayerController : MonoBehaviour
     public void IsGround(bool result)
     {
         isGround = result;
+    }
+    void OnTriggerEnter2D(Collider2D collider2D)
+    {
+        if(collider2D.gameObject.tag=="Goal")
+        {
+            goalNum++;
+            SceneManager.LoadScene(goalNum);
+        }
     }
 }
