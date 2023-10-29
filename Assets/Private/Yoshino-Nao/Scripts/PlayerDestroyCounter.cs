@@ -5,7 +5,7 @@ public class PlayerDestroyCounter : MonoBehaviour
     /// <summary>プレイヤー死亡カウント用テキスト</summary>
     [SerializeField] TextMeshProUGUI m_tmp = null;
     /// <summary>プレイヤー死亡カウント</summary>
-    [SerializeField] private int m_destroyCounter = 0;
+    [SerializeField] private static int m_destroyCounter = 0;
 
     private void Start()
     {
