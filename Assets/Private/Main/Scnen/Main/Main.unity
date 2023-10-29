@@ -403,6 +403,11 @@ PrefabInstance:
       propertyPath: destroycounter
       value: 
       objectReference: {fileID: 81249360}
+    - target: {fileID: 1215303408802373783, guid: a1c47cd2ad2afb64da03be0e861bd7d1,
+        type: 3}
+      propertyPath: particlemanager
+      value: 
+      objectReference: {fileID: 1760900056}
     - target: {fileID: 2005020230275483439, guid: a1c47cd2ad2afb64da03be0e861bd7d1,
         type: 3}
       propertyPath: m_Name
@@ -413,16 +418,34 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5782563423254390194, guid: a1c47cd2ad2afb64da03be0e861bd7d1,
+        type: 3}
+      propertyPath: particlemanager
+      value: 
+      objectReference: {fileID: 1760900056}
     - target: {fileID: 8671530544212305664, guid: a1c47cd2ad2afb64da03be0e861bd7d1,
         type: 3}
       propertyPath: m_Intensity
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 633813101824550271, guid: a1c47cd2ad2afb64da03be0e861bd7d1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1c47cd2ad2afb64da03be0e861bd7d1, type: 3}
+--- !u!114 &1760900056 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6181069271899828731, guid: a1c47cd2ad2afb64da03be0e861bd7d1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1179316192}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16c628c5e92af0040b2c5be2e3b22596, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1906778936
 GameObject:
   m_ObjectHideFlags: 0
