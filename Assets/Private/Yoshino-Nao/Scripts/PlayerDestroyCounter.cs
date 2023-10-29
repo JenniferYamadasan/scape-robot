@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 public class PlayerDestroyCounter : MonoBehaviour
 {
     /// <summary>プレイヤー死亡カウント用テキスト</summary>
