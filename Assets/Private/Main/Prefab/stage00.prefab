@@ -2054,6 +2054,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1.2600005
       objectReference: {fileID: 0}
+    - target: {fileID: 5865780738472032815, guid: 4ac4d659acb214ccd97b64250e8c26c2,
+        type: 3}
+      propertyPath: m_walkSEPlayer
+      value: 
+      objectReference: {fileID: 8467289716943806723}
+    - target: {fileID: 7169867577125805619, guid: 4ac4d659acb214ccd97b64250e8c26c2,
+        type: 3}
+      propertyPath: m_audioSource
+      value: 
+      objectReference: {fileID: 5992456045746588257}
     - target: {fileID: 7483648487694734084, guid: 4ac4d659acb214ccd97b64250e8c26c2,
         type: 3}
       propertyPath: m_Name
@@ -2284,6 +2294,18 @@ MonoBehaviour:
   electricParticle: {fileID: 1906416303235272469}
   explosionParticle: {fileID: 200216372310910928}
   respawnParticle: {fileID: 6641928147339635996}
+--- !u!114 &8467289716943806723 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7169867577125805619, guid: 4ac4d659acb214ccd97b64250e8c26c2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1585732918870572848}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23e03ee37670b8747a28d67951ee6e4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1636537832985867765
 PrefabInstance:
   m_ObjectHideFlags: 0
