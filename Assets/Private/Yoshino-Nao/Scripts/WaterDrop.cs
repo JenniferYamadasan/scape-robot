@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class WaterDrop : MonoBehaviour
 {
-    /// <summary>�X�P�[��</summary>
+    /// <summary>水滴の大きさ</summary>
     private float m_scale = 0.5f;
-    /// <summary>���H�̗������x</summary>
+    /// <summary>水滴の落ちる速度</summary>
     private float m_dropSpeed = 1.0f;
 
     private Transform m_tf = null;
@@ -26,7 +26,7 @@ public class WaterDrop : MonoBehaviour
             m_rb.AddForce(-Vector3.up * m_dropSpeed, ForceMode2D.Force);
         }
     }
-    //�������֐��A���H�������ɌĂ΂��
+    //水滴生成時の初期化関数(WaterDropGeneraterが呼び出す)
     public void SetUp(float radius,float dropSpeed)
     {
         m_dropSpeed = dropSpeed;
@@ -41,18 +41,17 @@ public class WaterDrop : MonoBehaviour
     {
         if (other != null)
         {
-            //�v���C���[�������������̏���
+            //プレイヤーが当たった時の処理
             if (other.tag == "Player")
             {
 
             }
+            //当たったものが水滴でなければ削除
             if (other.GetComponent<WaterDrop>() == null)
             {
+                Debug.Log(this.gameObject.name + "にHit!");
                 Destroy(this.gameObject);
             }
-
         }
-
-        Debug.Log(this.gameObject.name + "��Hit!");
     }
 }

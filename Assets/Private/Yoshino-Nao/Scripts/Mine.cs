@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Mine : MonoBehaviour
 {
+    /// <summary>爆発エフェクト</summary>
+    [SerializeField] private GameObject m_effectObj = null;
     /// <summary>目標地点リスト</summary>
     [SerializeField] private List<GameObject> m_offsetPoses = new List<GameObject>();
     /// <summary>目標まで移動する</summary>
@@ -22,6 +24,7 @@ public class Mine : MonoBehaviour
     {
         m_collider = GetComponent<CircleCollider2D>();
         m_rb = GetComponent<Rigidbody2D>();
+        
         //リストの0番目を初期位置に設定
         m_fromPos = m_offsetPoses[0].transform.position;
         //座標を初期位置に初期化
@@ -70,7 +73,8 @@ public class Mine : MonoBehaviour
 
         }
         Debug.Log(this.gameObject.name + "にHit!");
-
+        Instantiate(m_effectObj, transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
     }
     public static float CubicOut(float t, float totaltime, float min, float max)
     {
