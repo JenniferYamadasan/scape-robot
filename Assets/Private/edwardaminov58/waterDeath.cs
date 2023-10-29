@@ -5,10 +5,12 @@ using UnityEngine;
 public class waterDeath : MonoBehaviour
 {
     public DeathScript deathscript;
+    public particleManager particlemanager;
     [SerializeField] private SEPlayer m_sePlayer = null;
     [SerializeField] private AudioClip m_seWater = null;
     [SerializeField] private AudioClip m_seExplosion = null;
     // Start is called before the first frame update
+
     void Start()
     {
 
@@ -27,6 +29,7 @@ public class waterDeath : MonoBehaviour
             m_sePlayer.PlaySE(m_seWater);
             deathscript.Death();
             Debug.Log("WATER");
+            particlemanager.electricParticle.Play();
         }
         if (hit.gameObject.tag.Equals("mine") == true)
         {
@@ -34,6 +37,7 @@ public class waterDeath : MonoBehaviour
             deathscript.Death();
             Debug.Log("MINE");
             Destroy(hit.gameObject);
+            particlemanager.explosionParticle.Play();
         }
     }
-}
+    }
