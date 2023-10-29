@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.SceneManagement;
 /// <summary>
 /// 現在行えるアクション　アイテムを持つかアイテムを投げるか
 /// </summary>
@@ -64,6 +64,17 @@ public class InputManager : MonoBehaviour
         inputVec = context.ReadValue<Vector2>();
     }
 
+
+    public void Restart(InputAction.CallbackContext context)
+    {
+        if(context.started)
+        {
+            // 現在のSceneを取得
+            Scene loadScene = SceneManager.GetActiveScene();
+            // 現在のシーンを再読み込みする
+            SceneManager.LoadScene(loadScene.name);
+        }
+    }
     /// <summary>
     /// ジャンプボタンが押されたら入力値を変数に格納する。
     /// </summary>
