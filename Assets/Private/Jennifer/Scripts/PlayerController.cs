@@ -101,6 +101,10 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public void OnMoveStop()
+    {
+        rb2D.velocity = Vector2.zero;
+    }
     /// <summary>
     /// キャラクターの回転をするメソッド
     /// </summary>

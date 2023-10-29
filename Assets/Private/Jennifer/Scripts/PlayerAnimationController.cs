@@ -36,6 +36,8 @@ public class PlayerAnimationController : MonoBehaviour
 
     [SerializeField] PlayerInput playerInput;
 
+    [SerializeField] PlayerController playerController;
+
     /// アニメーションのパラメータを変数に入れている
     const string WALK_ANIMATION = "isWalk";
     const string ITEM_HAVE_ANIMATION= "hasItem";
@@ -56,6 +58,7 @@ public class PlayerAnimationController : MonoBehaviour
         wait = new WaitForSeconds(timeToWaitAfterDeathAnimation);
         animator.SetFloat(SPEED_ANIMATION, -1);
         animator.Play("Spawn");
+        inputManager.gameObject.TryGetComponent<PlayerController>(out playerController);
     }
 
     /// <summary>
@@ -161,6 +164,16 @@ public class PlayerAnimationController : MonoBehaviour
             playerHaveItem.hasItem.transform.rotation = Quaternion.Euler(0, leftRotate, 0);
         }
     }
+
+    public void StartSpawn()
+    {
+        playerInput.enabled = false;
+    }
+
+    public void EndSpawn()
+    {
+        playerInput.enabled = true;
+    }
     IEnumerator die()
     {
         yield return wait;
@@ -198,6 +211,8 @@ public class PlayerAnimationController : MonoBehaviour
     public void Goal()
     {
         animator.Play("Goal");
+        playerInput.enabled = false;
+        playerController.OnMoveStop();
         StartCoroutine(test());
     }
     IEnumerator test()
