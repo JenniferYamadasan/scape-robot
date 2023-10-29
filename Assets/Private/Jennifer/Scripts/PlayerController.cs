@@ -119,6 +119,8 @@ public class PlayerController : MonoBehaviour
             itemColliderObj.transform.rotation = Quaternion.Euler(0, -145, 0);
             direction = DIRECTION.LEFT;
         }
+
+        playerAnimationController.OnRotate(direction);
     }
     /// <summary>
     /// ジャンプをするメソッド
