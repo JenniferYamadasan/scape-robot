@@ -112,6 +112,7 @@ public class PlayerAnimationController : MonoBehaviour
         {
             item.gameObject.TryGetComponent<BoxCollider2D>(out playerHaveItem.itemsCollider2D);
             item.gameObject.TryGetComponent<Rigidbody2D>(out playerHaveItem.itemRB2D);
+            playerHaveItem.hasItemModel = GetComponentInChildren<Animator>().gameObject.transform;
 
         }
         else
@@ -145,6 +146,7 @@ public class PlayerAnimationController : MonoBehaviour
         playerHaveItem.itemRB2D = null;
         playerHaveItem.itemsCollider2D = null;
         playerHaveItem.throwableObject = null;
+        playerHaveItem.hasItemModel = null;
         itemCollider.ItemReset();
         //バグ懸念でfalseにしている。別になくても問題はない（と思う。）
         animator.SetBool(THROW_ANIMATION, false);
@@ -166,14 +168,14 @@ public class PlayerAnimationController : MonoBehaviour
     /// <param name="direction"></param>
     public void OnRotate(DIRECTION direction)
     {
-        if (playerHaveItem.hasItem == null) return;
+        if (playerHaveItem.hasItemModel == null) return;
         if(direction == DIRECTION.RIGHT)
         {
-            playerHaveItem.hasItem.transform.rotation = Quaternion.Euler(0,RightRotate,0);
+            playerHaveItem.hasItemModel.rotation = Quaternion.Euler(0,RightRotate,0);
         }
         else
         {
-            playerHaveItem.hasItem.transform.rotation = Quaternion.Euler(0, leftRotate, 0);
+            playerHaveItem.hasItemModel.rotation = Quaternion.Euler(0, leftRotate, 0);
         }
     }
 
@@ -198,6 +200,7 @@ public class PlayerAnimationController : MonoBehaviour
             playerHaveItem.hasItem.transform.parent = null;
             playerHaveItem.hasItem = null;
             playerHaveItem.throwableObject = null;
+            playerHaveItem.hasItemModel = null;
             inputManager.ChangeState(ITEMACTION.HOLD);
         }
         deathScript.PosSetthing();
