@@ -53,6 +53,7 @@ public class PlayerAnimationController : MonoBehaviour
     [SerializeField] float RightRotate;
 
     [SerializeField,Header("死んでからこの秒数待ってリスポーン")] float timeToWaitAfterDeathAnimation;
+
     void Start()
     {
         wait = new WaitForSeconds(timeToWaitAfterDeathAnimation);
@@ -107,12 +108,14 @@ public class PlayerAnimationController : MonoBehaviour
 
 
         //物理挙動無視、持っている間の当たり判定、飛ばす処理をするのに必要なスクリプトを取得する
-        item.gameObject.TryGetComponent<BoxCollider2D>(out playerHaveItem.itemsCollider2D);
-        item.gameObject.TryGetComponent<Rigidbody2D>(out playerHaveItem.itemRB2D);
-        item.gameObject.TryGetComponent<ThrowableObject>(out playerHaveItem.throwableObject);
-        if(playerHaveItem.itemsCollider2D ==null || playerHaveItem.itemRB2D ==null || playerHaveItem.throwableObject ==null)
+        if(item.gameObject.TryGetComponent<ThrowableObject>(out playerHaveItem.throwableObject))
         {
-            //投げることが確定している為、ここでステートの変更
+            item.gameObject.TryGetComponent<BoxCollider2D>(out playerHaveItem.itemsCollider2D);
+            item.gameObject.TryGetComponent<Rigidbody2D>(out playerHaveItem.itemRB2D);
+
+        }
+        else
+        {
             inputManager.ChangeState(ITEMACTION.HOLD);
             return false;
         }
@@ -142,7 +145,7 @@ public class PlayerAnimationController : MonoBehaviour
         playerHaveItem.itemRB2D = null;
         playerHaveItem.itemsCollider2D = null;
         playerHaveItem.throwableObject = null;
-
+        itemCollider.ItemReset();
         //バグ懸念でfalseにしている。別になくても問題はない（と思う。）
         animator.SetBool(THROW_ANIMATION, false);
         //投げることが出来た為ステートの変更
@@ -157,6 +160,10 @@ public class PlayerAnimationController : MonoBehaviour
         StartCoroutine(die());
     }
 
+    /// <summary>
+    /// 持っているオブジェクトを回転させる。
+    /// </summary>
+    /// <param name="direction"></param>
     public void OnRotate(DIRECTION direction)
     {
         if (playerHaveItem.hasItem == null) return;
@@ -187,14 +194,15 @@ public class PlayerAnimationController : MonoBehaviour
         //アイテムを持ったまま死ぬとバグの原因になるため、回避するようにしている。
         if (playerHaveItem.hasItem != null)
         {
+            playerHaveItem.hasItem.transform.position = playerHaveItem.hasItem.gameObject.transform.position;
             playerHaveItem.hasItem.transform.parent = null;
-            playerHaveItem.hasItem.transform.position = playerHaveItem.throwableObject.pos;
             playerHaveItem.hasItem = null;
             playerHaveItem.throwableObject = null;
             inputManager.ChangeState(ITEMACTION.HOLD);
         }
         deathScript.PosSetthing();
         animator.Play("Spawn");
+        playerController.ReviveOrSelfDestruct(false);
     }
     /// <summary>
     /// 死んだ瞬間に流すアニメーション
@@ -231,9 +239,12 @@ public class PlayerAnimationController : MonoBehaviour
     /// </summary>
     public void StartIsDie()
     {
+        if (playerController.isDie) return;
         animator.SetBool(DIE_ANIMATION, true);
         //移動の入力値とVelocityの値を初期化
         inputManager.IsMoveFinish();
+
+        playerController.ReviveOrSelfDestruct(true);
     }
     /// <summary>
     /// 死んだ際Die以外ののパラメータをリセットする

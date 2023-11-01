@@ -15,7 +15,10 @@ public class DeathScript : MonoBehaviour
     Quaternion deathRotation;
     [SerializeField] Transform model;
 
+
     [SerializeField] float yUp;
+
+    [SerializeField] ItemCollider itemCollider;
 
 
 
@@ -38,7 +41,7 @@ public class DeathScript : MonoBehaviour
 
     public void PosSetthing()
     {
-        
+        itemCollider.ItemReset();
         deathPosition = new Vector3(model.transform.position.x, model.transform.position.y+ yUp, 0);
         // deathRotation = transform.rotation;
         particlemanager.respawnParticle.Play();

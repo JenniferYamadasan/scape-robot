@@ -99,7 +99,7 @@ public class InputManager : MonoBehaviour
     public void IsMoveFinish()
     {
         inputVec = Vector2.zero;
-        playerController.OnDie();
+        playerController.ReviveOrSelfDestruct(true);
     }
     void Update()
     {
@@ -118,7 +118,7 @@ public class InputManager : MonoBehaviour
         dieTimer += Time.deltaTime;
         if (dieTimer >= dieTime)
         {
-            playerController.OnDie();//死んだことをプレイヤーコントローラーに伝える
+            playerController.ReviveOrSelfDestruct(null);//死んだことをプレイヤーコントローラーに伝える
         }
     }
 
@@ -131,6 +131,7 @@ public class InputManager : MonoBehaviour
         //ボタンが押された瞬間にアイテムを持つ又は投げる
         if(context.started)
         {
+            if (playerController.isDie) return;
             playerController.IsItemHeld(itemAction);
         }
     }

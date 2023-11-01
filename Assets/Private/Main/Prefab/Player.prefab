@@ -308,6 +308,7 @@ MonoBehaviour:
   playerModel: {fileID: 8858966637530116773}
   playerAnimationController: {fileID: 1222924898930525515}
   itemColliderObj: {fileID: 3933695989180757922}
+  isDie: 0
 --- !u!61 &11942742261535103
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -368,12 +369,13 @@ MonoBehaviour:
   destroycounter: {fileID: 0}
   particlemanager: {fileID: 3174855582166129011}
   playerModel: {fileID: 8858966637530116773}
-  brokenRobot: {fileID: 8729228059890758992, guid: a608c30282a554ae0b9c9df695a5f94e,
+  brokenRobot: {fileID: 8898447566378934527, guid: 2585b5c4b8f4445d6a47fa06080d9a65,
     type: 3}
   animationController: {fileID: 1222924898930525515}
   playerRobot: {fileID: 2972986417040231582}
   model: {fileID: 8321224668042950129}
   yUp: 0.55
+  itemCollider: {fileID: 3106227380478125073}
 --- !u!114 &8429420424457001406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -624,7 +626,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5112679, y: 0.37411904}
+  m_Size: {x: 0.5112679, y: 0.7160404}
   m_EdgeRadius: 0
 --- !u!114 &3106227380478125073
 MonoBehaviour:

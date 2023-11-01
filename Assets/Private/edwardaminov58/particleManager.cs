@@ -10,6 +10,7 @@ public class particleManager : MonoBehaviour
     public ParticleSystem explosionParticle;
     public ParticleSystem respawnParticle;
     ParticleSystem system;
+    
     void Start()
     {
 

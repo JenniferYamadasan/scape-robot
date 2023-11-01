@@ -63,11 +63,11 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     [SerializeField] GameObject itemColliderObj;
 
+
     /// <summary>
     /// 死んでいるかどうか
     /// </summary>
-    bool isDie = false;
-
+    public bool isDie = false;
 
     // Update is called once per frame
     [System.Obsolete]
@@ -164,13 +164,20 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
-    /// 死んだ際に呼ぶメソッドここで
+    /// 自爆の際はnullそれ以外の場合復活はtrue死んだ際はfalse
     /// </summary>
-    public void OnDie()
+    public void ReviveOrSelfDestruct(bool? result)
     {
-        rb2D.velocity = Vector2.zero;
-    }
+        if(result ==null)
+        {
 
+        }
+        else
+        {
+            rb2D.velocity = Vector2.zero;
+            isDie = (bool)result;
+        }
+    }
     /// <summary>
     /// 地面にいるかどうかの情報を取得するメソッド
     /// </summary>

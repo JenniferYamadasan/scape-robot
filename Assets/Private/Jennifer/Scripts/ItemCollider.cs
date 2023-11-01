@@ -22,7 +22,14 @@ public class ItemCollider : MonoBehaviour
         }
     }
 
-
+    private void OnTriggerExit2D(Collider2D collider2D)
+    {
+        //リストにアイテムがあるか確認あったら削除
+        if (!items.Contains(collider2D.gameObject))
+        {
+            items.Remove(collider2D.gameObject);
+        }
+    }
     /// <summary>
     /// 1番近くにあるゲームオブジェクトを返すようにするメソッド
     /// </summary>
