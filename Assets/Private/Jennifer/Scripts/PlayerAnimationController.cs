@@ -52,7 +52,11 @@ public class PlayerAnimationController : MonoBehaviour
     [SerializeField] float leftRotate;
     [SerializeField] float RightRotate;
 
+    [SerializeField] List<Transform> pos = new List<Transform>();
+
     [SerializeField,Header("死んでからこの秒数待ってリスポーン")] float timeToWaitAfterDeathAnimation;
+
+    DIRECTION direction;
 
     void Start()
     {
@@ -112,7 +116,7 @@ public class PlayerAnimationController : MonoBehaviour
         {
             item.gameObject.TryGetComponent<BoxCollider2D>(out playerHaveItem.itemsCollider2D);
             item.gameObject.TryGetComponent<Rigidbody2D>(out playerHaveItem.itemRB2D);
-            playerHaveItem.hasItemModel = GetComponentInChildren<Animator>().gameObject.transform;
+            playerHaveItem.hasItemModel = item.gameObject.GetComponentInChildren<Animator>().gameObject.transform;
 
         }
         else
@@ -168,6 +172,7 @@ public class PlayerAnimationController : MonoBehaviour
     /// <param name="direction"></param>
     public void OnRotate(DIRECTION direction)
     {
+        this.direction = direction;
         if (playerHaveItem.hasItemModel == null) return;
         if(direction == DIRECTION.RIGHT)
         {
@@ -196,8 +201,8 @@ public class PlayerAnimationController : MonoBehaviour
         //アイテムを持ったまま死ぬとバグの原因になるため、回避するようにしている。
         if (playerHaveItem.hasItem != null)
         {
-            playerHaveItem.hasItem.transform.position = playerHaveItem.hasItem.gameObject.transform.position;
             playerHaveItem.hasItem.transform.parent = null;
+            playerHaveItem.hasItem.transform.position = pos[(int)direction].position;
             playerHaveItem.hasItem = null;
             playerHaveItem.throwableObject = null;
             playerHaveItem.hasItemModel = null;
@@ -234,8 +239,8 @@ public class PlayerAnimationController : MonoBehaviour
         playerInput.enabled = false;
         playerController.OnMoveStop();
         yield return new WaitForSeconds(1);
-        if (InputManager.goalNum >= 4) InputManager.goalNum = 0;
-        SceneManager.LoadScene(InputManager.goalNum);
+        if ((InputManager.goalNum+1) >= 4) InputManager.goalNum = 0;
+        SceneManager.LoadScene((InputManager.goalNum+1));
     }
     /// <summary>
     /// 死ぬアニメーションを流す

@@ -50,8 +50,9 @@ public class WaterDrop : MonoBehaviour
             if (other.GetComponent<WaterDrop>() == null)
             {
                 Debug.Log(this.gameObject.name + "にHit!");
-                Destroy(this.gameObject);
             }
+            //何かしらに触れたら消えるようにする
+            Destroy(this.gameObject);
         }
     }
 }

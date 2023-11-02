@@ -190,7 +190,6 @@ public class PlayerController : MonoBehaviour
     {
         if(collider2D.gameObject.tag=="Goal")
         {
-            InputManager.goalNum++;
             collider2D.GetComponent<BoxCollider2D>().enabled = false;
             playerAnimationController.Goal();
         }

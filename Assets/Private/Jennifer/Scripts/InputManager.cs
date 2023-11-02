@@ -54,6 +54,10 @@ public class InputManager : MonoBehaviour
 
     public static int goalNum = 0;
 
+    void Start()
+    {
+        goalNum = SceneManager.GetActiveScene().buildIndex;
+    }
     /// <summary>
     /// 移動ボタンが押されたら入力値を変数に格納する。
     /// </summary>
