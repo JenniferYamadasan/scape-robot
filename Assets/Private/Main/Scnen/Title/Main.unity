@@ -502,6 +502,16 @@ PrefabInstance:
       propertyPath: particlemanager
       value: 
       objectReference: {fileID: 2045374932}
+    - target: {fileID: 5960322339977160674, guid: a1c47cd2ad2afb64da03be0e861bd7d1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7057247535587377396, guid: a1c47cd2ad2afb64da03be0e861bd7d1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8671530544212305664, guid: a1c47cd2ad2afb64da03be0e861bd7d1,
         type: 3}
       propertyPath: m_Intensity

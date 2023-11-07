@@ -65,10 +65,16 @@ public class ThrowableObject : MonoBehaviour
         itemCollider.ItemReset();
     }
 
-    public void OnStopOrExit(bool result)
+    public void OnStopOrExit()
     {
         //投げた物を滑らないようにしている
         flightDirection = rb2D.velocity = new Vector2(0, 0);
         rb2D.isKinematic = true;
     }
+
+    public void OnExit()
+    {
+        rb2D.isKinematic=false;
+    }
+
 }

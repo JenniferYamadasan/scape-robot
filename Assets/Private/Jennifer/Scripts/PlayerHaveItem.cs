@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerHaveItem : MonoBehaviour
 {
+    public bool itemOwned => hasItem != null;
     public GameObject hasItem;
     public Transform itemPos;
     public Transform hasItemModel;

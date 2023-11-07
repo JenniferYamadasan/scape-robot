@@ -91,6 +91,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwableObject: {fileID: 4921738887282898291}
+  footCollider: {fileID: 475303772381812148}
+  parentCollider2D: {fileID: 3953803862902399419}
 --- !u!1 &8898447566378934527
 GameObject:
   m_ObjectHideFlags: 0

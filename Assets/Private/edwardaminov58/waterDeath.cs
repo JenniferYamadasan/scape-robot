@@ -30,7 +30,7 @@ public class waterDeath : MonoBehaviour
             m_sePlayer.PlaySE(m_seElectricShock);
             m_sePlayer.PlaySE(m_seWater);
             deathscript.Death();
-            Debug.Log("WATER");
+            //Debug.Log("WATER");
             particlemanager.electricParticle.Play();
         }
         if (hit.gameObject.tag.Equals("mine") == true)
@@ -38,7 +38,7 @@ public class waterDeath : MonoBehaviour
             m_sePlayer.PlaySE(m_seElectricShock);
             m_sePlayer.PlaySE(m_seExplosion);
             deathscript.Death();
-            Debug.Log("MINE");
+            //Debug.Log("MINE");
             Destroy(hit.gameObject);
             particlemanager.explosionParticle.Play();
         }
