@@ -469,6 +469,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1215303408802373783, guid: a1c47cd2ad2afb64da03be0e861bd7d1,
         type: 3}
+      propertyPath: yUp
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1215303408802373783, guid: a1c47cd2ad2afb64da03be0e861bd7d1,
+        type: 3}
       propertyPath: destroycounter
       value: 
       objectReference: {fileID: 81249360}
