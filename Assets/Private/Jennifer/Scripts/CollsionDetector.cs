@@ -17,24 +17,24 @@ public class CollsionDetector : MonoBehaviour
     {
         playerHaveItem = FindObjectOfType<PlayerHaveItem>();
     }
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.gameObject.CompareTag("Ground"))
-        {
-            throwableObject.OnStopOrExit();
-        }
-    }
+    //void OnTriggerEnter2D(Collider2D collider)
+    //{
+    //    if (collider.gameObject.CompareTag("Ground"))
+    //    {
+    //        throwableObject.OnStopOrExit();
+    //    }
+    //}
 
     void FixedUpdate()
     {
         isTouchingSpecificObject = false; // フレームの開始時にリセット
 
+        // オブジェクトを持ち上げた際にOnTriggerExitが反応しなくなる為、ここで衝突判定を行っている
         Collider2D[] colliders = Physics2D.OverlapBoxAll(footCollider.bounds.center, footCollider.size, 0);
         foreach (Collider2D col in colliders)
         {
             if (col.gameObject.tag == "Ground" && parentCollider2D != col)
             {
-                Debug.Log($"触れているオブジェクトの名前{col.gameObject.name}");
                 throwableObject.OnStopOrExit();
                 isTouchingSpecificObject = true;
                 break; // 一つでも特定のオブジェクトに触れていれば終了
@@ -44,12 +44,4 @@ public class CollsionDetector : MonoBehaviour
         if (!playerHaveItem.itemOwned) return;
         if(!isTouchingSpecificObject && (playerHaveItem.hasItem.gameObject != parentCollider2D.gameObject)) throwableObject.OnExit();
     }
-
-    //void OnTriggerExit2D(Collider2D collider2D)
-    //{
-    //    if (collider2D.gameObject.CompareTag("Ground"))
-    //    {
-    //        throwableObject.OnStopOrExit(false);
-    //    }
-    //}
 }

@@ -12,6 +12,7 @@ public class WalkSEPlayer : MonoBehaviour
 
     public void PlayWalkSE()
     {
+        if (!m_isGround) return;
         m_audioSource.pitch = 1.0f + Random.Range(-m_pitchRange, m_pitchRange);
         m_audioSource.PlayOneShot(m_clips[Random.Range(0, m_clips.Count)]);
     }
