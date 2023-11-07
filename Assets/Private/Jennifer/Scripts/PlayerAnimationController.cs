@@ -208,7 +208,7 @@ public class PlayerAnimationController : MonoBehaviour
             playerHaveItem.hasItemModel = null;
             inputManager.ChangeState(ITEMACTION.HOLD);
         }
-        deathScript.PosSetthing();
+        deathScript.PosSetthing(direction);
         animator.Play("Spawn");
         playerController.ReviveOrSelfDestruct(false);
     }

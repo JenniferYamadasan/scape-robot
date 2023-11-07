@@ -30,6 +30,10 @@ public class ThrowableObject : MonoBehaviour
 
     [SerializeField] float xPower;
 
+    [SerializeField] Transform Model;
+
+    [SerializeField] List<Vector3> rotation = new List<Vector3>();
+
     void Start()
     {
         itemCollider = FindObjectOfType<ItemCollider>();
@@ -37,6 +41,10 @@ public class ThrowableObject : MonoBehaviour
         pos = this.transform.position;
     }
 
+    public void OnRotate(DIRECTION direction)
+    {
+        Model.rotation = Quaternion.Euler(rotation[(int)direction]);
+    }
     /// <summary>
     /// このメソッドで物を飛ばしている
     /// </summary>

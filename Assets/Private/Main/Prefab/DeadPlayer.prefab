@@ -215,6 +215,10 @@ MonoBehaviour:
   power: 3
   yVec: 1.5
   xPower: 1
+  Model: {fileID: 6604617301006164786}
+  rotation:
+  - {x: 0, y: 145, z: 0}
+  - {x: 0, y: -145, z: 0}
 --- !u!1001 &1686225369453548051
 PrefabInstance:
   m_ObjectHideFlags: 0
