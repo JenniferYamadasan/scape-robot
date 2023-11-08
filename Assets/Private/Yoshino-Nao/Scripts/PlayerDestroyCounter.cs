@@ -29,4 +29,15 @@ public class PlayerDestroyCounter : MonoBehaviour
     {
         m_destroyCounter = value;
     }
+
+    /// <summary>
+    /// 死亡した数を返すメソッド
+    /// </summary>
+    /// <returns></returns>
+    public int GetDeathCount() { return m_destroyCounter; }
+
+    /// <summary>
+    /// 初めからやり直す際にリセットする。
+    /// </summary>
+    public void Reset() { m_destroyCounter = 0; }
 }
