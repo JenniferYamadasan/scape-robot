@@ -113,7 +113,7 @@ public class Loginsignin : MonoBehaviour
 	/// エラー内容を出力
 	/// </summary>
 	/// <param name="error"></param>
-	void printError(string error)
+	public void printError(string error)
     {
 		attentionText.text = error;
 		this.canvasGroup.DOFade(0.0f, this.DurationSeconds).SetEase(this.EaseType).SetLoops(loopNum, LoopType.Yoyo);
