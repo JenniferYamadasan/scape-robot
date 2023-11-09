@@ -468,7 +468,7 @@ MonoBehaviour:
   animationController: {fileID: 1222924898930525515}
   playerRobot: {fileID: 2972986417040231582}
   model: {fileID: 8321224668042950129}
-  yUp: 1
+  yUp: 0.7
   itemCollider: {fileID: 3106227380478125073}
 --- !u!114 &8429420424457001406
 MonoBehaviour:
@@ -831,7 +831,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0075660944, y: -0.14283939}
+  m_Offset: {x: -0.01360476, y: -0.033004433}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -842,7 +842,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4906255, y: 0.51426584}
+  m_Size: {x: 1.6762121, y: 0.2945959}
   m_EdgeRadius: 0
 --- !u!1001 &1673608934118199711
 PrefabInstance:
@@ -1113,6 +1113,7 @@ MonoBehaviour:
   - {fileID: 2878944245373369002}
   - {fileID: 4059356819862491116}
   timeToWaitAfterDeathAnimation: 0.5
+  RankingUI: {fileID: 0}
 --- !u!4 &7196321758019519779 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8423880812027581628, guid: 7d661fcfd35c34959845c432771f7d77,
