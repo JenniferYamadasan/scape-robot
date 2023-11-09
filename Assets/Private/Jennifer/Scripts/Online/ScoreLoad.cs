@@ -28,7 +28,7 @@ public class ScoreLoad : MonoBehaviour
                     
                     Text nowText = Instantiate(text);
 
-                    Debug.Log($"{rank}位		Name: {objList[i]["UserName"]}	スコア: {objList[i]["score"]}");
+                    //Debug.Log($"{rank}位		Name: {objList[i]["UserName"]}	スコア: {objList[i]["score"]}");
                     nowText.text = $"{rank}位		Name: {objList[i]["UserName"]}	スコア: {objList[i]["score"]}";
 
                     nowText.transform.SetParent(textParent.transform);

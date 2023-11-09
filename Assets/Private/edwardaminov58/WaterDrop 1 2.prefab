@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3114960878782422651}
   - component: {fileID: -8534319704112410516}
   - component: {fileID: -1398960425908411130}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WaterDrop 1 2
   m_TagString: water
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0

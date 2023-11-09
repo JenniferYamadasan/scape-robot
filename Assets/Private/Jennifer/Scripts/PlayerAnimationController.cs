@@ -58,7 +58,6 @@ public class PlayerAnimationController : MonoBehaviour
 
     DIRECTION direction;
 
-    [SerializeField] GameObject RankingUI;
     void Start()
     {
         wait = new WaitForSeconds(timeToWaitAfterDeathAnimation);
@@ -240,15 +239,8 @@ public class PlayerAnimationController : MonoBehaviour
         playerInput.enabled = false;
         playerController.OnMoveStop();
         yield return new WaitForSeconds(1);
-        if (RankingUI != null) 
-        {
-            RankingUI.SetActive(true);
-            animator.enabled = false;
-        }
-        else
-        {
-            SceneManager.LoadScene((InputManager.goalNum + 1));
-        }
+        animator.enabled = false;
+        SceneManager.LoadScene((InputManager.goalNum + 1));
     }
     /// <summary>
     /// 死ぬアニメーションを流す

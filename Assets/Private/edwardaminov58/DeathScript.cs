@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DeathScript : MonoBehaviour
 {
-    public PlayerDestroyCounter destroycounter;
+    PlayerDestroyCounter destroycounter;
     public particleManager particlemanager;
     public GameObject playerModel;
     Vector3 startPosition;
@@ -25,7 +25,7 @@ public class DeathScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        destroycounter = FindObjectOfType<PlayerDestroyCounter>();
         startPosition = new Vector3(model.transform.position.x, model.transform.position.y, 0);
     }
 

@@ -56,7 +56,20 @@ public class InputManager : MonoBehaviour
 
     void Start()
     {
-        goalNum = SceneManager.GetActiveScene().buildIndex;
+        // 現在のシーンのパスを取得
+        string currentScenePath = SceneManager.GetActiveScene().path;
+
+        // ビルド設定に登録されている全てのシーンのパスを取得
+        string[] scenePaths = new string[SceneManager.sceneCountInBuildSettings];
+        for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
+        {
+            scenePaths[i] = SceneUtility.GetScenePathByBuildIndex(i);
+        }
+
+        // 現在のシーンがビルド設定の何番目に登録されているか調べる
+        int currentIndex = System.Array.IndexOf(scenePaths, currentScenePath);
+        goalNum = currentIndex;
+
     }
     /// <summary>
     /// 移動ボタンが押されたら入力値を変数に格納する。
