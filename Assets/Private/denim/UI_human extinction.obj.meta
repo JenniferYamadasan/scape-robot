@@ -7,6 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: UI_human_extinction2Mat
+    second: {fileID: 2100000, guid: 049499f22e04218418e69471eca6259b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: UI_human_extinctionMat
     second: {fileID: 2100000, guid: 049499f22e04218418e69471eca6259b, type: 2}
   - first:
