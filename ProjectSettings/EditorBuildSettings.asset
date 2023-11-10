@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Private/Yoshino-Nao/Yoshino_Stage.unity
     guid: 801ffef6363e68347a95d9fa7e8cacd9
+  - enabled: 1
+    path: Assets/Private/Jennifer/Scenes/result.unity
+    guid: 3ad162140e48e0b41a15e9db53670b61
   m_configObjects: {}

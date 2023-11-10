@@ -460,7 +460,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 012e5469337e78240ab73157b5b9f2db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroycounter: {fileID: 0}
   particlemanager: {fileID: 8143363811743354359}
   playerModel: {fileID: 8858966637530116773}
   brokenRobot: {fileID: 8898447566378934527, guid: 2585b5c4b8f4445d6a47fa06080d9a65,
@@ -678,7 +677,7 @@ BoxCollider2D:
     m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 951
+    m_Bits: 4031
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -1113,7 +1112,6 @@ MonoBehaviour:
   - {fileID: 2878944245373369002}
   - {fileID: 4059356819862491116}
   timeToWaitAfterDeathAnimation: 0.5
-  RankingUI: {fileID: 0}
 --- !u!4 &7196321758019519779 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8423880812027581628, guid: 7d661fcfd35c34959845c432771f7d77,
