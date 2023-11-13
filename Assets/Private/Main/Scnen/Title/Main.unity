@@ -123,18 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &81249360 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8876905728714562557, guid: 1239750d6ae9f9f499bb7c31f814ac50,
-    type: 3}
-  m_PrefabInstance: {fileID: 1096257689}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ecf355c57b0c724193a5cf9deb676b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!850595691 &202658638
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -474,9 +462,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1215303408802373783, guid: a1c47cd2ad2afb64da03be0e861bd7d1,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1215303408802373783, guid: a1c47cd2ad2afb64da03be0e861bd7d1,
+        type: 3}
       propertyPath: destroycounter
       value: 
-      objectReference: {fileID: 81249360}
+      objectReference: {fileID: 0}
     - target: {fileID: 1215303408802373783, guid: a1c47cd2ad2afb64da03be0e861bd7d1,
         type: 3}
       propertyPath: particlemanager
@@ -491,6 +484,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2661335049776180595, guid: a1c47cd2ad2afb64da03be0e861bd7d1,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3763927693774305607, guid: a1c47cd2ad2afb64da03be0e861bd7d1,
         type: 3}
@@ -510,6 +508,11 @@ PrefabInstance:
     - target: {fileID: 5960322339977160674, guid: a1c47cd2ad2afb64da03be0e861bd7d1,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6760235512411289533, guid: a1c47cd2ad2afb64da03be0e861bd7d1,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7057247535587377396, guid: a1c47cd2ad2afb64da03be0e861bd7d1,

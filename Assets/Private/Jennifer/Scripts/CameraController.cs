@@ -5,34 +5,25 @@ using DG.Tweening;
 using UnityEngine.UI;
 public class CameraController : MonoBehaviour
 {
-    [SerializeField]  Vector3 targetPosition;
-    [SerializeField]  float moveDuration = 2f;
-
-    [SerializeField] Transform cameraTransform;
-
-    [SerializeField] float DurationSeconds;
-    [SerializeField] Ease EaseType;
-
-    [SerializeField] CanvasGroup canvasGroup;
-    [SerializeField] Text attentionText;
-
-    [SerializeField] int loopNum;
-
-    bool isMoveCamera;
-
-    [SerializeField] float fadeInSpeed;
-
-    [SerializeField] PlayerDestroyCounter playerDestroyCounter;
+    ResultCamera resultCamera;
 
     void Start()
     {
-        playerDestroyCounter.Reset();
+        resultCamera = ResultCameraManager.resultCameraManager.resultCamera;
+
+        resultCamera.playerDestroyCounter.Reset();
+
+        Color objectColor = resultCamera.renderer.material.color;
+        objectColor.a = 0;
+        resultCamera.renderer.material.color = objectColor;
+
+
         StartCoroutine(UIUpdate());
     }
     public void StartCamera()
     {
-        isMoveCamera = true;
-        cameraTransform.transform.DOMove(targetPosition, moveDuration);
+        resultCamera.isMoveCamera = true;
+        resultCamera.cameraTransform.transform.DOMove(resultCamera.targetPosition, resultCamera.moveDuration);
     }
 
 
@@ -40,18 +31,18 @@ public class CameraController : MonoBehaviour
     {
         while(true)
         {
-            if (isMoveCamera)
+            if (resultCamera.isMoveCamera)
             {
-                if (cameraTransform.position.y >= 31)
+                if (resultCamera.cameraTransform.position.y >= 34)
                 {
                     printError();
-                    isMoveCamera = false;
+                    resultCamera.isMoveCamera = false;
                 }
             }
 
-            if (canvasGroup.alpha >=0.7f)
+            if (resultCamera.canvasGroup.alpha >=resultCamera.alpha)
             {
-                StartCoroutine(playerDestroyCounter.AppraiseItem());
+                StartCoroutine(resultCamera.playerDestroyCounter.AppraiseItem());
                 yield break;
             }
 
@@ -66,6 +57,7 @@ public class CameraController : MonoBehaviour
     /// <param name="error"></param>
     void printError()
     {
-        canvasGroup.DOFade(1.0F, fadeInSpeed);
+        resultCamera.canvasGroup.DOFade(1.0F, resultCamera.fadeInSpeed);
+        resultCamera.renderer.material.DOFade(1.0F, resultCamera.fadeInSpeed);
     }
 }

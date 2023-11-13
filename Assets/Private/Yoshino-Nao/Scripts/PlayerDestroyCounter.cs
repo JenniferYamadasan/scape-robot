@@ -31,6 +31,11 @@ public class PlayerDestroyCounter : MonoBehaviour
         counter[0].mesh = meshNumber[unitsPlace];
         counter[1].mesh = meshNumber[tensPlace];
         counter[2].mesh = meshNumber[hundredsPlace];
+
+    }
+    private void Update()
+    {
+        Debug.Log(m_destroyCounter);
     }
     /// <summary>死亡カウントをリセット</summary>
     /// <param name="value">初期化値</param>
@@ -48,7 +53,6 @@ public class PlayerDestroyCounter : MonoBehaviour
     }
     public IEnumerator AppraiseItem()
     {
-        UIReset();
 
         int hundredsPlace = m_destroyCounter / 100;
         int tensPlace = (m_destroyCounter - (hundredsPlace * 100)) / 10;
@@ -56,6 +60,8 @@ public class PlayerDestroyCounter : MonoBehaviour
 
         string valueString = hundredsPlace.ToString() + tensPlace.ToString() + unitsPlace.ToString() ;
 
+
+        Debug.Log($"{valueString} aa {m_destroyCounter}");
         for (int i = 0; i < valueString.Length; i++)
         {
             int nowcount = (counter.Count - 1) - i;
