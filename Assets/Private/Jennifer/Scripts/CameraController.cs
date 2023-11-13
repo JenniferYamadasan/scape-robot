@@ -11,8 +11,6 @@ public class CameraController : MonoBehaviour
     {
         resultCamera = ResultCameraManager.resultCameraManager.resultCamera;
 
-        resultCamera.playerDestroyCounter.Reset();
-
         Color objectColor = resultCamera.renderer.material.color;
         objectColor.a = 0;
         resultCamera.renderer.material.color = objectColor;

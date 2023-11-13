@@ -14,6 +14,13 @@ public class PlayerDestroyCounter : MonoBehaviour
 
     [SerializeField] GameObject scoreObjct;
 
+
+    void Start()
+    {
+        if (scoreObjct != null) return;
+        UIUpdate();
+    }
+
     /// <summary>死亡カウントを加算</summary>
     public void DestroyCounterAdd()
     {
@@ -32,16 +39,6 @@ public class PlayerDestroyCounter : MonoBehaviour
         counter[1].mesh = meshNumber[tensPlace];
         counter[2].mesh = meshNumber[hundredsPlace];
 
-    }
-    private void Update()
-    {
-        Debug.Log(m_destroyCounter);
-    }
-    /// <summary>死亡カウントをリセット</summary>
-    /// <param name="value">初期化値</param>
-    public void DestroyCounterReset(int value)
-    {
-        m_destroyCounter = value;
     }
 
     public void UIReset()
