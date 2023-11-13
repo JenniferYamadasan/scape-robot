@@ -42,7 +42,7 @@ public class CameraController : MonoBehaviour
 
             if (resultCamera.canvasGroup.alpha >=resultCamera.alpha)
             {
-                StartCoroutine(resultCamera.playerDestroyCounter.AppraiseItem());
+                StartCoroutine(resultCamera.playerDestroyCounter.AppraiseItem(resultCamera.scoreTime));
                 yield break;
             }
 

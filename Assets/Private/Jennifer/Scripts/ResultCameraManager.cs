@@ -16,15 +16,19 @@ public class ResultCamera
 
     [HideInInspector] public bool isMoveCamera;
 
+    [field: SerializeField] public Renderer renderer { get; private set; }
+
+
     //要調整
     [field: SerializeField, Header("何秒後にでカメラの移動を完了しているか")] public float DurationSeconds { get; private set; }
     [field: SerializeField, Header("どんな関数か。説明出来ないので下にあるボタンを押したらサイトにとびます。")] public Ease EaseType { get; private set; }
-    [field:SerializeField] public Renderer renderer { get; private set; }
-    [field: SerializeField, Header("ループする回数")] public int loopNum { get; private set; }
+    //[field: SerializeField, Header("ループする回数")] public int loopNum { get; private set; }
     [field: SerializeField, Header("フェードインするスピード")] public float fadeInSpeed { get; private set; }
     [field: SerializeField,Header("移動後の最終的のカメラのポジション")] public Vector3 targetPosition { get; private set; }
 
     [field: SerializeField, Header("アルファ値がどのぐらいの時からテキストを徐々にフェードインするか") , Min(0.7f)] public float alpha;
+
+    [field:SerializeField,Header("スコアを何秒後に表示するか")] public float scoreTime { get; private set; }
 }
 public class ResultCameraManager : MonoBehaviour
 {  
@@ -36,15 +40,11 @@ public class ResultCameraManager : MonoBehaviour
 
     [field:SerializeField] public ResultCamera resultCamera { get; private set; }
 
-    void Start()
+    void Awake()
     {
         if(resultCameraManager == null)
         {
             resultCameraManager = this;
-        }
-        else
-        {
-            Destroy(this);
         }
     }
 }

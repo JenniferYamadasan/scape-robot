@@ -51,7 +51,7 @@ public class PlayerDestroyCounter : MonoBehaviour
             item.mesh = meshNumber[0]; 
         }
     }
-    public IEnumerator AppraiseItem()
+    public IEnumerator AppraiseItem(float scoreTime)
     {
 
         int hundredsPlace = m_destroyCounter / 100;
@@ -68,7 +68,7 @@ public class PlayerDestroyCounter : MonoBehaviour
             StartCoroutine(AnimateDigit(i, nowcount, valueString));
             yield return new WaitForSeconds(1); // 1•b‘Ò‚Â
         }
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(scoreTime);
         scoreObjct.SetActive(true);
     }
 
