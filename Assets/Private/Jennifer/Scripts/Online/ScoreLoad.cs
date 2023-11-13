@@ -12,8 +12,9 @@ public class ScoreLoad : MonoBehaviour
     {
         int rank;
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("ScoreClass");
-        query.OrderByDescending("score");
+        query.OrderByAscending("score"); // スコアを昇順に並べ替え
         query.Limit = 100;
+
         query.FindAsync((List<NCMBObject> objList, NCMBException e) =>
         {
             if (e != null)
@@ -25,7 +26,7 @@ public class ScoreLoad : MonoBehaviour
                 for (int i = 0; i < objList.Count; i++)
                 {
                     rank = i + 1;
-                    
+
                     Text nowText = Instantiate(text);
 
                     //Debug.Log($"{rank}位		Name: {objList[i]["UserName"]}	スコア: {objList[i]["score"]}");
