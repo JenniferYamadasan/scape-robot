@@ -13,7 +13,7 @@ public class ResultCameraComponent : Editor
     {
         DrawDefaultInspector();
         ResultCameraManager resultCameraManager = (ResultCameraManager)target;
-        if (GUILayout.Button("Easy type‚ÉURL‚É”ò‚Ô"))
+        if (GUILayout.Button("Easy type‚É‚Â‚¢‚ÄURL‚É”ò‚Ô"))
         {
             resultCameraManager.OnClick();
         }
