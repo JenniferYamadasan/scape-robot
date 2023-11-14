@@ -69,10 +69,31 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public bool isDie = false;
 
+    public bool isJump  => inputManager.isJump && isGround;
+
+    List<JumpPad> jumpPads = new List<JumpPad>();
+
+    void Awake()
+    {
+        // 特定のクラスのインスタンスをすべて取得する例
+        JumpPad [] myClassInstances = FindObjectsOfType<JumpPad>();
+
+        // もしくはリストを使用する場合
+        List<JumpPad> myClassInstancesList = new List<JumpPad>(FindObjectsOfType<JumpPad>());
+
+        // 取得したインスタンスに対して処理を行う
+        foreach (JumpPad instance in myClassInstances)
+        {
+            // ここで何か処理を行う
+            jumpPads.Add(instance);
+        }
+    }
+
     // Update is called once per frame
     [System.Obsolete]
     void Update()
     {
+        Debug.Log($"isJump = {isJump}");
         OnMove();  //キャラクターを移動させる
         if (!isGround) return;
         OnJump();//ジャンプする処理
@@ -133,8 +154,12 @@ public class PlayerController : MonoBehaviour
     void OnJump()
     {
         //ジャンプボタンが押されていて、地面に足がついている
-        if (inputManager.isJump && isGround)
+        if (inputManager.isJump)
         {
+            foreach (var item in jumpPads)
+            {
+                item.AddPower();
+            }
             rb2D.AddForce(transform.up * jumpPower);
             isGround = false;
             inputManager.IsJumpFinish();

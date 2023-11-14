@@ -17,7 +17,7 @@ public class FootCollsion : MonoBehaviour
     void OnTriggerStay2D(Collider2D collider)
     {
         //地面に触れていたら
-        if (collider.gameObject.CompareTag("Ground"))
+        if (collider.gameObject.layer==8)
         {
             //プレイヤーコントローラーに地面にいることを伝える(ジャンプ中だったらFlagをtrueにしない)
             if (playerController.rb2D.velocity.y > 0) return;
@@ -33,7 +33,7 @@ public class FootCollsion : MonoBehaviour
     void OnTriggerExit2D(Collider2D collider)
     {
         //地面から離れたら
-        if (collider.gameObject.CompareTag("Ground"))
+        if (collider.gameObject.layer == 8)
         {
             //プレイヤーコントローラーに地面にいないを伝える
             playerController.IsGround(false);
