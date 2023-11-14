@@ -29,11 +29,6 @@ public class DeathScript : MonoBehaviour
         startPosition = new Vector3(model.transform.position.x, model.transform.position.y, 0);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public void Death()
     {
         animationController.StartIsDie();

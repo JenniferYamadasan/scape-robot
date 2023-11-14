@@ -57,8 +57,6 @@ public class PlayerDestroyCounter : MonoBehaviour
 
         string valueString = hundredsPlace.ToString() + tensPlace.ToString() + unitsPlace.ToString() ;
 
-
-        Debug.Log($"{valueString} aa {m_destroyCounter}");
         for (int i = 0; i < valueString.Length; i++)
         {
             int nowcount = (counter.Count - 1) - i;
