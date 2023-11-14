@@ -20,7 +20,7 @@ public class FootCollsion : MonoBehaviour
         if (collider.gameObject.layer==8 || collider.gameObject.CompareTag("Ground"))
         {
             //プレイヤーコントローラーに地面にいることを伝える(ジャンプ中だったらFlagをtrueにしない)
-            if (playerController.rb2D.velocity.y > 0) return;
+            if (playerController.rb2D.velocity.y >= 0.1f) return;
             playerController.IsGround(true);
             m_walkSEPlayer.SetIsGround(true);
         }
