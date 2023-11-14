@@ -197,6 +197,26 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4058283238976586786, guid: bcf744887b1354447a1b983aa4f82107,
         type: 3}
+      propertyPath: m_Size.x
+      value: 1.1884809
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058283238976586786, guid: bcf744887b1354447a1b983aa4f82107,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: -0.005269766
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058283238976586786, guid: bcf744887b1354447a1b983aa4f82107,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058283238976586786, guid: bcf744887b1354447a1b983aa4f82107,
+        type: 3}
+      propertyPath: m_UsedByEffector
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058283238976586786, guid: bcf744887b1354447a1b983aa4f82107,
+        type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
       value: 64
       objectReference: {fileID: 0}
