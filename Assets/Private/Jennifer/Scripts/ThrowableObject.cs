@@ -77,4 +77,9 @@ public class ThrowableObject : MonoBehaviour
         rb2D.isKinematic=false;
     }
 
+    public void VeclocityReset()
+    {
+        
+    }
+
 }

@@ -8,6 +8,7 @@ TagManager:
   - water
   - mine
   - Goal
+  - JumpPad
   layers:
   - Default
   - TransparentFX

@@ -25,6 +25,7 @@ public class JumpPad : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collider2D)
     {
+        if (collider2D.transform.parent == null) return;
         //リストにアイテムがあるか確認あったら取得
         if (!items.Contains(collider2D.transform.parent.gameObject))
         {
@@ -34,6 +35,7 @@ public class JumpPad : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collider2D)
     {
+        if (collider2D.transform.parent == null) return;
         //リストにアイテムがあるか確認あったら削除
         if (items.Contains(collider2D.transform.parent.gameObject))
         {
