@@ -17,7 +17,7 @@ public class JumpPad : MonoBehaviour
 
     const string JUMP_ANIMATION_NAME = "isJump";
 
-
+    [SerializeField] float coolTime;
     PlayerController playerController;
     void Awake()
     {
@@ -36,14 +36,17 @@ public class JumpPad : MonoBehaviour
         {
             if (item.TryGetComponent<Rigidbody2D>(out Rigidbody2D rb2D))
             {
-                rb2D.velocity= Vector2.up * jumpPower +  new Vector2(rb2D.velocity.x,0);
+                StartCoroutine(enumerator(rb2D));
             }
         }
         ItemReset();
-        StartCoroutine(enumerator());
     }
-    IEnumerator enumerator()
-    {
+    IEnumerator enumerator(Rigidbody2D rb2D)
+    {        
+        animator.SetBool(JUMP_ANIMATION_NAME, true);
+        yield return new WaitForSeconds(coolTime);
+        rb2D.velocity = Vector2.up * jumpPower + new Vector2(rb2D.velocity.x, 0);
+
         yield return new WaitForSeconds(0.2f);
         animator.SetBool(JUMP_ANIMATION_NAME, false);
     }
