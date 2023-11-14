@@ -36,7 +36,7 @@ public class JumpPad : MonoBehaviour
         {
             if (item.TryGetComponent<Rigidbody2D>(out Rigidbody2D rb2D))
             {
-                rb2D.AddForce(Vector2.up * jumpPower, ForceMode2D.Force);
+                rb2D.velocity= Vector2.up * jumpPower +  new Vector2(rb2D.velocity.x,0);
             }
         }
         ItemReset();
