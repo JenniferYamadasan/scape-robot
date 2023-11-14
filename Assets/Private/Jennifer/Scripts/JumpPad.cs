@@ -23,6 +23,10 @@ public class JumpPad : MonoBehaviour
     {
         playerController = FindAnyObjectByType<PlayerController>();
     }
+    void Update()
+    {
+
+    }
 
     public void AddPower()
     {
@@ -36,9 +40,13 @@ public class JumpPad : MonoBehaviour
             }
         }
         ItemReset();
-
+        StartCoroutine(enumerator());
     }
-
+    IEnumerator enumerator()
+    {
+        yield return new WaitForSeconds(0.2f);
+        animator.SetBool(JUMP_ANIMATION_NAME, false);
+    }
     void OnTriggerStay2D(Collider2D collider2D)
     {
         if (collider2D.transform.parent == null) return;
@@ -46,6 +54,7 @@ public class JumpPad : MonoBehaviour
         if (!items.Contains(collider2D.transform.parent.gameObject))
         {
             items.Add(collider2D.transform.parent.gameObject);
+            AddPower();
         }
     }
 

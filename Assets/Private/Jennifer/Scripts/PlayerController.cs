@@ -71,7 +71,6 @@ public class PlayerController : MonoBehaviour
 
     public bool isJump  => inputManager.isJump && isGround;
 
-    List<JumpPad> jumpPads = new List<JumpPad>();
 
     void Awake()
     {
@@ -81,12 +80,6 @@ public class PlayerController : MonoBehaviour
         // もしくはリストを使用する場合
         List<JumpPad> myClassInstancesList = new List<JumpPad>(FindObjectsOfType<JumpPad>());
 
-        // 取得したインスタンスに対して処理を行う
-        foreach (JumpPad instance in myClassInstances)
-        {
-            // ここで何か処理を行う
-            jumpPads.Add(instance);
-        }
     }
 
     // Update is called once per frame
@@ -156,10 +149,6 @@ public class PlayerController : MonoBehaviour
         //ジャンプボタンが押されていて、地面に足がついている
         if (inputManager.isJump)
         {
-            foreach (var item in jumpPads)
-            {
-                item.AddPower();
-            }
             rb2D.AddForce(transform.up * jumpPower);
             isGround = false;
             inputManager.IsJumpFinish();

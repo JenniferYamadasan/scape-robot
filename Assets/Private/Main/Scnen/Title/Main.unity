@@ -223,7 +223,7 @@ PrefabInstance:
     - target: {fileID: 4058283238976586786, guid: bcf744887b1354447a1b983aa4f82107,
         type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
-      value: 64
+      value: 2047
       objectReference: {fileID: 0}
     - target: {fileID: 4418019300554097105, guid: bcf744887b1354447a1b983aa4f82107,
         type: 3}
@@ -235,6 +235,11 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 1223762738}
+    - target: {fileID: 7726816837870499846, guid: bcf744887b1354447a1b983aa4f82107,
+        type: 3}
+      propertyPath: jumpPower
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 7726816837870499846, guid: bcf744887b1354447a1b983aa4f82107,
         type: 3}
       propertyPath: onJump.m_PersistentCalls.m_Calls.Array.size
@@ -647,6 +652,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Intensity
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8778259858580814085, guid: a1c47cd2ad2afb64da03be0e861bd7d1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 633813101824550271, guid: a1c47cd2ad2afb64da03be0e861bd7d1, type: 3}
