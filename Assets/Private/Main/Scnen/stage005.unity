@@ -316,12 +316,12 @@ PrefabInstance:
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropRate
-      value: 1
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropSpeed
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
@@ -543,12 +543,12 @@ PrefabInstance:
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropRate
-      value: 1.1
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropSpeed
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -826,12 +826,12 @@ PrefabInstance:
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropRate
-      value: 1.1
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropSpeed
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -909,7 +909,7 @@ PrefabInstance:
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropSpeed
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1056,12 +1056,12 @@ PrefabInstance:
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropRate
-      value: 1.2
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropSpeed
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1140,12 +1140,12 @@ PrefabInstance:
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropRate
-      value: 1.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropSpeed
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
@@ -1297,12 +1297,12 @@ PrefabInstance:
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropRate
-      value: 1.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropSpeed
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1380,7 +1380,7 @@ PrefabInstance:
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropSpeed
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1595,12 +1595,12 @@ PrefabInstance:
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropRate
-      value: 1
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropSpeed
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
@@ -1825,7 +1825,7 @@ PrefabInstance:
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropSpeed
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2001,12 +2001,12 @@ PrefabInstance:
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropRate
-      value: 1.1
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropSpeed
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
@@ -2368,12 +2368,12 @@ PrefabInstance:
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropRate
-      value: 1.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropSpeed
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2520,12 +2520,12 @@ PrefabInstance:
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropRate
-      value: 1
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropSpeed
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
@@ -2688,8 +2688,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4956868951522852776, guid: dbfd14a3a6685410fa88ffd592906e98,
         type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.21000051
+      objectReference: {fileID: 0}
+    - target: {fileID: 4956868951522852776, guid: dbfd14a3a6685410fa88ffd592906e98,
+        type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.9300003
+      objectReference: {fileID: 0}
+    - target: {fileID: 4956868951522852776, guid: dbfd14a3a6685410fa88ffd592906e98,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.2600005
       objectReference: {fileID: 0}
     - target: {fileID: 7695347098307892428, guid: dbfd14a3a6685410fa88ffd592906e98,
         type: 3}
@@ -2812,12 +2822,12 @@ PrefabInstance:
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropRate
-      value: 1.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropSpeed
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
@@ -2895,12 +2905,12 @@ PrefabInstance:
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropRate
-      value: 1.2
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropSpeed
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
@@ -2971,7 +2981,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.9126783, b: 0.6745283, a: 1}
-  m_Intensity: 2
+  m_Intensity: 3
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -3102,12 +3112,12 @@ PrefabInstance:
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropRate
-      value: 1
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropSpeed
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
@@ -3185,12 +3195,12 @@ PrefabInstance:
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropRate
-      value: 1.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropSpeed
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3331,12 +3341,12 @@ PrefabInstance:
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropRate
-      value: 1.1
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropSpeed
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3464,12 +3474,12 @@ PrefabInstance:
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropRate
-      value: 1.2
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropSpeed
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
@@ -3547,12 +3557,12 @@ PrefabInstance:
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropRate
-      value: 1.3
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropSpeed
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3636,7 +3646,7 @@ PrefabInstance:
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
       propertyPath: m_dropSpeed
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
         type: 3}
