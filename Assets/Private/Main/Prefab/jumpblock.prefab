@@ -212,3 +212,4 @@ MonoBehaviour:
   jumpPower: 20
   animator: {fileID: 4418019300554097105}
   coolTime: 0.06
+  deadObj: {fileID: 8898447566378934527, guid: 2585b5c4b8f4445d6a47fa06080d9a65, type: 3}

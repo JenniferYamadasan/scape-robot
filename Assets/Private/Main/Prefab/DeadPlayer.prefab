@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4817682227955859443}
   - component: {fileID: 475303772381812148}
   - component: {fileID: 6718505936004315966}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: CollsionDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,14 +137,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8898447566378934527}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2D: {fileID: 5438410237428707204}
-  power: 3
+  power: 6
   yVec: 1.5
   xPower: 1
   Model: {fileID: 6604617301006164786}
