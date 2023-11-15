@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
     [System.Obsolete]
     void Update()
     {
-        Debug.Log($"isJump = {isJump}");
+        //Debug.Log($"isJump = {isJump}");
         OnMove();  //キャラクターを移動させる
         if (!isGround) return;
         OnJump();//ジャンプする処理

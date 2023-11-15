@@ -1,7 +1,19 @@
 using UnityEngine;
-
+using System.Collections;
+using System.Collections.Generic;
+using System;
 public class WaterDropGenerater : MonoBehaviour
 {
+    [Serializable]
+    public class RainRandom
+    {
+        /// <summary> ランダムに雨がふるかどうか </summary>
+        [field:SerializeField] public bool isRandom { get; private set; }
+
+        [field: SerializeField] public float min { get; private set; }
+        [field: SerializeField] public float max { get; private set; }
+    }
+
     /// <summary>落ちる水滴オブジェクト</summary>
     [SerializeField] private GameObject m_waterObj = null;
     /// <summary>水滴の生成位置の補正値</summary>
@@ -16,11 +28,48 @@ public class WaterDropGenerater : MonoBehaviour
     /// <summary>生成されてからの経過時間</summary>
     private float m_elapsedTime = 0f;
 
-    // Update is called once per frame
+
+    delegate void RainInstance();
+
+    RainInstance rainInstance;
+
+    [SerializeField] RainRandom rain;
+
+    float randomTime;
+
+    void Start()
+    {
+        if (rain.isRandom)
+        {
+            rainInstance = RainRandomDrop;
+            randomTime = UnityEngine.Random.Range(rain.min, rain.max);
+        }
+        else { rainInstance = Normal; }
+    }
+
     void Update()
     {
+        rainInstance();
+    }
+
+    void Normal()
+    {
+        RainInstanceMethod(m_dropRate);
+    }
+
+    void RainRandomDrop()
+    {
+        if (RainInstanceMethod(randomTime))
+        {
+            randomTime = UnityEngine.Random.Range(rain.min, rain.max);
+        }
+    }
+
+
+    bool RainInstanceMethod(float dropTime)
+    {
         //経過時間が一定を超えると水滴を生成
-        if (m_elapsedTime >= m_dropRate)
+        if (m_elapsedTime >= dropTime)
         {
             GameObject WaterObj = Instantiate(m_waterObj, transform.position + m_offsetPos, Quaternion.identity);
             WaterDrop WaterDrop = WaterObj.GetComponent<WaterDrop>();
@@ -28,8 +77,11 @@ public class WaterDropGenerater : MonoBehaviour
             WaterDrop.SetUp(m_waterRadius, m_dropSpeed);
             //生成と同時に経過時間をリセット
             m_elapsedTime = 0f;
+            return true;
         }
         //経過時間の計測
         m_elapsedTime += Time.deltaTime;
+        return false;
+
     }
 }
