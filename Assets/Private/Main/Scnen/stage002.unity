@@ -186,6 +186,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterDropGenerater (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: m_dropSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<max>k__BackingField
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<min>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<isRandom>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -579,6 +599,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterDropGenerater (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: m_dropSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<max>k__BackingField
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<min>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<isRandom>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -720,6 +760,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WaterDropGenerater (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: m_dropSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<max>k__BackingField
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<min>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<isRandom>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -932,6 +992,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WaterDropGenerater (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: m_dropSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<max>k__BackingField
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<min>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<isRandom>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1274,6 +1354,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterDropGenerater (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: m_dropSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<max>k__BackingField
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<min>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<isRandom>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1342,6 +1442,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterDropGenerater
       objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: m_dropSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<max>k__BackingField
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<min>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<isRandom>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1409,6 +1529,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WaterDropGenerater (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: m_dropSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<max>k__BackingField
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<min>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<isRandom>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1755,6 +1895,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WaterDropGenerater (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: m_dropSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<max>k__BackingField
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<min>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<isRandom>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3107,6 +3267,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterDropGenerater (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: m_dropSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<max>k__BackingField
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<min>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<isRandom>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3310,6 +3490,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WaterDropGenerater (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: m_dropSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<max>k__BackingField
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<min>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<isRandom>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4760,6 +4960,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterDropGenerater (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: m_dropSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<max>k__BackingField
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<min>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<isRandom>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4827,6 +5047,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WaterDropGenerater (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: m_dropSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<max>k__BackingField
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<min>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<isRandom>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5284,6 +5524,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WaterDropGenerater (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: m_dropSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<max>k__BackingField
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<min>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540291810200493941, guid: 0f019ea452b0a437b826d675126d9e78,
+        type: 3}
+      propertyPath: rain.<isRandom>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

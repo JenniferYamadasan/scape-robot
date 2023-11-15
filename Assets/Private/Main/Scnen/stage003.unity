@@ -866,11 +866,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterDropGenerater
       objectReference: {fileID: 0}
-    - target: {fileID: 6734601975980212434, guid: 0f019ea452b0a437b826d675126d9e78,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
