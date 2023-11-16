@@ -170,6 +170,37 @@ Transform:
   - {fileID: 136729956}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &55693378
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 55693379}
+  m_Layer: 0
+  m_Name: GameObject (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &55693379
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55693378}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.85, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 674161951}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &127746943 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9107234622696957027, guid: f26aa8b1991a14915821189f2d621017,
@@ -1324,7 +1355,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d04724270ebd1ae4aa219d68de15fefa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEmmiter: 1
   m_waterObj: {fileID: 707414938223139621, guid: febe6c33f4fc97e4c829ecc7e4ed277a,
     type: 3}
   m_offsetPos: {x: 0, y: 0, z: 0}
@@ -1335,10 +1365,13 @@ MonoBehaviour:
     <isRandom>k__BackingField: 0
     <min>k__BackingField: 0
     <max>k__BackingField: 0
+  isEmmiter: 0
   rainTypes:
   - <posInstance>k__BackingField: {fileID: 1882039305}
     <doropTime>k__BackingField: 0.2
   - <posInstance>k__BackingField: {fileID: 1184923123}
+    <doropTime>k__BackingField: 0.2
+  - <posInstance>k__BackingField: {fileID: 55693379}
     <doropTime>k__BackingField: 0.2
 --- !u!4 &674161951
 Transform:
@@ -1349,12 +1382,13 @@ Transform:
   m_GameObject: {fileID: 674161949}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18, y: 10, z: 0}
+  m_LocalPosition: {x: -14.86, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1882039305}
   - {fileID: 1184923123}
+  - {fileID: 55693379}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &727283702 stripped
@@ -2429,7 +2463,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1184923123}
-  - component: {fileID: 1184923124}
   m_Layer: 0
   m_Name: GameObject (2)
   m_TagString: Untagged
@@ -2452,34 +2485,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 674161951}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1184923124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184923122}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d04724270ebd1ae4aa219d68de15fefa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isEmmiter: 1
-  m_waterObj: {fileID: 707414938223139621, guid: febe6c33f4fc97e4c829ecc7e4ed277a,
-    type: 3}
-  m_offsetPos: {x: 0, y: 0, z: 0}
-  m_dropRate: 2
-  m_waterRadius: 0.5
-  m_dropSpeed: 10
-  rain:
-    <isRandom>k__BackingField: 0
-    <min>k__BackingField: 0
-    <max>k__BackingField: 0
-  rainTypes:
-  - <posInstance>k__BackingField: {fileID: 1882039305}
-    <doropTime>k__BackingField: 0.2
-  - <posInstance>k__BackingField: {fileID: 1184923123}
-    <doropTime>k__BackingField: 0.2
 --- !u!4 &1227472483 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4442830302235649643, guid: c1abe4cce0ca4a94aa697d8c88aeba75,
@@ -3664,7 +3669,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1882039305}
-  - component: {fileID: 1882039306}
   m_Layer: 0
   m_Name: GameObject (1)
   m_TagString: Untagged
@@ -3687,34 +3691,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 674161951}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1882039306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1882039304}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d04724270ebd1ae4aa219d68de15fefa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isEmmiter: 1
-  m_waterObj: {fileID: 707414938223139621, guid: febe6c33f4fc97e4c829ecc7e4ed277a,
-    type: 3}
-  m_offsetPos: {x: 0, y: 0, z: 0}
-  m_dropRate: 2
-  m_waterRadius: 0.5
-  m_dropSpeed: 10
-  rain:
-    <isRandom>k__BackingField: 0
-    <min>k__BackingField: 0
-    <max>k__BackingField: 0
-  rainTypes:
-  - <posInstance>k__BackingField: {fileID: 0}
-    <doropTime>k__BackingField: 0.2
-  - <posInstance>k__BackingField: {fileID: 0}
-    <doropTime>k__BackingField: 0.4
 --- !u!1 &1906778936
 GameObject:
   m_ObjectHideFlags: 0
