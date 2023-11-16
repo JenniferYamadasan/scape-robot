@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+
+
 public class WaterDropGenerater : MonoBehaviour
 {
     [Serializable]
@@ -12,6 +14,13 @@ public class WaterDropGenerater : MonoBehaviour
 
         [field: SerializeField] public float min { get; private set; }
         [field: SerializeField] public float max { get; private set; }
+    }
+
+    [Serializable]
+    public class RainType
+    {
+        [field:SerializeField] public Transform posInstance { get; private set; }
+        [field:SerializeField] public float doropTime { get; private set; }
     }
 
     /// <summary>落ちる水滴オブジェクト</summary>
@@ -37,14 +46,24 @@ public class WaterDropGenerater : MonoBehaviour
 
     float randomTime;
 
+
+    [SerializeField] bool isEmmiter;
+    [SerializeField] List<RainType> rainTypes = new List<RainType>();
     void Start()
     {
-        if (rain.isRandom)
+        if(isEmmiter)
         {
-            rainInstance = RainRandomDrop;
-            randomTime = UnityEngine.Random.Range(rain.min, rain.max);
+            rainInstance = BeginRainContinuous;
         }
-        else { rainInstance = Normal; }
+        else
+        {
+            if (rain.isRandom)
+            {
+                rainInstance = RainRandomDrop;
+                randomTime = UnityEngine.Random.Range(rain.min, rain.max);
+            }
+            else { rainInstance = Normal; }
+        }
     }
 
     void Update()
@@ -83,5 +102,25 @@ public class WaterDropGenerater : MonoBehaviour
         m_elapsedTime += Time.deltaTime;
         return false;
 
+    }
+
+    void BeginRainContinuous()
+    {
+        if(RainInstanceMethod(m_dropRate))
+        {
+            for (int i = 1; i < rainTypes.Count; i++)
+            {
+                StartCoroutine(drop(rainTypes[i].doropTime*i, rainTypes[i].posInstance.position));
+            }
+        }
+    }
+
+    IEnumerator drop(float time,Vector3 pos)
+    {
+        yield return new WaitForSeconds(time);
+        GameObject WaterObj = Instantiate(m_waterObj, pos + m_offsetPos, Quaternion.identity);
+        WaterDrop WaterDrop = WaterObj.GetComponent<WaterDrop>();
+        //水滴の落下速度を設定
+        WaterDrop.SetUp(m_waterRadius, m_dropSpeed);
     }
 }
