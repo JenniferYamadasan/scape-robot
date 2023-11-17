@@ -20,7 +20,7 @@ public class WaterDropGenerater : MonoBehaviour
     public class RainType
     {
         [field:SerializeField] public Transform posInstance { get; private set; }
-        [field:SerializeField] public float doropTime { get; private set; }
+        [field:SerializeField] public float dropTime { get; private set; }
     }
 
     /// <summary>—‚¿‚é…“HƒIƒuƒWƒFƒNƒg</summary>
@@ -47,6 +47,7 @@ public class WaterDropGenerater : MonoBehaviour
     float randomTime;
 
 
+    [Space(50),Header("‚±‚±‚©‚çãY—í‚É•À‚Ñ‚Å…“H‚ğ~‚ç‚¹‚é")]
     [SerializeField] bool isEmmiter;
     [SerializeField] List<RainType> rainTypes = new List<RainType>();
     void Start()
@@ -108,9 +109,9 @@ public class WaterDropGenerater : MonoBehaviour
     {
         if(RainInstanceMethod(m_dropRate))
         {
-            for (int i = 1; i < rainTypes.Count; i++)
+            for (int i = 0; i < rainTypes.Count; i++)
             {
-                StartCoroutine(drop(rainTypes[i].doropTime*i, rainTypes[i].posInstance.position));
+                StartCoroutine(drop(rainTypes[i].dropTime, rainTypes[i].posInstance.position));
             }
         }
     }
