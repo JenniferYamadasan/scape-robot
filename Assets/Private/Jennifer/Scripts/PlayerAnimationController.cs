@@ -128,6 +128,10 @@ public class PlayerAnimationController : MonoBehaviour
         playerHaveItem.itemsCollider2D.isTrigger = true;
         //isKinematicをtrueにして重力を無視している
         playerHaveItem.itemRB2D.isKinematic = true;
+
+        playerHaveItem.itemsCollider2D.isTrigger = true;
+
+        playerHaveItem.itemRB2D.velocity = Vector2.zero;
         //投げることが確定している為、ここでステートの変更
         inputManager.ChangeState(ITEMACTION.THROW);
         return true;

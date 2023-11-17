@@ -50,6 +50,7 @@ public class ThrowableObject : MonoBehaviour
     /// </summary>
     public void OnThrow(DIRECTION direction)
     {
+        VeclocityReset();
         Debug.Log("direction"+direction);
         if(direction == DIRECTION.RIGHT)
         {
@@ -79,7 +80,7 @@ public class ThrowableObject : MonoBehaviour
 
     public void VeclocityReset()
     {
-        
+        rb2D.velocity = Vector2.zero;
     }
 
 }

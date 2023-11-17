@@ -10,18 +10,7 @@ public class waterDeath : MonoBehaviour
     [SerializeField] private AudioClip m_seWater = null;
     [SerializeField] private AudioClip m_seExplosion = null;
     [SerializeField] private AudioClip m_seElectricShock = null;
-    // Start is called before the first frame update
 
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     private void OnTriggerEnter2D(Collider2D hit)
     {
 

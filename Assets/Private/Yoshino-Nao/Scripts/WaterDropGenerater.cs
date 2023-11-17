@@ -3,25 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
+[Serializable]
+public class RainRandom
+{
+    /// <summary> ƒ‰ƒ“ƒ_ƒ€‚Ι‰J‚ª‚Σ‚ι‚©‚Η‚¤‚© </summary>
+    [field: SerializeField] public bool isRandom { get; private set; }
+
+    [field: SerializeField] public float min { get; private set; }
+    [field: SerializeField] public float max { get; private set; }
+}
+
+[Serializable]
+public class RainType
+{
+    [field: SerializeField] public Transform posInstance { get; private set; }
+    [field: SerializeField] public float dropTime { get; private set; }
+}
 
 public class WaterDropGenerater : MonoBehaviour
 {
-    [Serializable]
-    public class RainRandom
-    {
-        /// <summary> ƒ‰ƒ“ƒ_ƒ€‚Ι‰J‚ª‚Σ‚ι‚©‚Η‚¤‚© </summary>
-        [field:SerializeField] public bool isRandom { get; private set; }
 
-        [field: SerializeField] public float min { get; private set; }
-        [field: SerializeField] public float max { get; private set; }
-    }
-
-    [Serializable]
-    public class RainType
-    {
-        [field:SerializeField] public Transform posInstance { get; private set; }
-        [field:SerializeField] public float dropTime { get; private set; }
-    }
 
     /// <summary>—‚Ώ‚ι…“HƒIƒuƒWƒFƒNƒg</summary>
     [SerializeField] private GameObject m_waterObj = null;
@@ -42,12 +43,13 @@ public class WaterDropGenerater : MonoBehaviour
 
     RainInstance rainInstance;
 
+    [Space(30), Header("ƒ‰ƒ“ƒ_ƒ€‚Ε…“H‚π~‚η‚·")]
     [SerializeField] RainRandom rain;
 
     float randomTime;
 
 
-    [Space(50),Header("‚±‚±‚©‚ηγY—ν‚Ι•ΐ‚Ρ‚Ε…“H‚π~‚η‚Ή‚ι")]
+    [Space(30),Header("‚±‚±‚©‚ηγY—ν‚Ι•ΐ‚Ρ‚Ε…“H‚π~‚η‚Ή‚ι")]
     [SerializeField] bool isEmmiter;
     [SerializeField] List<RainType> rainTypes = new List<RainType>();
     void Start()
