@@ -468,7 +468,7 @@ MonoBehaviour:
   animationController: {fileID: 1222924898930525515}
   playerRobot: {fileID: 2972986417040231582}
   model: {fileID: 8321224668042950129}
-  yUp: 0.7
+  yUp: 0.8
   itemCollider: {fileID: 3106227380478125073}
 --- !u!114 &8429420424457001406
 MonoBehaviour:

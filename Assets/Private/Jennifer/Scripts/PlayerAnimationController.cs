@@ -208,6 +208,8 @@ public class PlayerAnimationController : MonoBehaviour
             playerHaveItem.hasItem.transform.parent = null;
             playerHaveItem.hasItem.transform.position = pos[(int)direction].position;
             playerHaveItem.hasItem = null;
+            playerHaveItem.itemsCollider2D.isTrigger = false;
+            playerHaveItem.itemsCollider2D = null;
             playerHaveItem.throwableObject = null;
             playerHaveItem.hasItemModel = null;
             inputManager.ChangeState(ITEMACTION.HOLD);
