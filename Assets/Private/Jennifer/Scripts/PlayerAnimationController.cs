@@ -116,8 +116,12 @@ public class PlayerAnimationController : MonoBehaviour
         {
             item.gameObject.TryGetComponent<BoxCollider2D>(out playerHaveItem.itemsCollider2D);
             item.gameObject.TryGetComponent<Rigidbody2D>(out playerHaveItem.itemRB2D);
-            playerHaveItem.hasItemModel = item.gameObject.GetComponentInChildren<Animator>().gameObject.transform;
-
+            Animator animator = item?.gameObject.GetComponentInChildren<Animator>();
+            if (animator != null)
+            {
+                playerHaveItem.hasItemModel = animator.gameObject.transform;
+                // ここで animTransform を使用する
+            }
         }
         else
         {
