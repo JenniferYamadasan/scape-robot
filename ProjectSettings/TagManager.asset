@@ -9,6 +9,7 @@ TagManager:
   - mine
   - Goal
   - JumpPad
+  - DeadHead
   layers:
   - Default
   - TransparentFX

@@ -24,11 +24,23 @@ EditorBuildSettings:
     path: Assets/Private/Main/Scnen/stage005.unity
     guid: 6e25850fdafc7b04bb51dc0953441566
   - enabled: 1
+    path: Assets/Private/Main/Scnen/stage006.unity
+    guid: 68b51f4b27c5b0944a7b0bd4752049ed
+  - enabled: 1
     path: Assets/Private/Main/Scnen/stage007.unity
     guid: b2c3bba90b585ab40871570e962569b2
   - enabled: 1
-    path: Assets/Private/Main/Scnen/stage006.unity
-    guid: 68b51f4b27c5b0944a7b0bd4752049ed
+    path: Assets/Private/Main/Scnen/stage008.unity
+    guid: 08f9b82979c12e046a5f62fc04f01ecb
+  - enabled: 1
+    path: Assets/Private/Main/Scnen/stage009.unity
+    guid: b687981650c01864da522545616ad10b
+  - enabled: 1
+    path: Assets/Private/Main/Scnen/stage010.unity
+    guid: a6de879c13a862b45868a6ccd53078c6
+  - enabled: 1
+    path: Assets/Private/Main/Scnen/stageL.unity
+    guid: 36896365cfcce2945a9193a1c891eb5e
   - enabled: 1
     path: Assets/Private/Jennifer/Scenes/result.unity
     guid: 3ad162140e48e0b41a15e9db53670b61
