@@ -221,6 +221,7 @@ MonoBehaviour:
   rotation:
   - {x: 0, y: 145, z: 0}
   - {x: 0, y: -145, z: 0}
+  throwCollider: {fileID: 3953803862902399419}
 --- !u!1001 &1686225369453548051
 PrefabInstance:
   m_ObjectHideFlags: 0

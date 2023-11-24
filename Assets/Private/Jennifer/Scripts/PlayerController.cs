@@ -71,16 +71,10 @@ public class PlayerController : MonoBehaviour
 
     public bool isJump  => inputManager.isJump && isGround;
 
+    Vector2 vector;
 
-    void Awake()
-    {
-        // 特定のクラスのインスタンスをすべて取得する例
-        JumpPad [] myClassInstances = FindObjectsOfType<JumpPad>();
+    bool isMoveGround;
 
-        // もしくはリストを使用する場合
-        List<JumpPad> myClassInstancesList = new List<JumpPad>(FindObjectsOfType<JumpPad>());
-
-    }
 
     // Update is called once per frame
     [System.Obsolete]
@@ -101,10 +95,17 @@ public class PlayerController : MonoBehaviour
         //入力値を変数に格納している
         Vector2 inputVec = inputManager.inputVec;
         OnRotate(inputVec);
-        //ここで実際に移動する Y座標を0にするとジャンプができないようになるため、別途現在のY座標を足している
-        rb2D.velocity = new Vector2(inputVec.x, 0) * moveSpeed + new Vector2(0, rb2D.velocity.y);
+        if(isMoveGround)
+        {
+            rb2D.velocity = new Vector2(inputVec.x* moveSpeed + vector.x ,vector.y* moveSpeed) + new Vector2(0, rb2D.velocity.y);
+        }
+        else
+        {
+            //ここで実際に移動する Y座標を0にするとジャンプができないようになるため、別途現在のY座標を足している
+            rb2D.velocity = new Vector2(inputVec.x, 0) * moveSpeed + new Vector2(0, rb2D.velocity.y);
+        }
         //キャラクターが動いているかどうか調べてアニメーションを設定する
-        if (Mathf.Abs(rb2D.velocity.x) > 0)
+        if (Mathf.Abs(rb2D.velocity.x) > 0 && Mathf.Abs(inputManager.inputVec.x) >0)
         {
             playerAnimationController.walkAnimator(true);
         }
@@ -206,6 +207,24 @@ public class PlayerController : MonoBehaviour
         {
             collider2D.GetComponent<BoxCollider2D>().enabled = false;
             playerAnimationController.Goal();
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out MobileObstacle mobileObstacle))
+        {
+            isMoveGround = false;
+            vector = Vector2.zero;
+        }
+    }
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.TryGetComponent(out MobileObstacle mobileObstacle))
+        {
+            Debug.Log("OnTriggerPlayer");
+            isMoveGround = true;
+            vector = collision.attachedRigidbody.GetPointVelocity(Vector2.zero);
         }
     }
 }

@@ -11,4 +11,9 @@ public class PlayerHaveItem : MonoBehaviour
     [HideInInspector]public BoxCollider2D itemsCollider2D;
     [HideInInspector]public Rigidbody2D itemRB2D;
     [HideInInspector]public ThrowableObject throwableObject;
+
+    void Update()
+    {
+        if (hasItem != null) hasItem.transform.localPosition = Vector3.zero;
+    }
 }

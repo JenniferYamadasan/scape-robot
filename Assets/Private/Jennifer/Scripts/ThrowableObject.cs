@@ -34,8 +34,21 @@ public class ThrowableObject : MonoBehaviour
 
     [SerializeField] List<Vector3> rotation = new List<Vector3>();
 
+    bool isTouchingSpecificObject = false;
+
+    PlayerHaveItem playerHaveItem;
+
+    [SerializeField] BoxCollider2D throwCollider;
+
+    public bool isThrow = false;
+
+    bool isMoveGround = false;
+
+    Vector2 vector;
+
     void Start()
     {
+        playerHaveItem = FindObjectOfType<PlayerHaveItem>();
         itemCollider = FindObjectOfType<ItemCollider>();
         rb2D.isKinematic = false;
         pos = this.transform.position;
@@ -51,7 +64,6 @@ public class ThrowableObject : MonoBehaviour
     public void OnThrow(DIRECTION direction)
     {
         VeclocityReset();
-        Debug.Log("direction"+direction);
         if(direction == DIRECTION.RIGHT)
         {
             flightDirection = new Vector2(xPower, yVec) * power;
@@ -62,25 +74,63 @@ public class ThrowableObject : MonoBehaviour
         }
         rb2D.AddForce(flightDirection, ForceMode2D.Impulse);
         transform.position = new Vector3(this.transform.position.x, this.transform.position.y, 0);
-
+        isThrow = true;
         itemCollider.ItemReset();
     }
 
-    public void OnStopOrExit()
+    void Update()
+    {
+
+        //if (isMoveGround) rb2D.velocity = new Vector2(vector.x, vector.y) + new Vector2(0, rb2D.velocity.y);
+        isTouchingSpecificObject = false; // フレームの開始時にリセット
+
+        // オブジェクトを持ち上げた際にOnTriggerExitが反応しなくなる為、ここで衝突判定を行っている
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(throwCollider.bounds.center, throwCollider.size, 0);
+        foreach (Collider2D col in colliders)
+        {
+            if ((col.gameObject.tag == "Player" && this.gameObject != col) &&!isThrow)
+            {
+                OnStopOrExit(true);
+                isTouchingSpecificObject = true;
+                break; // 一つでも特定のオブジェクトに触れていれば終了
+            }
+        }
+
+        if (!isTouchingSpecificObject) OnExit(false);
+    }
+
+    public void OnStopOrExit(bool result)
     {
         //投げた物を滑らないようにしている
         flightDirection = rb2D.velocity = new Vector2(0, 0);
-        rb2D.isKinematic = true;
+        rb2D.isKinematic = result;
     }
 
-    public void OnExit()
+    
+    public void OnExit(bool result)
     {
-        rb2D.isKinematic=false;
+        rb2D.isKinematic= result;
     }
 
     public void VeclocityReset()
     {
         rb2D.velocity = Vector2.zero;
+    }
+
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out MobileObstacle mobileObstacle))
+        {
+            isMoveGround = true;
+
+            rb2D.isKinematic = false;
+
+            vector = collision.attachedRigidbody.GetPointVelocity(Vector2.zero);
+
+            Debug.Log(vector);
+        }
+
+
     }
 
 }

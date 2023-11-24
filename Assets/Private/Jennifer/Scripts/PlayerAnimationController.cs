@@ -58,6 +58,7 @@ public class PlayerAnimationController : MonoBehaviour
 
     DIRECTION direction;
 
+
     void Start()
     {
         wait = new WaitForSeconds(timeToWaitAfterDeathAnimation);
@@ -128,12 +129,17 @@ public class PlayerAnimationController : MonoBehaviour
             inputManager.ChangeState(ITEMACTION.HOLD);
             return false;
         }
-        //当たり判定をisTriggerにして貫通するようにする。
-        playerHaveItem.itemsCollider2D.isTrigger = true;
+
+        playerHaveItem.itemRB2D.velocity = Vector2.zero;
+
         //isKinematicをtrueにして重力を無視している
         playerHaveItem.itemRB2D.isKinematic = true;
 
+        //当たり判定をisTriggerにして貫通するようにする。
         playerHaveItem.itemsCollider2D.isTrigger = true;
+
+
+
 
         playerHaveItem.itemRB2D.velocity = Vector2.zero;
         //投げることが確定している為、ここでステートの変更
@@ -151,7 +157,7 @@ public class PlayerAnimationController : MonoBehaviour
         animator.SetBool(ITEM_HAVE_ANIMATION, false);
         //持つ前の状態に戻して、アイテムを投げている。
         playerHaveItem.hasItem.transform.parent = null;
-        playerHaveItem.itemsCollider2D.isTrigger = false;
+        playerHaveItem.itemsCollider2D.isTrigger =false;
         playerHaveItem.itemRB2D.isKinematic = false;
         playerHaveItem.throwableObject.OnThrow(direction);
         playerHaveItem.hasItem = null;
