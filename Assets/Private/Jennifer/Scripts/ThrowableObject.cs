@@ -46,6 +46,8 @@ public class ThrowableObject : MonoBehaviour
 
     Vector2 vector;
 
+    bool isGround = false;
+
     void Start()
     {
         playerHaveItem = FindObjectOfType<PlayerHaveItem>();
@@ -82,10 +84,13 @@ public class ThrowableObject : MonoBehaviour
     {
 
         //if (isMoveGround) rb2D.velocity = new Vector2(vector.x, vector.y) + new Vector2(0, rb2D.velocity.y);
+        if (!isMoveGround && (isGround && !isThrow)) rb2D.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+        else { rb2D.constraints = RigidbodyConstraints2D.FreezeRotation; }
         isTouchingSpecificObject = false; // フレームの開始時にリセット
 
         // オブジェクトを持ち上げた際にOnTriggerExitが反応しなくなる為、ここで衝突判定を行っている
         Collider2D[] colliders = Physics2D.OverlapBoxAll(throwCollider.bounds.center, throwCollider.size, 0);
+        bool isTouchingGround = false;
         foreach (Collider2D col in colliders)
         {
             if ((col.gameObject.tag == "Player" && this.gameObject != col) &&!isThrow)
@@ -94,8 +99,13 @@ public class ThrowableObject : MonoBehaviour
                 isTouchingSpecificObject = true;
                 break; // 一つでも特定のオブジェクトに触れていれば終了
             }
-        }
 
+            if(col.gameObject.tag == "Ground")
+            {
+                isTouchingGround = true;
+            }
+        }
+        isGround = isTouchingGround;
         if (!isTouchingSpecificObject) OnExit(false);
     }
 
@@ -117,17 +127,31 @@ public class ThrowableObject : MonoBehaviour
         rb2D.velocity = Vector2.zero;
     }
 
+
     void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out MobileObstacle mobileObstacle))
         {
-            isMoveGround = true;
-
-            rb2D.isKinematic = false;
-
             vector = collision.attachedRigidbody.GetPointVelocity(Vector2.zero);
+            float playerMovementDirection = Vector2.Dot(new Vector2(vector.x, 0).normalized, new Vector2(transform.position.x - collision.transform.position.x, 0).normalized);
 
-            Debug.Log(vector);
+            // playerMovementDirectionが正なら1、負なら-1、ゼロなら0
+            float result = Mathf.Sign(playerMovementDirection);
+            if (result == 1)
+            {
+                isMoveGround = true;
+
+                rb2D.isKinematic = false;
+
+                Debug.Log(result);
+
+            }
+            else if(result == -1)
+            {
+                isMoveGround = false;
+
+                Debug.Log(result);
+            }
         }
 
 

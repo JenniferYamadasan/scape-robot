@@ -6,11 +6,7 @@ public class CollsionDetector : MonoBehaviour
 {
     [SerializeField] ThrowableObject throwableObject;
 
-   
-
-    void Start()
-    {
-    }
+  
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.CompareTag("Ground"))

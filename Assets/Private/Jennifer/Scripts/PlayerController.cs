@@ -222,9 +222,19 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.TryGetComponent(out MobileObstacle mobileObstacle))
         {
-            Debug.Log("OnTriggerPlayer");
-            isMoveGround = true;
             vector = collision.attachedRigidbody.GetPointVelocity(Vector2.zero);
+            float playerMovementDirection = Vector2.Dot(new Vector2(vector.x, 0).normalized, new Vector2(transform.position.x - collision.transform.position.x, 0).normalized);
+
+            // playerMovementDirectionが正なら1、負なら-1、ゼロなら0
+            float result = Mathf.Sign(playerMovementDirection);
+            if (result == 1)
+            {
+                isMoveGround = true;
+            }
+            else if(result == -1)
+            {
+                isMoveGround= false;    
+            }
         }
     }
 }
