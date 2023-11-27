@@ -41,7 +41,7 @@ public class DeathScript : MonoBehaviour
         // deathRotation = transform.rotation;
         particlemanager.respawnParticle.Play();
         GameObject deadObj = Instantiate(brokenRobot, deathPosition, Quaternion.identity);
-        if(deadObj.TryGetComponent<ThrowableObject>(out ThrowableObject throwableObject))
+        if(deadObj.TryGetComponent(out ThrowableObject throwableObject))
         {
             throwableObject.OnRotate(direction);
         }

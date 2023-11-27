@@ -404,6 +404,7 @@ MonoBehaviour:
   playerAnimationController: {fileID: 1222924898930525515}
   itemColliderObj: {fileID: 3933695989180757922}
   isDie: 0
+  footPos: {fileID: 2187829940599279364}
 --- !u!61 &11942742261535103
 BoxCollider2D:
   m_ObjectHideFlags: 0

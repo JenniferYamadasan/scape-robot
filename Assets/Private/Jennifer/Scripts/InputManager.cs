@@ -79,6 +79,11 @@ public class InputManager : MonoBehaviour
     {
         //入力値を取得
         inputVec = context.ReadValue<Vector2>();
+
+        if(context.canceled)
+        {
+            inputVec = Vector2.zero;
+        }
     }
 
 

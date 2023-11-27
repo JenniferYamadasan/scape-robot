@@ -95,6 +95,7 @@ public class ThrowableObject : MonoBehaviour
         {
             if ((col.gameObject.tag == "Player" && this.gameObject != col) &&!isThrow)
             {
+                if (isMoveGround) break;
                 OnStopOrExit(true);
                 isTouchingSpecificObject = true;
                 break; // 一つでも特定のオブジェクトに触れていれば終了
@@ -153,7 +154,6 @@ public class ThrowableObject : MonoBehaviour
                 Debug.Log(result);
             }
         }
-
 
     }
 

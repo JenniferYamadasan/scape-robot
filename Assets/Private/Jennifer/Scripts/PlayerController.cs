@@ -75,6 +75,7 @@ public class PlayerController : MonoBehaviour
 
     bool isMoveGround;
 
+    [SerializeField] Transform footPos;
 
     // Update is called once per frame
     [System.Obsolete]
@@ -107,13 +108,13 @@ public class PlayerController : MonoBehaviour
         //キャラクターが動いているかどうか調べてアニメーションを設定する
         if (Mathf.Abs(rb2D.velocity.x) > 0 && Mathf.Abs(inputManager.inputVec.x) >0)
         {
+            Debug.Log("input"+Mathf.Abs(inputManager.inputVec.x));
             playerAnimationController.walkAnimator(true);
         }
-        else if (Mathf.Abs(rb2D.velocity.x) <= 0)
+        else
         {
             playerAnimationController.walkAnimator(false);
         }
-
     }
 
     public void OnMoveStop()
@@ -218,6 +219,7 @@ public class PlayerController : MonoBehaviour
             vector = Vector2.zero;
         }
     }
+
     void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.TryGetComponent(out MobileObstacle mobileObstacle))
@@ -227,7 +229,9 @@ public class PlayerController : MonoBehaviour
 
             // playerMovementDirectionが正なら1、負なら-1、ゼロなら0
             float result = Mathf.Sign(playerMovementDirection);
-            if (result == 1)
+
+
+            if (result == 1 || footPos.position.y > collision.gameObject.transform.position.y)
             {
                 isMoveGround = true;
             }
