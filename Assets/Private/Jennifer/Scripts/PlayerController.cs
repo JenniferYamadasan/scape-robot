@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
 
     bool isMoveGround;
 
-    [SerializeField] Transform footPos;
+    [SerializeField] FootCollsion footCollsion;
 
     // Update is called once per frame
     [System.Obsolete]
@@ -104,11 +104,18 @@ public class PlayerController : MonoBehaviour
         {
             //ここで実際に移動する Y座標を0にするとジャンプができないようになるため、別途現在のY座標を足している
             rb2D.velocity = new Vector2(inputVec.x, 0) * moveSpeed + new Vector2(0, rb2D.velocity.y);
+            if(footCollsion.isHalf)
+            {
+                if(inputVec.y <0)
+                {
+                    footCollsion.HalfTrigger();
+                }
+            }
         }
+
         //キャラクターが動いているかどうか調べてアニメーションを設定する
         if (Mathf.Abs(rb2D.velocity.x) > 0 && Mathf.Abs(inputManager.inputVec.x) >0)
         {
-            Debug.Log("input"+Mathf.Abs(inputManager.inputVec.x));
             playerAnimationController.walkAnimator(true);
         }
         else
@@ -218,6 +225,13 @@ public class PlayerController : MonoBehaviour
             isMoveGround = false;
             vector = Vector2.zero;
         }
+        if (collision.gameObject.tag == "Half")
+        {
+            if(collision.TryGetComponent(out BoxCollider2D collsion2D))
+            {
+                footCollsion.HalfExit(collsion2D);
+            }
+        }
     }
 
     void OnTriggerStay2D(Collider2D collision)
@@ -231,7 +245,7 @@ public class PlayerController : MonoBehaviour
             float result = Mathf.Sign(playerMovementDirection);
 
 
-            if (result == 1 || footPos.position.y > collision.gameObject.transform.position.y)
+            if (result == 1 || footCollsion.transform.position.y > collision.gameObject.transform.position.y)
             {
                 isMoveGround = true;
             }

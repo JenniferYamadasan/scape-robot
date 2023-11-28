@@ -14,6 +14,9 @@ public class FootCollsion : MonoBehaviour
     [SerializeField] PlayerController playerController;
     [SerializeField] private WalkSEPlayer m_walkSEPlayer = null;
 
+    public bool isHalf { get; private set; } = false; 
+    List<BoxCollider2D> halfColliders = new List<BoxCollider2D>();
+
     void OnTriggerStay2D(Collider2D collider)
     {
         //地面に触れていたら
@@ -23,6 +26,16 @@ public class FootCollsion : MonoBehaviour
             if (playerController.rb2D.velocity.y >= 0.1f) return;
             playerController.IsGround(true);
             m_walkSEPlayer.SetIsGround(true);
+        }
+
+        if(collider.gameObject.tag=="Half")
+        {
+            isHalf = true;
+            if(collider.TryGetComponent(out BoxCollider2D halfCollider))
+            {
+                if(!halfColliders.Contains(halfCollider)) halfColliders.Add(halfCollider);
+
+            }
         }
     }
 
@@ -38,6 +51,29 @@ public class FootCollsion : MonoBehaviour
             //プレイヤーコントローラーに地面にいないを伝える
             playerController.IsGround(false);
             m_walkSEPlayer.SetIsGround(false);
+        }
+        // 特定の条件で親オブジェクトの処理をスキップ
+        if (collider.CompareTag("Half"))
+        {
+            return;
+        }
+
+    }
+
+    public void HalfTrigger()
+    {
+        foreach (var item in halfColliders)
+        {
+            item.isTrigger = true;
+        }
+    }
+
+    public void HalfExit(BoxCollider2D halfCollider)
+    {
+        if (halfColliders.Contains(halfCollider))
+        {
+            halfCollider.isTrigger = false;
+            halfColliders.Remove(halfCollider);
         }
     }
 }

@@ -9,7 +9,7 @@ public class CollsionDetector : MonoBehaviour
   
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.CompareTag("Ground"))
+        if (collider.gameObject.CompareTag("Ground") || collider.gameObject.layer == 8 || collider.gameObject.layer == 6)
         {
             throwableObject.isThrow = false;
             throwableObject.OnStopOrExit(true);

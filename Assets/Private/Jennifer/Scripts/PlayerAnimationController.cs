@@ -97,7 +97,7 @@ public class PlayerAnimationController : MonoBehaviour
         //持つアイテムを取得
         GameObject item = itemCollider.GetNearestObject();
         if (item == null) return false;
-
+        if(item.gameObject.layer !=6)return false;
         //投げるアニメーションをtrueにする。
         //理由 投げるモーションからIdleになる条件がTrueになる事そのことを踏まえると
         //投げてからtrueにするとワンテンポ遅れる為、投げることが確定している今事前にfalseにしている
@@ -139,8 +139,6 @@ public class PlayerAnimationController : MonoBehaviour
         playerHaveItem.itemsCollider2D.isTrigger = true;
 
 
-
-
         playerHaveItem.itemRB2D.velocity = Vector2.zero;
         //投げることが確定している為、ここでステートの変更
         inputManager.ChangeState(ITEMACTION.THROW);
@@ -154,6 +152,7 @@ public class PlayerAnimationController : MonoBehaviour
     public void Throw(DIRECTION direction)
     {
         //投げるモーションが流れた為、アイテムは持っていない為falseにしている
+        playerHaveItem.itemRB2D.velocity = Vector2.zero;
         animator.SetBool(ITEM_HAVE_ANIMATION, false);
         //持つ前の状態に戻して、アイテムを投げている。
         playerHaveItem.hasItem.transform.parent = null;

@@ -46,6 +46,8 @@ public class ThrowableObject : MonoBehaviour
 
     Vector2 vector;
 
+    [SerializeField] Transform footPos;
+
     bool isGround = false;
 
     void Start()
@@ -83,9 +85,11 @@ public class ThrowableObject : MonoBehaviour
     void Update()
     {
 
-        //if (isMoveGround) rb2D.velocity = new Vector2(vector.x, vector.y) + new Vector2(0, rb2D.velocity.y);
+        if (isMoveGround) rb2D.velocity = new Vector2(vector.x, 0) + new Vector2(0, rb2D.velocity.y);
         if (!isMoveGround && (isGround && !isThrow)) rb2D.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         else { rb2D.constraints = RigidbodyConstraints2D.FreezeRotation; }
+
+     
         isTouchingSpecificObject = false; // フレームの開始時にリセット
 
         // オブジェクトを持ち上げた際にOnTriggerExitが反応しなくなる為、ここで衝突判定を行っている
@@ -138,7 +142,9 @@ public class ThrowableObject : MonoBehaviour
 
             // playerMovementDirectionが正なら1、負なら-1、ゼロなら0
             float result = Mathf.Sign(playerMovementDirection);
-            if (result == 1)
+
+
+            if (result == 1 || footPos.position.y > collision.gameObject.transform.position.y)
             {
                 isMoveGround = true;
 
@@ -155,6 +161,15 @@ public class ThrowableObject : MonoBehaviour
             }
         }
 
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.TryGetComponent(out MobileObstacle mobileObstacle))
+        {
+            isMoveGround = false;
+            vector = Vector2.zero;
+        }
     }
 
 }

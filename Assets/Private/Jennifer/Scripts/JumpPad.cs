@@ -19,13 +19,11 @@ public class JumpPad : MonoBehaviour
 
     [SerializeField] float coolTime;
     PlayerController playerController;
+
+    bool isJump =false;
     void Awake()
     {
         playerController = FindAnyObjectByType<PlayerController>();
-    }
-    void Update()
-    {
-
     }
 
     public void AddPower()
@@ -45,6 +43,8 @@ public class JumpPad : MonoBehaviour
     {        
         animator.SetBool(JUMP_ANIMATION_NAME, true);
         yield return new WaitForSeconds(coolTime);
+
+        if (!isJump) yield break;
         rb2D.velocity = Vector2.up * jumpPower + new Vector2(rb2D.velocity.x, 0);
 
         yield return new WaitForSeconds(0.2f);
@@ -72,11 +72,16 @@ public class JumpPad : MonoBehaviour
         }
     }
 
+    public void JumpCancel()
+    {
+        isJump = false;
+    }
     /// <summary>
     /// ÉäÉXÉgÇÃíÜêgÇçÌèú
     /// </summary>
     public void ItemReset()
     {
+        isJump = true;
         if (items.Count == 0) return;
         items.Clear();
     }

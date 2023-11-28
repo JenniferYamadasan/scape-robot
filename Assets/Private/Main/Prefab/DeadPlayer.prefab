@@ -91,8 +91,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwableObject: {fileID: 4921738887282898291}
-  footCollider: {fileID: 475303772381812148}
-  parentCollider2D: {fileID: 3953803862902399419}
 --- !u!1 &8898447566378934527
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +220,8 @@ MonoBehaviour:
   - {x: 0, y: 145, z: 0}
   - {x: 0, y: -145, z: 0}
   throwCollider: {fileID: 3953803862902399419}
+  isThrow: 0
+  footPos: {fileID: 4817682227955859443}
 --- !u!1001 &1686225369453548051
 PrefabInstance:
   m_ObjectHideFlags: 0
