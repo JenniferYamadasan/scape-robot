@@ -874,6 +874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 8728660746258042785}
   m_walkSEPlayer: {fileID: 7659306566945471880}
+  <footCollsion>k__BackingField: {fileID: 2706717447303348468}
 --- !u!61 &2706717447303348468
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -113,7 +113,7 @@ public class PlayerAnimationController : MonoBehaviour
 
 
         //物理挙動無視、持っている間の当たり判定、飛ばす処理をするのに必要なスクリプトを取得する
-        if(item.gameObject.TryGetComponent<ThrowableObject>(out playerHaveItem.throwableObject))
+        if(item.gameObject.TryGetComponent(out playerHaveItem.throwableObject))
         {
             item.gameObject.TryGetComponent<BoxCollider2D>(out playerHaveItem.itemsCollider2D);
             item.gameObject.TryGetComponent<Rigidbody2D>(out playerHaveItem.itemRB2D);
@@ -138,6 +138,7 @@ public class PlayerAnimationController : MonoBehaviour
         //当たり判定をisTriggerにして貫通するようにする。
         playerHaveItem.itemsCollider2D.isTrigger = true;
 
+        playerHaveItem.throwableObject.hasItem = true;
 
         playerHaveItem.itemRB2D.velocity = Vector2.zero;
         //投げることが確定している為、ここでステートの変更
@@ -159,6 +160,7 @@ public class PlayerAnimationController : MonoBehaviour
         playerHaveItem.itemsCollider2D.isTrigger =false;
         playerHaveItem.itemRB2D.isKinematic = false;
         playerHaveItem.throwableObject.OnThrow(direction);
+        playerHaveItem.throwableObject.hasItem = false;
         playerHaveItem.hasItem = null;
         playerHaveItem.itemRB2D = null;
         playerHaveItem.itemsCollider2D = null;
@@ -219,6 +221,7 @@ public class PlayerAnimationController : MonoBehaviour
             playerHaveItem.hasItem = null;
             playerHaveItem.itemsCollider2D.isTrigger = false;
             playerHaveItem.itemsCollider2D = null;
+            playerHaveItem.throwableObject.hasItem = false;
             playerHaveItem.throwableObject = null;
             playerHaveItem.hasItemModel = null;
             inputManager.ChangeState(ITEMACTION.HOLD);

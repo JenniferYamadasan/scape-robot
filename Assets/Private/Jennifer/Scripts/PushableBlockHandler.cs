@@ -13,24 +13,27 @@ public class PushableBlockHandler : MonoBehaviour
     [SerializeField] BoxCollider2D pushSwitchCollider;
 
     [SerializeField] List<GameObject> disappearingObject = new List<GameObject>();
-    //void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (isLongPress) return;
 
-    //    //触れたオブジェクトがアイテム　またはPlayerだったら
-    //    if(collision.gameObject.layer ==6 || collision.gameObject.tag == "Player")
-    //    {
-    //        animator.SetBool(PRESS_ANIMATIONNAME, true);
-    //    }
-    //}
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (isLongPress) return;
+
+        if (collision.gameObject.layer == 11 || collision.gameObject.layer == 6)
+        {
+            SetDisappearingObject(true);
+        }
+    }
 
     void Update()
     {
+       
+
         // オブジェクトを持ち上げた際にOnTriggerExitが反応しなくなる為、ここで衝突判定を行っている
         Collider2D[] colliders = Physics2D.OverlapBoxAll(pushSwitchCollider.bounds.center, pushSwitchCollider.size, 0);
         bool isTouchingGround = false;
         foreach (Collider2D col in colliders)
         {
+            if (colliders == null) return;
             if (col.gameObject.layer == 11 || col.gameObject.layer == 6)
             {
                 isTouchingGround = true;
@@ -38,11 +41,24 @@ public class PushableBlockHandler : MonoBehaviour
             }
         }
 
-        animator.SetBool(PRESS_ANIMATIONNAME, isTouchingGround);
-        foreach (var item in disappearingObject)
-        {
-            item.SetActive(!isTouchingGround);
-        }
+        if (!isTouchingGround) SetDisappearingObject(false);
     }
 
+    void SetDisappearingObject(bool isTouchingGround)
+    {
+        animator.SetBool(PRESS_ANIMATIONNAME, isTouchingGround);
+        if (disappearingObject == null) return;
+
+        for (int i = disappearingObject.Count-1; i >=0; i--)
+        {
+            if (disappearingObject[i] == null)
+            {
+                disappearingObject.Remove(disappearingObject[i].gameObject);
+            }
+            else
+            {
+                disappearingObject[i].SetActive(!isTouchingGround);
+            }
+        }
+    }
 }

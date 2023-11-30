@@ -17,6 +17,8 @@ public class FootCollsion : MonoBehaviour
     public bool isHalf { get; private set; } = false; 
     List<BoxCollider2D> halfColliders = new List<BoxCollider2D>();
 
+    [field:SerializeField] public BoxCollider2D footCollsion { get; private set; }
+
     void OnTriggerStay2D(Collider2D collider)
     {
         //地面に触れていたら
@@ -52,12 +54,6 @@ public class FootCollsion : MonoBehaviour
             playerController.IsGround(false);
             m_walkSEPlayer.SetIsGround(false);
         }
-        // 特定の条件で親オブジェクトの処理をスキップ
-        if (collider.CompareTag("Half"))
-        {
-            return;
-        }
-
     }
 
     public void HalfTrigger()

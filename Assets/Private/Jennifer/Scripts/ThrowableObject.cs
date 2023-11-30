@@ -48,6 +48,8 @@ public class ThrowableObject : MonoBehaviour
 
     [SerializeField] Transform footPos;
 
+    public bool hasItem;
+
     bool isGround = false;
 
     void Start()
@@ -85,8 +87,8 @@ public class ThrowableObject : MonoBehaviour
     void Update()
     {
 
-        if (isMoveGround) rb2D.velocity = new Vector2(vector.x, 0) + new Vector2(0, rb2D.velocity.y);
-        if (!isMoveGround && (isGround && !isThrow)) rb2D.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+        if (isMoveGround && !hasItem) rb2D.velocity = new Vector2(vector.x, 0) + new Vector2(0, rb2D.velocity.y);
+        if (!isMoveGround && (isGround && !isThrow && !hasItem)) rb2D.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         else { rb2D.constraints = RigidbodyConstraints2D.FreezeRotation; }
 
      
@@ -150,14 +152,10 @@ public class ThrowableObject : MonoBehaviour
 
                 rb2D.isKinematic = false;
 
-                Debug.Log(result);
-
             }
             else if(result == -1)
             {
                 isMoveGround = false;
-
-                Debug.Log(result);
             }
         }
 

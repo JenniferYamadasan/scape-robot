@@ -14,6 +14,10 @@ public class PlayerHaveItem : MonoBehaviour
 
     void Update()
     {
-        if (hasItem != null) hasItem.transform.localPosition = Vector3.zero;
+        if (hasItem != null)
+        {
+            hasItem.transform.localPosition = Vector3.zero;
+            itemRB2D.velocity = Vector2.zero;
+        }
     }
 }
