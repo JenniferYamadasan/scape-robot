@@ -34,16 +34,20 @@ public class DeathScript : MonoBehaviour
         animationController.StartIsDie();
     }
 
-    public void PosSetthing(DIRECTION direction)
+    public void PosSetthing(DIRECTION direction ,bool isFold)
     {
         itemCollider.ItemReset();
         deathPosition = new Vector3(model.transform.position.x, model.transform.position.y+ yUp, 0);
         // deathRotation = transform.rotation;
         particlemanager.respawnParticle.Play();
-        GameObject deadObj = Instantiate(brokenRobot, deathPosition, Quaternion.identity);
-        if(deadObj.TryGetComponent(out ThrowableObject throwableObject))
+
+        if(!isFold)
         {
-            throwableObject.OnRotate(direction);
+            GameObject deadObj = Instantiate(brokenRobot, deathPosition, Quaternion.identity);
+            if (deadObj.TryGetComponent(out ThrowableObject throwableObject))
+            {
+                throwableObject.OnRotate(direction);
+            }
         }
         destroycounter.DestroyCounterAdd();
         gameObject.transform.position = startPosition;

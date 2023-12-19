@@ -63,7 +63,19 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     [SerializeField] GameObject itemColliderObj;
 
+    bool verticalFold => foldManager.upCollsion.isCollsion && isGround;
 
+    bool horizontalFold => foldManager.rightCollsion.isCollsion && foldManager.leftCollsion.isCollsion;
+
+    [System.Serializable]
+    public class FoldCollisionManager
+    {
+        [field:SerializeField]public FoldCollision upCollsion { get; private set; }
+        [field: SerializeField] public FoldCollision leftCollsion { get; private set; }
+        [field: SerializeField] public FoldCollision rightCollsion { get; private set; }
+    }
+
+    GameObject foldObj;
     /// <summary>
     /// 死んでいるかどうか
     /// </summary>
@@ -77,16 +89,38 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] FootCollsion footCollsion;
 
+    [SerializeField] FoldCollisionManager foldManager;
+
     // Update is called once per frame
     [System.Obsolete]
     void Update()
     {
+        CheackFold();
         //Debug.Log($"isJump = {isJump}");
         OnMove();  //キャラクターを移動させる
         if (!isGround) return;
         OnJump();//ジャンプする処理
     }
+    
+    void CheackFold()
+    {
+        if (playerAnimationController.isFold) return;
+        //移動できる床に触れている際、移動している床のベクトル方向に対してPlayerが挟まっていた場合潰れるアニメーションを流す。
+        if (isMoveGround)
+        {
+            if (verticalFold && Mathf.Abs(vector.y) > 0)
+            {
+                Debug.Log("縦潰れた");
+                playerAnimationController.IsFold(0);
+            }
 
+            if (horizontalFold && Mathf.Abs(vector.x) > 0)
+            {
+                Debug.Log("横潰れた");
+                playerAnimationController.IsFold(1);
+            }
+        }
+    }
     /// <summary>
     /// プレイヤーが移動するメソッド
     /// </summary>
@@ -96,22 +130,21 @@ public class PlayerController : MonoBehaviour
         //入力値を変数に格納している
         Vector2 inputVec = inputManager.inputVec;
         OnRotate(inputVec);
-        if(isMoveGround)
+
+        //ここで実際に移動する Y座標を0にするとジャンプができないようになるため、別途現在のY座標を足している
+        rb2D.velocity = new Vector2(inputVec.x * moveSpeed + vector.x, 0) + new Vector2(0, rb2D.velocity.y);
+
+        if (!isMoveGround)
         {
-            rb2D.velocity = new Vector2(inputVec.x* moveSpeed + vector.x ,vector.y* moveSpeed) + new Vector2(0, rb2D.velocity.y);
-        }
-        else
-        {
-            //ここで実際に移動する Y座標を0にするとジャンプができないようになるため、別途現在のY座標を足している
-            rb2D.velocity = new Vector2(inputVec.x, 0) * moveSpeed + new Vector2(0, rb2D.velocity.y);
-            if(footCollsion.isHalf)
+            if (footCollsion.isHalf)
             {
-                if(inputVec.y <0)
+                if (inputVec.y < 0)
                 {
                     footCollsion.HalfTrigger();
                 }
             }
         }
+
 
         //キャラクターが動いているかどうか調べてアニメーションを設定する
         if (Mathf.Abs(rb2D.velocity.x) > 0 && Mathf.Abs(inputManager.inputVec.x) >0)
@@ -158,7 +191,8 @@ public class PlayerController : MonoBehaviour
         //ジャンプボタンが押されていて、地面に足がついている
         if (inputManager.isJump)
         {
-            rb2D.AddForce(transform.up * jumpPower);
+            //rb2D.AddForce(transform.up * jumpPower);
+            rb2D.velocity = transform.up * jumpPower + new Vector3(rb2D.velocity.x, vector.y, 0);
             isGround = false;
             inputManager.IsJumpFinish();
         }
@@ -224,6 +258,15 @@ public class PlayerController : MonoBehaviour
         {
             isMoveGround = false;
             vector = Vector2.zero;
+
+            if(foldObj !=null)
+            {
+                if(foldObj == mobileObstacle.gameObject)
+                {
+                    transform.SetParent(null);
+                    foldObj = null;
+                }
+            }
         }
         if (collision.gameObject.tag == "Half")
         {
@@ -248,10 +291,13 @@ public class PlayerController : MonoBehaviour
             if (result == 1 || footCollsion.transform.position.y > collision.gameObject.transform.position.y)
             {
                 isMoveGround = true;
+                foldObj = mobileObstacle.gameObject;
+                transform.SetParent(mobileObstacle.transform);
             }
             else if(result == -1)
             {
-                isMoveGround= false;    
+                isMoveGround= false;
+                transform.SetParent(null);
             }
         }
     }

@@ -58,7 +58,7 @@ public class PlayerAnimationController : MonoBehaviour
 
     DIRECTION direction;
 
-
+    public bool isFold { get; private set; }
     void Start()
     {
         wait = new WaitForSeconds(timeToWaitAfterDeathAnimation);
@@ -213,6 +213,17 @@ public class PlayerAnimationController : MonoBehaviour
         yield return wait;
         //移動出来きるようにする。
         playerInput.enabled = true;
+        HaveItem();
+        deathScript.PosSetthing(direction,false);
+        animator.Play("Spawn");
+        playerController.ReviveOrSelfDestruct(false);
+    }
+
+    /// <summary>
+    /// アイテムを持っているか確認して持っていた場合アイテムを離す
+    /// </summary>
+    void HaveItem()
+    {
         //アイテムを持ったまま死ぬとバグの原因になるため、回避するようにしている。
         if (playerHaveItem.hasItem != null)
         {
@@ -226,9 +237,6 @@ public class PlayerAnimationController : MonoBehaviour
             playerHaveItem.hasItemModel = null;
             inputManager.ChangeState(ITEMACTION.HOLD);
         }
-        deathScript.PosSetthing(direction);
-        animator.Play("Spawn");
-        playerController.ReviveOrSelfDestruct(false);
     }
     /// <summary>
     /// 死んだ瞬間に流すアニメーション
@@ -245,7 +253,6 @@ public class PlayerAnimationController : MonoBehaviour
 
         //animator.SetBool(DIE_ANIMATION, false);
     }
-
 
     public void Goal()
     {
@@ -271,6 +278,31 @@ public class PlayerAnimationController : MonoBehaviour
         inputManager.IsMoveFinish();
 
         playerController.ReviveOrSelfDestruct(true);
+    }
+
+    public void IsFold(int vector)
+    {
+        //ここでアニメーション再生
+
+        isFold = true;
+        //移動の入力値とVelocityの値を初期化
+        inputManager.IsMoveFinish();
+        //移動出来きないようにする。
+        playerInput.enabled = false;
+        playerController.ReviveOrSelfDestruct(true);
+        EndFold();
+    }
+
+
+    public void EndFold()
+    {
+        //移動出来きるようにする。
+        playerInput.enabled = true;
+        isFold = false;
+        HaveItem();
+        deathScript.PosSetthing(direction, true);
+        animator.Play("Spawn");
+        playerController.ReviveOrSelfDestruct(false);
     }
     /// <summary>
     /// 死んだ際Die以外ののパラメータをリセットする
