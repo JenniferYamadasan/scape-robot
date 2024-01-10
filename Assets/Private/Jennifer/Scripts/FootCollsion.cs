@@ -66,6 +66,7 @@ public class FootCollsion : MonoBehaviour
 
     public void HalfExit(BoxCollider2D halfCollider)
     {
+        if (halfCollider == null) return;
         if (halfColliders.Contains(halfCollider))
         {
             halfCollider.isTrigger = false;
