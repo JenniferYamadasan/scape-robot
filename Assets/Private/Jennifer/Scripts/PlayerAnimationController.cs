@@ -68,6 +68,14 @@ public class PlayerAnimationController : MonoBehaviour
     }
 
     /// <summary>
+    /// キャラクターが死んでスタート地点に返った瞬間に呼ぶ処理。
+    /// </summary>
+    void InitializeGame()
+    {
+        
+    }
+
+    /// <summary>
     /// 歩くアニメーションを管理するメソッド
     /// </summary>
     /// <param name="result"></param>
@@ -236,6 +244,7 @@ public class PlayerAnimationController : MonoBehaviour
             playerHaveItem.throwableObject = null;
             playerHaveItem.hasItemModel = null;
             inputManager.ChangeState(ITEMACTION.HOLD);
+            AllAnimationReset();
         }
     }
     /// <summary>

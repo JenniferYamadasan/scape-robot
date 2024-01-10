@@ -44,7 +44,8 @@ public class ThrowableObject : MonoBehaviour
 
     bool isMoveGround = false;
 
-    Vector2 vector;
+    /// <summary>現在どの方向に押されているか</summary>
+    [field:SerializeField]public Vector2 vector { get; private set; }
 
     [SerializeField] Transform footPos;
 

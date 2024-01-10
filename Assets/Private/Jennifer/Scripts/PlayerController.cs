@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
         {
             if (verticalFold && Mathf.Abs(vector.y) > 0)
             {
-                Debug.Log("縦潰れた");
+                Debug.Log($"縦潰れた{vector}");
                 playerAnimationController.IsFold(0);
             }
 
