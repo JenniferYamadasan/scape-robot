@@ -243,9 +243,9 @@ public class PlayerAnimationController : MonoBehaviour
             playerHaveItem.throwableObject.hasItem = false;
             playerHaveItem.throwableObject = null;
             playerHaveItem.hasItemModel = null;
-            inputManager.ChangeState(ITEMACTION.HOLD);
-            AllAnimationReset();
         }
+        inputManager.ChangeState(ITEMACTION.HOLD);
+        AllAnimationReset();
     }
     /// <summary>
     /// 死んだ瞬間に流すアニメーション

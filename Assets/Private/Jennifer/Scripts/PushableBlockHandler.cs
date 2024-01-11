@@ -12,7 +12,9 @@ public class PushableBlockHandler : MonoBehaviour
 
     [SerializeField] BoxCollider2D pushSwitchCollider;
 
-    [SerializeField] List<GameObject> disappearingObject = new List<GameObject>();
+    
+    [Header("削除するブロック"),SerializeField] List<GameObject> disappearingObject = new List<GameObject>();
+    [Header("表示するブロック"),SerializeField] List<GameObject> activeListObjects = new List<GameObject> ();
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -47,17 +49,23 @@ public class PushableBlockHandler : MonoBehaviour
     void SetDisappearingObject(bool isTouchingGround)
     {
         animator.SetBool(PRESS_ANIMATIONNAME, isTouchingGround);
-        if (disappearingObject == null) return;
+        ToggleDisplay(disappearingObject, !isTouchingGround);
+        ToggleDisplay(activeListObjects, isTouchingGround);
+    }
 
-        for (int i = disappearingObject.Count-1; i >=0; i--)
+    void ToggleDisplay(List<GameObject> toggleObjects,bool isActive)
+    {
+        if (toggleObjects == null) return;
+
+        for (int i = toggleObjects.Count - 1; i >= 0; i--)
         {
-            if (disappearingObject[i] == null)
+            if (toggleObjects[i] == null)
             {
-                disappearingObject.Remove(disappearingObject[i].gameObject);
+                toggleObjects.Remove(toggleObjects[i].gameObject);
             }
             else
             {
-                disappearingObject[i].SetActive(!isTouchingGround);
+                toggleObjects[i].SetActive(isActive);
             }
         }
     }
