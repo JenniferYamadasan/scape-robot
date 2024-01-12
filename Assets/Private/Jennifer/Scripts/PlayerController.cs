@@ -63,10 +63,19 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     [SerializeField] GameObject itemColliderObj;
 
+    /// <summary>
+    /// 上下にオブジェクトが挟まれているか
+    /// </summary>
     bool verticalFold => foldManager.upCollsion.isCollsion && isGround;
 
+    /// <summary>
+    /// 左右にオブジェクトが挟まれているか
+    /// </summary>
     bool horizontalFold => foldManager.rightCollsion.isCollsion && foldManager.leftCollsion.isCollsion;
 
+    /// <summary>
+    /// 挟まれているかどうか検知するコライダーをclass管理している
+    /// </summary>
     [System.Serializable]
     public class FoldCollisionManager
     {
@@ -75,30 +84,35 @@ public class PlayerController : MonoBehaviour
         [field: SerializeField] public FoldCollision rightCollsion { get; private set; }
     }
 
+    /// <summary> 現在触れている移動する床 </summary>
     GameObject foldObj;
     /// <summary>
     /// 死んでいるかどうか
     /// </summary>
     public bool isDie = false;
 
+    /// <summary> ジャンプしたかどうか </summary>
     public bool isJump  => inputManager.isJump && isGround;
 
+    /// <summary> 動いている床の移動ベクトル </summary>
     Vector2 vector;
 
+    /// <summary> 移動する床に触れているかどうか </summary>
     bool isMoveGround;
 
+    /// <summary> 足元の当たり判定 </summary>
     [SerializeField] FootCollsion footCollsion;
 
+    /// <summary> 挟まれているかどうか検知するコライダーを管理しているクラス </summary>
     [SerializeField] FoldCollisionManager foldManager;
 
-    // Update is called once per frame
+
     [System.Obsolete]
     void Update()
     {
-        CheackFold();
-        //Debug.Log($"isJump = {isJump}");
+        CheackFold();//挟まれているかどうか確認する
         OnMove();  //キャラクターを移動させる
-        if (!isGround) return;
+        if (!isGround) return;//地面に触れていない場合この先の挙動をしない
         OnJump();//ジャンプする処理
     }
     
@@ -110,15 +124,16 @@ public class PlayerController : MonoBehaviour
         {
             if (verticalFold && Mathf.Abs(vector.y) > 0)
             {
-                Debug.Log($"縦潰れた{vector}");
+                //Debug.Log($"縦潰れた{vector}");
                 playerAnimationController.IsFold(0);
             }
+        }
 
-            if (horizontalFold && Mathf.Abs(vector.x) > 0)
-            {
-                Debug.Log("横潰れた");
-                playerAnimationController.IsFold(1);
-            }
+        //移動している床のベクトル方向に対してPlayerが挟まっていた場合潰れるアニメーションを流す。
+        if (horizontalFold && Mathf.Abs(vector.x) > 0)
+        {
+            //Debug.Log("横潰れた");
+            playerAnimationController.IsFold(1);
         }
     }
     /// <summary>
@@ -157,6 +172,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 移動ベクトルを初期化する
+    /// </summary>
     public void OnMoveStop()
     {
         rb2D.velocity = Vector2.zero;
@@ -245,6 +263,8 @@ public class PlayerController : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collider2D)
     {
+
+        //ゴールに触れた場合ゴールの当たり判定削除してゴール用のアニメーションを再生する。
         if(collider2D.gameObject.tag=="Goal")
         {
             collider2D.GetComponent<BoxCollider2D>().enabled = false;
@@ -254,12 +274,17 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
+        //動く床から離れたら
         if (collision.TryGetComponent(out MobileObstacle mobileObstacle))
         {
+            //フラグを折ってベクトルを初期化する
             isMoveGround = false;
             vector = Vector2.zero;
 
-            if(foldObj !=null)
+            //移動する床を格納している変数が空ではない且つ
+            //離れたオブジェクトと移動する床を格納している変数と同じだったら
+            //親子関係を削除して移動する床を格納している変数を初期化
+            if (foldObj !=null)
             {
                 if(foldObj == mobileObstacle.gameObject)
                 {
@@ -268,6 +293,8 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+
+        //制作途中
         if (collision.gameObject.tag == "Half")
         {
             if(collision.TryGetComponent(out BoxCollider2D collsion2D))
@@ -279,21 +306,26 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.TryGetComponent(out MobileObstacle mobileObstacle))
+        //触れているオブジェクトにが移動する床だったら
+        if (collision.TryGetComponent(out MobileObstacle mobileObstacle))
         {
+            //移動する床の移動ベクトルを取得
             vector = collision.attachedRigidbody.GetPointVelocity(Vector2.zero);
+            //内積で移動する床の進行方向にプレイヤーがいるかどうか調べる
             float playerMovementDirection = Vector2.Dot(new Vector2(vector.x, 0).normalized, new Vector2(transform.position.x - collision.transform.position.x, 0).normalized);
 
             // playerMovementDirectionが正なら1、負なら-1、ゼロなら0
             float result = Mathf.Sign(playerMovementDirection);
 
-
+            //移動する床の進行方向にプレイヤーがいる又は
+            //プレイヤーが移動する床の上に乗っていたら移動する床に合わせて移動する
             if (result == 1 || footCollsion.transform.position.y > collision.gameObject.transform.position.y)
             {
                 isMoveGround = true;
                 foldObj = mobileObstacle.gameObject;
                 transform.SetParent(mobileObstacle.transform);
             }
+            //そうでは無かったら移動しないようにする。
             else if(result == -1)
             {
                 isMoveGround= false;
