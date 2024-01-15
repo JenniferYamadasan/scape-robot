@@ -149,7 +149,7 @@ public class ThrowableObject : MonoBehaviour
     public void OnStopOrExit(bool result)
     {
         //投げた物を滑らないようにしている
-        flightDirection = rb2D.velocity = new Vector2(0, 0);
+        //flightDirection = rb2D.velocity = new Vector2(0, 0);
         rb2D.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
     }
 
@@ -197,6 +197,8 @@ public class ThrowableObject : MonoBehaviour
             else if(result == -1)
             {
                 isMoveGround = false;
+
+                vector = Vector2.zero;
             }
         }
 

@@ -893,6 +893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd69bb7f944bb7d4ea626b9299b7724d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collider2D: {fileID: 4986865429101108424}
 --- !u!1 &4438982811492616564
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,6 +984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd69bb7f944bb7d4ea626b9299b7724d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collider2D: {fileID: 7447541681714827397}
 --- !u!1 &6434447668444383607
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,6 +1199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd69bb7f944bb7d4ea626b9299b7724d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collider2D: {fileID: 8340471549339995542}
 --- !u!1001 &1673608934118199711
 PrefabInstance:
   m_ObjectHideFlags: 0

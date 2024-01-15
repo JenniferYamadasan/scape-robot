@@ -398,6 +398,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MoveGround
       objectReference: {fileID: 0}
+    - target: {fileID: 2305804758537525575, guid: e9964f4b17499574c9ca7c39c8dceb80,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7612507844963738391, guid: e9964f4b17499574c9ca7c39c8dceb80,
         type: 3}
       propertyPath: reverseRate
@@ -1812,6 +1817,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1097772876}
   m_PrefabAsset: {fileID: 0}
+--- !u!61 &1159400479 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 8340471549339995542, guid: dbfd14a3a6685410fa88ffd592906e98,
+    type: 3}
+  m_PrefabInstance: {fileID: 1585586039}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1236779553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2121,6 +2132,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81c1a0e8d1e239142834a01a28ad981d, type: 3}
+--- !u!61 &1461734703 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 4986865429101108424, guid: dbfd14a3a6685410fa88ffd592906e98,
+    type: 3}
+  m_PrefabInstance: {fileID: 1585586039}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1477062123
 GameObject:
   m_ObjectHideFlags: 0
@@ -2234,6 +2251,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1529266534133156955, guid: dbfd14a3a6685410fa88ffd592906e98,
+        type: 3}
+      propertyPath: collider2D
+      value: 
+      objectReference: {fileID: 1159400479}
+    - target: {fileID: 2497226367025956082, guid: dbfd14a3a6685410fa88ffd592906e98,
+        type: 3}
+      propertyPath: collider2D
+      value: 
+      objectReference: {fileID: 1461734703}
     - target: {fileID: 2972986417040231582, guid: dbfd14a3a6685410fa88ffd592906e98,
         type: 3}
       propertyPath: m_Name
@@ -2254,6 +2281,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1.2600005
       objectReference: {fileID: 0}
+    - target: {fileID: 7506737653462132284, guid: dbfd14a3a6685410fa88ffd592906e98,
+        type: 3}
+      propertyPath: collider2D
+      value: 
+      objectReference: {fileID: 2086020284}
     - target: {fileID: 7695347098307892428, guid: dbfd14a3a6685410fa88ffd592906e98,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2509,6 +2541,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5977117060549125265, guid: 2585b5c4b8f4445d6a47fa06080d9a65,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.4497721
+      objectReference: {fileID: 0}
+    - target: {fileID: 5977117060549125265, guid: 2585b5c4b8f4445d6a47fa06080d9a65,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.96318305
+      objectReference: {fileID: 0}
     - target: {fileID: 8469410576362479348, guid: 2585b5c4b8f4445d6a47fa06080d9a65,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3091,6 +3133,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81c1a0e8d1e239142834a01a28ad981d, type: 3}
+--- !u!61 &2086020284 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 7447541681714827397, guid: dbfd14a3a6685410fa88ffd592906e98,
+    type: 3}
+  m_PrefabInstance: {fileID: 1585586039}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2108878397
 GameObject:
   m_ObjectHideFlags: 0
