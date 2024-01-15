@@ -11,12 +11,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0039cf0af85423141bfb3c541bee8a41,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.35
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0039cf0af85423141bfb3c541bee8a41,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10.15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0039cf0af85423141bfb3c541bee8a41,
         type: 3}
@@ -128,11 +128,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0039cf0af85423141bfb3c541bee8a41,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8773756050803108258}
+      addedObject: {fileID: 1150248707082676714}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0039cf0af85423141bfb3c541bee8a41,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1150248707082676714}
+      addedObject: {fileID: 7612507844963738391}
   m_SourcePrefab: {fileID: 100100000, guid: 0039cf0af85423141bfb3c541bee8a41, type: 3}
 --- !u!1 &2305804758537525575 stripped
 GameObject:
@@ -212,22 +212,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &8773756050803108258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2305804758537525575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 602b33a08a10d0f45a4260dbffccb02d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveVec: 0
-  rb2D: {fileID: 487361437545334344}
-  moveFloerSpeed: 5
-  reverseRate: 200
 --- !u!61 &1150248707082676714
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -273,3 +257,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8837109, y: 1.97}
   m_EdgeRadius: 0
+--- !u!114 &7612507844963738391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2305804758537525575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602b33a08a10d0f45a4260dbffccb02d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveVec: 0
+  rb2D: {fileID: 487361437545334344}
+  moveFloerSpeed: 5
+  reverseRate: 200

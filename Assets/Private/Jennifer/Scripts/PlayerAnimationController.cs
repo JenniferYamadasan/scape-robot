@@ -161,19 +161,22 @@ public class PlayerAnimationController : MonoBehaviour
     public void Throw(DIRECTION direction)
     {
         //投げるモーションが流れた為、アイテムは持っていない為falseにしている
-        playerHaveItem.itemRB2D.velocity = Vector2.zero;
-        animator.SetBool(ITEM_HAVE_ANIMATION, false);
-        //持つ前の状態に戻して、アイテムを投げている。
-        playerHaveItem.hasItem.transform.parent = null;
-        playerHaveItem.itemsCollider2D.isTrigger =false;
-        playerHaveItem.itemRB2D.isKinematic = false;
-        playerHaveItem.throwableObject.OnThrow(direction);
-        playerHaveItem.throwableObject.hasItem = false;
-        playerHaveItem.hasItem = null;
-        playerHaveItem.itemRB2D = null;
-        playerHaveItem.itemsCollider2D = null;
-        playerHaveItem.throwableObject = null;
-        playerHaveItem.hasItemModel = null;
+        if(playerHaveItem.itemRB2D != null)
+        {
+            playerHaveItem.itemRB2D.velocity = Vector2.zero;
+            animator.SetBool(ITEM_HAVE_ANIMATION, false);
+            //持つ前の状態に戻して、アイテムを投げている。
+            playerHaveItem.hasItem.transform.parent = null;
+            playerHaveItem.itemsCollider2D.isTrigger = false;
+            playerHaveItem.itemRB2D.isKinematic = false;
+            playerHaveItem.throwableObject.OnThrow(direction);
+            playerHaveItem.throwableObject.hasItem = false;
+            playerHaveItem.hasItem = null;
+            playerHaveItem.itemRB2D = null;
+            playerHaveItem.itemsCollider2D = null;
+            playerHaveItem.throwableObject = null;
+            playerHaveItem.hasItemModel = null;
+        }
         itemCollider.ItemReset();
         //バグ懸念でfalseにしている。別になくても問題はない（と思う。）
         animator.SetBool(THROW_ANIMATION, false);

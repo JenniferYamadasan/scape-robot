@@ -288,7 +288,7 @@ public class PlayerController : MonoBehaviour
             {
                 if(foldObj == mobileObstacle.gameObject)
                 {
-                    transform.SetParent(null);
+                    //transform.SetParent(null);
                     foldObj = null;
                 }
             }
@@ -323,13 +323,15 @@ public class PlayerController : MonoBehaviour
             {
                 isMoveGround = true;
                 foldObj = mobileObstacle.gameObject;
-                transform.SetParent(mobileObstacle.transform);
+                //transform.SetParent(mobileObstacle.transform);
             }
             //そうでは無かったら移動しないようにする。
             else if(result == -1)
             {
                 isMoveGround= false;
-                transform.SetParent(null);
+                //ベクトル初期化
+                vector = Vector2.zero;
+                //transform.SetParent(null);
             }
         }
     }
