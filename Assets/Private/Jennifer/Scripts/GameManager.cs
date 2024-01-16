@@ -4,13 +4,29 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] GameObject bgmManagerObject;
     public static GameManager gameManager { get; private set; }
 
-    internal static BGMManager bgmManager;
+    public static BGMManager bgmManager { get; private set; }
 
     void Awake()
     {
-        if (gameManager == null) gameManager = this;
+        if (gameManager == null)
+        {
+            gameManager = this;
+            DontDestroyOnLoad(this);
+        }
+        else { Destroy(this.gameObject); }
+
+        if (bgmManager == null)
+        {
+            GameObject bgmObject = Instantiate(bgmManagerObject);
+            if(bgmManagerObject.TryGetComponent(out BGMManager bgmSc))
+            {
+                bgmManager = bgmSc;
+            }
+            DontDestroyOnLoad (bgmObject);
+        }
         else { Destroy(this.gameObject); }
     }
 }

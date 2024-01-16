@@ -55,6 +55,8 @@ public class InputManager : MonoBehaviour
 
     public static int goalNum = 0;
 
+    [SerializeField] PlayerInput playerinput;
+
     void Start()
     {
         // 現在のシーンのパスを取得
@@ -66,7 +68,6 @@ public class InputManager : MonoBehaviour
         {
             scenePaths[i] = SceneUtility.GetScenePathByBuildIndex(i);
         }
-
         // 現在のシーンがビルド設定の何番目に登録されているか調べる
         int currentIndex = System.Array.IndexOf(scenePaths, currentScenePath);
         goalNum = currentIndex;
