@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
         {
             if (verticalFold && Mathf.Abs(vector.y) > 0)
             {
-                //Debug.Log($"縦潰れた{vector}");
+                Debug.Log($"Player = 縦潰れた 頭{foldManager.upCollsion.collsionGameObject}");
                 playerAnimationController.IsFold(0);
             }
         }
@@ -132,7 +132,7 @@ public class PlayerController : MonoBehaviour
         //移動している床のベクトル方向に対してPlayerが挟まっていた場合潰れるアニメーションを流す。
         if (horizontalFold && Mathf.Abs(vector.x) > 0)
         {
-            //Debug.Log("横潰れた");
+            Debug.Log("Player = 横潰れた");
             playerAnimationController.IsFold(1);
         }
     }

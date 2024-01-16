@@ -2606,6 +2606,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 8898447566378934527, guid: 2585b5c4b8f4445d6a47fa06080d9a65,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

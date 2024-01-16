@@ -340,7 +340,7 @@ CompositeCollider2D:
   m_GameObject: {fileID: 5867563281460968094}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: dc4ebec12a5761340a2b10448a6cddc0, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -361,7 +361,7 @@ CompositeCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_GeometryType: 0
@@ -396,7 +396,7 @@ PlatformEffector2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5867563281460968094}
   m_Enabled: 1
-  m_UseColliderMask: 1
+  m_UseColliderMask: 0
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295

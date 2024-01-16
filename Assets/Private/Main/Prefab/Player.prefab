@@ -894,6 +894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collider2D: {fileID: 4986865429101108424}
+  collsionGameObject: {fileID: 0}
 --- !u!1 &4438982811492616564
 GameObject:
   m_ObjectHideFlags: 0
@@ -985,6 +986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collider2D: {fileID: 7447541681714827397}
+  collsionGameObject: {fileID: 0}
 --- !u!1 &6434447668444383607
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,7 +1098,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.01360476, y: -0.20653597}
+  m_Offset: {x: -0.03413844, y: 0.014713392}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1107,7 +1109,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6762121, y: 0.64165896}
+  m_Size: {x: 1.7172794, y: 0.19916025}
   m_EdgeRadius: 0
 --- !u!1 &9201890395913323987
 GameObject:
@@ -1154,7 +1156,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 7935
@@ -1174,7 +1176,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.026707709, y: 2.0097413}
+  m_Offset: {x: 0.048820794, y: 1.8454217}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1185,7 +1187,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5303634, y: 0.17128277}
+  m_Size: {x: 1.372413, y: 0.10141444}
   m_EdgeRadius: 0
 --- !u!114 &1529266534133156955
 MonoBehaviour:
@@ -1200,6 +1202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collider2D: {fileID: 8340471549339995542}
+  collsionGameObject: {fileID: 0}
 --- !u!1001 &1673608934118199711
 PrefabInstance:
   m_ObjectHideFlags: 0

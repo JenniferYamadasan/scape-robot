@@ -42,6 +42,9 @@ EditorBuildSettings:
     path: Assets/Private/Main/Scnen/stage011.unity
     guid: 7fb25bcdcdabfc2499c4f2ad1a4cf8a5
   - enabled: 1
+    path: Assets/Private/Main/Scnen/stage012.unity
+    guid: 2b700e7a5e606494c97509aa6d4edf00
+  - enabled: 1
     path: Assets/Private/Main/Scnen/stageL.unity
     guid: 36896365cfcce2945a9193a1c891eb5e
   - enabled: 1

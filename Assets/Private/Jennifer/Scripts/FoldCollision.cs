@@ -8,23 +8,24 @@ public class FoldCollision : MonoBehaviour
     public bool isCollsion { get; private set; } =false;
 
     [SerializeField] BoxCollider2D collider2D;
+    public GameObject collsionGameObject;
     //床に触れたらisCollsionをtrueにする
-    void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.layer == 8)
-        {
-            isCollsion = true;
-        }
-    }
+    //void OnTriggerStay2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Ground") || collision.gameObject.layer == 8)
+    //    {
+    //        isCollsion = true;
+    //    }
+    //}
 
-    //床に離れたらisCollsionをfalseにする
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.layer == 8)
-        {
-            isCollsion = false;
-        }
-    }
+    ////床に離れたらisCollsionをfalseにする
+    //void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Ground") || collision.gameObject.layer == 8)
+    //    {
+    //        isCollsion = false;
+    //    }
+    //}
 
     void Update()
     {
@@ -37,6 +38,7 @@ public class FoldCollision : MonoBehaviour
             //触れたオブジェクトによってオブジェクトのベクトルを初期化したり、物理挙動を無効化したりしている
             if (col.gameObject.CompareTag("Ground") && col.gameObject.layer == 8)
             {
+                collsionGameObject = col.gameObject;
                 isTouchingGround = true;
             }
         }
