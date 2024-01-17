@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        #region SingletonçÏê¨
         if (gameManager == null)
         {
             gameManager = this;
@@ -28,5 +29,6 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad (bgmObject);
         }
         else { Destroy(this.gameObject); }
+        #endregion
     }
 }

@@ -55,7 +55,6 @@ public class InputManager : MonoBehaviour
 
     public static int goalNum = 0;
 
-    [SerializeField] PlayerInput playerinput;
 
     void Start()
     {

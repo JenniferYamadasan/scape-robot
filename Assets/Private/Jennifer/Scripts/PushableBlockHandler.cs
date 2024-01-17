@@ -18,8 +18,14 @@ public class PushableBlockHandler : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isLongPress) return;
-
+        if (isLongPress)
+        {
+            animator.SetBool(PRESS_ANIMATIONNAME, true);
+            ToggleDisplay(disappearingObject, false);
+            ToggleDisplay(activeListObjects, true);
+            return;
+        }
+        if(disappearingObject.Count ==0 && activeListObjects.Count ==0) return;
         if (collision.gameObject.layer == 11 || collision.gameObject.layer == 6)
         {
             SetDisappearingObject(true);
@@ -28,8 +34,6 @@ public class PushableBlockHandler : MonoBehaviour
 
     void Update()
     {
-       
-
         // オブジェクトを持ち上げた際にOnTriggerExitが反応しなくなる為、ここで衝突判定を行っている
         Collider2D[] colliders = Physics2D.OverlapBoxAll(pushSwitchCollider.bounds.center, pushSwitchCollider.size, 0);
         bool isTouchingGround = false;
@@ -43,7 +47,7 @@ public class PushableBlockHandler : MonoBehaviour
             }
         }
 
-        if (!isTouchingGround) SetDisappearingObject(false);
+        if (!isTouchingGround && !isLongPress) SetDisappearingObject(false);
     }
 
     void SetDisappearingObject(bool isTouchingGround)
