@@ -53,7 +53,7 @@ public class InputManager : MonoBehaviour
     /// </summary>
     public ITEMACTION itemAction { get; private set; } = ITEMACTION.HOLD;
 
-    public static int goalNum = 0;
+    public static int goalNum { get; private set; } = 0;
 
 
     void Start()
@@ -72,6 +72,7 @@ public class InputManager : MonoBehaviour
         goalNum = currentIndex;
 
     }
+
     /// <summary>
     /// 移動ボタンが押されたら入力値を変数に格納する。
     /// </summary>

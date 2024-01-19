@@ -18,16 +18,16 @@ public class PushableBlockHandler : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isLongPress)
-        {
-            animator.SetBool(PRESS_ANIMATIONNAME, true);
-            ToggleDisplay(disappearingObject, false);
-            ToggleDisplay(activeListObjects, true);
-            return;
-        }
-        if(disappearingObject.Count ==0 && activeListObjects.Count ==0) return;
         if (collision.gameObject.layer == 11 || collision.gameObject.layer == 6)
         {
+            if (isLongPress)
+            {
+                animator.SetBool(PRESS_ANIMATIONNAME, true);
+                ToggleDisplay(disappearingObject, false);
+                ToggleDisplay(activeListObjects, true);
+                return;
+            }
+            if (disappearingObject.Count == 0 && activeListObjects.Count == 0) return;
             SetDisappearingObject(true);
         }
     }
