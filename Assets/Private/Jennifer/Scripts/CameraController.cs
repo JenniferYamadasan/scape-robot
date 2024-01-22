@@ -7,8 +7,14 @@ public class CameraController : MonoBehaviour
 {
     ResultCamera resultCamera;
 
+    [SerializeField] Vector3 resultPos;
+
+    [SerializeField] Transform resultUITrans;
+
+    [SerializeField] GameObject missionClearUI;
     void Start()
     {
+        missionClearUI.SetActive(false);
         resultCamera = ResultCameraManager.resultCameraManager.resultCamera;
 
         Color objectColor = resultCamera.renderer.material.color;
@@ -22,6 +28,7 @@ public class CameraController : MonoBehaviour
     {
         resultCamera.isMoveCamera = true;
         resultCamera.cameraTransform.transform.DOMove(resultCamera.targetPosition, resultCamera.moveDuration);
+        resultUITrans.transform.DOLocalMove(resultPos,6);
     }
 
 
@@ -56,6 +63,7 @@ public class CameraController : MonoBehaviour
     void printError()
     {
         resultCamera.canvasGroup.DOFade(1.0F, resultCamera.fadeInSpeed);
+        missionClearUI.SetActive(true);
         resultCamera.renderer.material.DOFade(1.0F, resultCamera.fadeInSpeed);
     }
 }
