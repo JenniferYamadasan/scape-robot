@@ -14,7 +14,6 @@ public class PlayerDestroyCounter : MonoBehaviour
 
     [SerializeField] GameObject scoreObjct;
 
-
     void Start()
     {
         if (scoreObjct != null) return;
