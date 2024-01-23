@@ -73,6 +73,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     bool horizontalFold => foldManager.rightCollsion.isCollsion && foldManager.leftCollsion.isCollsion;
 
+    
     /// <summary>
     /// 挟まれているかどうか検知するコライダーをclass管理している
     /// </summary>
@@ -267,6 +268,7 @@ public class PlayerController : MonoBehaviour
         //ゴールに触れた場合ゴールの当たり判定削除してゴール用のアニメーションを再生する。
         if(collider2D.gameObject.tag=="Goal")
         {
+            if (isDie) return;
             collider2D.GetComponent<BoxCollider2D>().enabled = false;
             playerAnimationController.Goal();
         }

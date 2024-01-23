@@ -40,6 +40,7 @@ public class UI_Manager : MonoBehaviour
     public void Restart()
     {
         playerDestroyCounter.Reset();
+        GameManager.bgmManager.SetEndBGM(BGMSTATE.TITLE);
         SceneManager.LoadScene(0);
     }
 }

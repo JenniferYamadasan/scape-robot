@@ -20,6 +20,8 @@ public class DeathScript : MonoBehaviour
 
     [SerializeField] ItemCollider itemCollider;
 
+    [SerializeField] PlayerController playerController;
+
 
 
     // Start is called before the first frame update
