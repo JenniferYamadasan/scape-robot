@@ -7333,18 +7333,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u521D\u3081\u304B\u3089\u3084\u308A\u76F4\u3059"
+  m_text: "\u30CF\u30B8\u30E1\u30AB\u30E9\u30E4\u30EA\u30CA\u30AA\u30B9"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 15cbbe70c56fb0144879499d90493e1e, type: 2}
-  m_sharedMaterial: {fileID: 2396924491923343631, guid: 15cbbe70c56fb0144879499d90493e1e,
+  m_fontAsset: {fileID: 11400000, guid: 0de38f0895b655e4786ffc38f7c0d331, type: 2}
+  m_sharedMaterial: {fileID: 6933317097235685363, guid: 0de38f0895b655e4786ffc38f7c0d331,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7519,7 +7519,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.20754719, g: 0.19090426, b: 0.19090426, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
