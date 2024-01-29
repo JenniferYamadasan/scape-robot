@@ -478,6 +478,7 @@ MonoBehaviour:
   model: {fileID: 8321224668042950129}
   yUp: 0.8
   itemCollider: {fileID: 3106227380478125073}
+  playerController: {fileID: 0}
 --- !u!114 &8429420424457001406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -527,6 +528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_audioSource: {fileID: 4322212135390981338}
+  playerController: {fileID: 8728660746258042785}
 --- !u!82 &4322212135390981338
 AudioSource:
   m_ObjectHideFlags: 0
