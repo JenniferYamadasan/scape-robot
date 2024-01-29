@@ -5,7 +5,7 @@ using UnityEngine;
 public class DeathScript : MonoBehaviour
 {
     PlayerDestroyCounter destroycounter;
-    public particleManager particlemanager;
+    public ParticleManager particlemanager;
     public GameObject playerModel;
     Vector3 startPosition;
     Vector3 deathPosition;

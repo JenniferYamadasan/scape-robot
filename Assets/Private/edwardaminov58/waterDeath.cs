@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class waterDeath : MonoBehaviour
+public class WaterDeath : MonoBehaviour
 {
     public DeathScript deathscript;
-    public particleManager particlemanager;
+    public ParticleManager particlemanager;
     [SerializeField] private SEPlayer m_sePlayer = null;
     [SerializeField] private AudioClip m_seWater = null;
     [SerializeField] private AudioClip m_seExplosion = null;
