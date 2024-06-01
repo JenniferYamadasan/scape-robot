@@ -125,7 +125,7 @@ public class ThrowableObject : MonoBehaviour
             if ((col.gameObject.tag == "Player" && this.gameObject != col) &&!isThrow)
             {
                 if (isMoveGround) break;
-                OnStopOrExit(true);
+                OnStopOrExit();
                 isTouchingSpecificObject = true;
                 break; // 一つでも特定のオブジェクトに触れていれば終了
             }
@@ -143,13 +143,11 @@ public class ThrowableObject : MonoBehaviour
     }
 
     /// <summary>
-    /// ベクトルの初期化、物理挙動の有効か無効化を行っている
+    /// X軸の物理挙動の制限と回転しないようにしてる
     /// </summary>
     /// <param name="result"></param>
-    public void OnStopOrExit(bool result)
+    public void OnStopOrExit()
     {
-        //投げた物を滑らないようにしている
-        //flightDirection = rb2D.velocity = new Vector2(0, 0);
         rb2D.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
     }
 

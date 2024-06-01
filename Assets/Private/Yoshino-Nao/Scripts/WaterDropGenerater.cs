@@ -3,58 +3,75 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
+/// <summary>
+/// é›¨ã®ãƒ©ãƒ³ãƒ€ãƒ æ€§ã‚’ç®¡ç†ã™ã‚‹ã‚¯ãƒ©ã‚¹
+/// </summary>
 [Serializable]
 public class RainRandom
 {
-    /// <summary> ƒ‰ƒ“ƒ_ƒ€‚É‰J‚ª‚Ó‚é‚©‚Ç‚¤‚© </summary>
+    /// <summary> é›¨ã‚’ãƒ©ãƒ³ãƒ€ãƒ ã«é™ã‚‰ã›ã‚‹ã‹ã©ã†ã‹ </summary>
     [field: SerializeField] public bool isRandom { get; private set; }
 
+    /// <summary> ãƒ©ãƒ³ãƒ€ãƒ ãªæ™‚é–“ã®æœ€å°å€¤ </summary>
     [field: SerializeField] public float min { get; private set; }
+
+    /// <summary> ãƒ©ãƒ³ãƒ€ãƒ ãªæ™‚é–“ã®æœ€å¤§å€¤ </summary>
     [field: SerializeField] public float max { get; private set; }
 }
 
+/// <summary>
+/// é›¨ã®ç¨®é¡ã‚’ç®¡ç†ã™ã‚‹ã‚¯ãƒ©ã‚¹
+/// </summary>
 [Serializable]
 public class RainType
 {
+    /// <summary> é›¨ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’é…ç½®ã™ã‚‹ä½ç½® </summary>
     [field: SerializeField] public Transform posInstance { get; private set; }
+
+    /// <summary> é›¨ãŒé™ã‚‹æ™‚é–“é–“éš” </summary>
     [field: SerializeField] public float dropTime { get; private set; }
 }
 
+/// <summary>
+/// æ°´æ»´ã‚’ç”Ÿæˆã™ã‚‹ã‚¯ãƒ©ã‚¹
+/// </summary>
 public class WaterDropGenerater : MonoBehaviour
 {
-
-
-    /// <summary>—‚¿‚é…“HƒIƒuƒWƒFƒNƒg</summary>
+    /// <summary> æ°´æ»´ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ </summary>
     [SerializeField] private GameObject m_waterObj = null;
-    /// <summary>…“H‚Ì¶¬ˆÊ’u‚Ì•â³’l</summary>
+
+    /// <summary> æ°´æ»´ã®åˆæœŸä½ç½®ã®ã‚ªãƒ•ã‚»ãƒƒãƒˆ </summary>
     [SerializeField] private Vector3 m_offsetPos = Vector3.zero;
-    /// <summary>…“H‚Ì¶¬•p“x</summary>
+
+    /// <summary> æ°´æ»´ã®é™ã‚‹é »åº¦ </summary>
     [SerializeField] private float m_dropRate = 1.0f;
-    /// <summary>…“H‚Ì“–‚½‚è”»’è‚Ì”¼Œa</summary>
+
+    /// <summary> æ°´æ»´ã®ç”Ÿæˆç¯„å›²åŠå¾„ </summary>
     [SerializeField] private float m_waterRadius = 0.5f;
-    /// <summary>…“H‚Ì—‰º‘¬“x</summary>
+
+    /// <summary> æ°´æ»´ã®è½ä¸‹é€Ÿåº¦ </summary>
     [SerializeField] private float m_dropSpeed = 1.0f;
 
-    /// <summary>¶¬‚³‚ê‚Ä‚©‚ç‚ÌŒo‰ßŠÔ</summary>
+    /// <summary> çµŒéæ™‚é–“ </summary>
     private float m_elapsedTime = 0f;
 
+    // é›¨ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç®¡ç†ã™ã‚‹ãƒ‡ãƒªã‚²ãƒ¼ãƒˆ
+    private delegate void RainInstance();
+    private RainInstance rainInstance;
 
-    delegate void RainInstance();
+    [Space(30), Header("ãƒ©ãƒ³ãƒ€ãƒ ãªé›¨ã‚’æœ‰åŠ¹ã«ã™ã‚‹")]
+    [SerializeField] private RainRandom rain;
 
-    RainInstance rainInstance;
+    private float randomTime;
 
-    [Space(30), Header("ƒ‰ƒ“ƒ_ƒ€‚Å…“H‚ğ~‚ç‚·")]
-    [SerializeField] RainRandom rain;
+    [Space(30), Header("é€£ç¶šçš„ã«é›¨ã‚’é™ã‚‰ã›ã‚‹")]
+    [SerializeField] private bool isEmmiter;
 
-    float randomTime;
+    [SerializeField] private List<RainType> rainTypes = new List<RainType>();
 
-
-    [Space(30),Header("‚±‚±‚©‚çãY—í‚É•À‚Ñ‚Å…“H‚ğ~‚ç‚¹‚é")]
-    [SerializeField] bool isEmmiter;
-    [SerializeField] List<RainType> rainTypes = new List<RainType>();
     void Start()
     {
-        if(isEmmiter)
+        if (isEmmiter)
         {
             rainInstance = BeginRainContinuous;
         }
@@ -65,7 +82,10 @@ public class WaterDropGenerater : MonoBehaviour
                 rainInstance = RainRandomDrop;
                 randomTime = UnityEngine.Random.Range(rain.min, rain.max);
             }
-            else { rainInstance = Normal; }
+            else
+            {
+                rainInstance = Normal;
+            }
         }
     }
 
@@ -74,11 +94,17 @@ public class WaterDropGenerater : MonoBehaviour
         rainInstance();
     }
 
+    /// <summary>
+    /// é€šå¸¸ã®é›¨ã®é™ã‚‰ã›æ–¹
+    /// </summary>
     void Normal()
     {
         RainInstanceMethod(m_dropRate);
     }
 
+    /// <summary>
+    /// ãƒ©ãƒ³ãƒ€ãƒ ãªæ™‚é–“é–“éš”ã§é›¨ã‚’é™ã‚‰ã›ã‚‹
+    /// </summary>
     void RainRandomDrop()
     {
         if (RainInstanceMethod(randomTime))
@@ -87,43 +113,50 @@ public class WaterDropGenerater : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// é›¨ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
+    /// </summary>
+    /// <param name="dropTime">é›¨ãŒé™ã‚‹æ™‚é–“é–“éš”</param>
+    /// <returns>ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒç”Ÿæˆã•ã‚ŒãŸã‹ã©ã†ã‹</returns>
     bool RainInstanceMethod(float dropTime)
     {
-        //Œo‰ßŠÔ‚ªˆê’è‚ğ’´‚¦‚é‚Æ…“H‚ğ¶¬
         if (m_elapsedTime >= dropTime)
         {
-            GameObject WaterObj = Instantiate(m_waterObj, transform.position + m_offsetPos, Quaternion.identity);
-            WaterDrop WaterDrop = WaterObj.GetComponent<WaterDrop>();
-            //…“H‚Ì—‰º‘¬“x‚ğİ’è
-            WaterDrop.SetUp(m_waterRadius, m_dropSpeed);
-            //¶¬‚Æ“¯‚ÉŒo‰ßŠÔ‚ğƒŠƒZƒbƒg
+            GameObject waterObj = Instantiate(m_waterObj, transform.position + m_offsetPos, Quaternion.identity);
+            WaterDrop waterDrop = waterObj.GetComponent<WaterDrop>();
+            waterDrop.SetUp(m_waterRadius, m_dropSpeed);
             m_elapsedTime = 0f;
             return true;
         }
-        //Œo‰ßŠÔ‚ÌŒv‘ª
         m_elapsedTime += Time.deltaTime;
         return false;
-
     }
 
+    /// <summary>
+    /// é€£ç¶šçš„ã«é›¨ã‚’é™ã‚‰ã›ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
+    /// </summary>
     void BeginRainContinuous()
     {
-        if(RainInstanceMethod(m_dropRate))
+        if (RainInstanceMethod(m_dropRate))
         {
-            for (int i = 0; i < rainTypes.Count; i++)
+            foreach (RainType rainType in rainTypes)
             {
-                StartCoroutine(drop(rainTypes[i].dropTime, rainTypes[i].posInstance.position));
+                StartCoroutine(Drop(rainType.dropTime, rainType.posInstance.position));
             }
         }
     }
 
-    IEnumerator drop(float time,Vector3 pos)
+    /// <summary>
+    /// æŒ‡å®šã—ãŸæ™‚é–“å¾Œã«æ°´æ»´ã‚’ç”Ÿæˆã™ã‚‹ã‚³ãƒ«ãƒ¼ãƒãƒ³
+    /// </summary>
+    /// <param name="time">å¾…æ©Ÿæ™‚é–“</param>
+    /// <param name="pos">ç”Ÿæˆä½ç½®</param>
+    /// <returns></returns>
+    IEnumerator Drop(float time, Vector3 pos)
     {
         yield return new WaitForSeconds(time);
-        GameObject WaterObj = Instantiate(m_waterObj, pos + m_offsetPos, Quaternion.identity);
-        WaterDrop WaterDrop = WaterObj.GetComponent<WaterDrop>();
-        //…“H‚Ì—‰º‘¬“x‚ğİ’è
-        WaterDrop.SetUp(m_waterRadius, m_dropSpeed);
+        GameObject waterObj = Instantiate(m_waterObj, pos + m_offsetPos, Quaternion.identity);
+        WaterDrop waterDrop = waterObj.GetComponent<WaterDrop>();
+        waterDrop.SetUp(m_waterRadius, m_dropSpeed);
     }
 }

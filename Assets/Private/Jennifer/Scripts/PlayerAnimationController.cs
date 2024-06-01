@@ -43,10 +43,8 @@ public class PlayerAnimationController : MonoBehaviour
     const string ITEM_HAVE_ANIMATION= "hasItem";
     const string DIE_ANIMATION = "isDie";
     const string THROW_ANIMATION = "isThrow";
-    const string ISPUSH_ANIMATION = "isPush";
     const string SPEED_ANIMATION = "Speed";
 
-    //BoxCollider2D itemCollider2D;
     WaitForSeconds wait;
 
     [SerializeField] float leftRotate;
@@ -64,7 +62,7 @@ public class PlayerAnimationController : MonoBehaviour
         wait = new WaitForSeconds(timeToWaitAfterDeathAnimation);
         animator.SetFloat(SPEED_ANIMATION, -1);
         animator.Play("Spawn");
-        inputManager.gameObject.TryGetComponent<PlayerController>(out playerController);
+        inputManager.gameObject.TryGetComponent(out playerController);
     }
 
     /// <summary>
@@ -98,6 +96,7 @@ public class PlayerAnimationController : MonoBehaviour
         GameObject item = itemCollider.GetNearestObject();
         if (item == null) return false;
         if(item.gameObject.layer !=6)return false;
+
         //投げるアニメーションをtrueにする。
         //理由 投げるモーションからIdleになる条件がTrueになる事そのことを踏まえると
         //投げてからtrueにするとワンテンポ遅れる為、投げることが確定している今事前にfalseにしている
@@ -115,8 +114,8 @@ public class PlayerAnimationController : MonoBehaviour
         //物理挙動無視、持っている間の当たり判定、飛ばす処理をするのに必要なスクリプトを取得する
         if(item.gameObject.TryGetComponent(out playerHaveItem.throwableObject))
         {
-            item.gameObject.TryGetComponent<BoxCollider2D>(out playerHaveItem.itemsCollider2D);
-            item.gameObject.TryGetComponent<Rigidbody2D>(out playerHaveItem.itemRB2D);
+            item.gameObject.TryGetComponent(out playerHaveItem.itemsCollider2D);
+            item.gameObject.TryGetComponent(out playerHaveItem.itemRB2D);
             Animator animator = item?.gameObject.GetComponentInChildren<Animator>();
             if (animator != null)
             {
@@ -130,6 +129,7 @@ public class PlayerAnimationController : MonoBehaviour
             return false;
         }
 
+        //現在持っているアイテムのベクトルを初期化
         playerHaveItem.itemRB2D.velocity = Vector2.zero;
 
         //isKinematicをtrueにして重力を無視している
@@ -138,9 +138,9 @@ public class PlayerAnimationController : MonoBehaviour
         //当たり判定をisTriggerにして貫通するようにする。
         playerHaveItem.itemsCollider2D.isTrigger = true;
 
+        //アイテムを持ったことを伝える
         playerHaveItem.throwableObject.hasItem = true;
 
-        playerHaveItem.itemRB2D.velocity = Vector2.zero;
         //投げることが確定している為、ここでステートの変更
         inputManager.ChangeState(ITEMACTION.THROW);
         return true;

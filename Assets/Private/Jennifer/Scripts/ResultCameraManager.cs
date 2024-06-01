@@ -8,41 +8,61 @@ using DG.Tweening;
 [Serializable]
 public class ResultCamera
 {
-
+    // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ç ´å£Šã‚«ã‚¦ãƒ³ã‚¿ãƒ¼
     [field: SerializeField] public PlayerDestroyCounter playerDestroyCounter { get; private set; }
+
+    // ã‚«ãƒ¡ãƒ©ã®ç§»å‹•æ™‚é–“
     [field: SerializeField] public float moveDuration { get; private set; } = 2f;
+
+    // CanvasGroup
     [field: SerializeField] public CanvasGroup canvasGroup { get; private set; }
+
+    // ã‚«ãƒ¡ãƒ©ã®Transform
     [field: SerializeField] public Transform cameraTransform { get; private set; }
 
+    // ã‚«ãƒ¡ãƒ©ãŒç§»å‹•ä¸­ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°
     [HideInInspector] public bool isMoveCamera;
 
+    // Renderer
     [field: SerializeField] public Renderer renderer { get; private set; }
 
+    // ç§»å‹•ã®ç¶™ç¶šæ™‚é–“
+    [field: SerializeField, Header("ç§»å‹•ã®ç¶™ç¶šæ™‚é–“")] public float DurationSeconds { get; private set; }
 
-    //—v’²®
-    [field: SerializeField, Header("‰½•bŒã‚É‚ÅƒJƒƒ‰‚ÌˆÚ“®‚ğŠ®—¹‚µ‚Ä‚¢‚é‚©")] public float DurationSeconds { get; private set; }
-    [field: SerializeField, Header("‚Ç‚ñ‚ÈŠÖ”‚©Bà–¾o—ˆ‚È‚¢‚Ì‚Å‰º‚É‚ ‚éƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚çƒTƒCƒg‚É‚Æ‚Ñ‚Ü‚·B")] public Ease EaseType { get; private set; }
-    //[field: SerializeField, Header("ƒ‹[ƒv‚·‚é‰ñ”")] public int loopNum { get; private set; }
-    [field: SerializeField, Header("ƒtƒF[ƒhƒCƒ“‚·‚éƒXƒs[ƒh")] public float fadeInSpeed { get; private set; }
-    [field: SerializeField,Header("ˆÚ“®Œã‚ÌÅI“I‚ÌƒJƒƒ‰‚Ìƒ|ƒWƒVƒ‡ƒ“")] public Vector3 targetPosition { get; private set; }
+    // ã‚¤ãƒ¼ã‚¸ãƒ³ã‚°ã‚¿ã‚¤ãƒ—
+    [field: SerializeField, Header("ã‚¤ãƒ¼ã‚¸ãƒ³ã‚°ã‚¿ã‚¤ãƒ—")] public Ease EaseType { get; private set; }
 
-    [field: SerializeField, Header("ƒAƒ‹ƒtƒ@’l‚ª‚Ç‚Ì‚®‚ç‚¢‚Ì‚©‚çƒeƒLƒXƒg‚ğ™X‚ÉƒtƒF[ƒhƒCƒ“‚·‚é‚©") , Min(0.7f)] public float alpha;
+    // ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³ã®é€Ÿåº¦
+    [field: SerializeField, Header("ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³ã®é€Ÿåº¦")] public float fadeInSpeed { get; private set; }
 
-    [field:SerializeField,Header("ƒXƒRƒA‚ğ‰½•bŒã‚É•\¦‚·‚é‚©")] public float scoreTime { get; private set; }
+    // ç§»å‹•å…ˆã®ã‚¿ãƒ¼ã‚²ãƒƒãƒˆãƒã‚¸ã‚·ãƒ§ãƒ³
+    [field: SerializeField, Header("ç§»å‹•å…ˆã®ã‚¿ãƒ¼ã‚²ãƒƒãƒˆãƒã‚¸ã‚·ãƒ§ãƒ³")] public Vector3 targetPosition { get; private set; }
+
+    // ã‚¢ãƒ«ãƒ•ã‚¡å€¤
+    [field: SerializeField, Header("ã‚¢ãƒ«ãƒ•ã‚¡å€¤"), Min(0.7f)] public float alpha;
+
+    // ã‚¹ã‚³ã‚¢è¡¨ç¤ºæ™‚é–“
+    [field: SerializeField, Header("ã‚¹ã‚³ã‚¢è¡¨ç¤ºæ™‚é–“")] public float scoreTime { get; private set; }
 }
+
 public class ResultCameraManager : MonoBehaviour
-{  
+{
+    // çµæœã‚«ãƒ¡ãƒ©ãƒãƒãƒ¼ã‚¸ãƒ£ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+    public static ResultCameraManager resultCameraManager { get; private set; }
+
+    // ResultCameraã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+    [field: SerializeField] public ResultCamera resultCamera { get; private set; }
+
+    // ã‚²ãƒ¼ãƒ ã®ãƒªãƒ³ã‚¯ã‚’é–‹ããƒ¡ã‚½ãƒƒãƒ‰
     public void OnClick()
     {
         Application.OpenURL("https://game-ui.net/?p=835");
     }
-    public static ResultCameraManager resultCameraManager { get; private set; }
-
-    [field:SerializeField] public ResultCamera resultCamera { get; private set; }
 
     void Awake()
     {
-        if(resultCameraManager == null)
+        // ã‚·ãƒ³ã‚°ãƒ«ãƒˆãƒ³ãƒ‘ã‚¿ãƒ¼ãƒ³ã®å®Ÿè£…
+        if (resultCameraManager == null)
         {
             resultCameraManager = this;
         }

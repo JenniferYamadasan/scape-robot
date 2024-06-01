@@ -6,6 +6,7 @@ public class WaterDeath : MonoBehaviour
 {
     public DeathScript deathscript;
     public ParticleManager particlemanager;
+
     [SerializeField] private SEPlayer m_sePlayer = null;
     [SerializeField] private AudioClip m_seWater = null;
     [SerializeField] private AudioClip m_seExplosion = null;
@@ -13,23 +14,29 @@ public class WaterDeath : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D hit)
     {
-
+        //水に触れたら
         if (hit.gameObject.tag.Equals("water") == true)
         {
-            m_sePlayer.PlaySE(m_seElectricShock);
-            m_sePlayer.PlaySE(m_seWater);
-            deathscript.Death();
-            //Debug.Log("WATER");
-            particlemanager.electricParticle.Play();
+            IsDeadlyWaterDetected(m_seWater, particlemanager.electricParticle);
         }
+        //地雷に触れたら
         if (hit.gameObject.tag.Equals("mine") == true)
         {
-            m_sePlayer.PlaySE(m_seElectricShock);
-            m_sePlayer.PlaySE(m_seExplosion);
-            deathscript.Death();
-            //Debug.Log("MINE");
+            IsDeadlyWaterDetected(m_seExplosion, particlemanager.explosionParticle);
             Destroy(hit.gameObject);
-            particlemanager.explosionParticle.Play();
         }
     }
+
+    /// <summary>
+    /// 死んだ時の処理
+    /// </summary>
+    /// <param name="dethCilp"></param>
+    /// <param name="effect"></param>
+    void IsDeadlyWaterDetected(AudioClip dethCilp, ParticleSystem effect)
+    {
+        m_sePlayer.PlaySE(m_seElectricShock);
+        m_sePlayer.PlaySE(dethCilp);
+        deathscript.Death();
+        effect.Play();
     }
+}

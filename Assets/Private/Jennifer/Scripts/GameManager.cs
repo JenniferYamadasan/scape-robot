@@ -3,11 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum BGMSTATE
-{
-    TITLE=0,
-    ENDING=1,
-}
+
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject bgmManagerObject;
@@ -19,22 +15,28 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        #region Singleton�쐬
+        #region Singleton
+        //インスタンスがnullなら作成
         if (gameManager == null)
         {
             gameManager = this;
             frameInstance =  new FrameRate();
             DontDestroyOnLoad(this);
         }
+        //そうではない場合自身を削除
         else { Destroy(this.gameObject); }
 
+        //インスタンスがあるか確認
         if (bgmManager == null)
         {
+            //ない場合ゲームオブジェクトを生成
+            //生成したゲームオブジェクトについてあるBGMManagerをシングルトンにする
             GameObject bgmObject = Instantiate(bgmManagerObject);
             if (bgmObject.TryGetComponent(out BGMManager bgmSc))
             {
                 bgmManager = bgmSc;
             }
+            //BGMManagerがない場合生成する
             else
             {
                 bgmManager = bgmObject.gameObject.AddComponent<BGMManager>();
@@ -43,6 +45,8 @@ public class GameManager : MonoBehaviour
         }
         else 
         {
+            //シングルトンがすでにある場合は
+            //シーン繊維後なのでBGM切り替え処理をしておく
             ActiveScene();
             Destroy(this.gameObject); 
         }
@@ -51,10 +55,12 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        //シーン繊維で音楽の設定を変更
         ActiveScene();
     }
     void ActiveScene()
     {
+        //エンディングとタイトルで音楽切り替える
         if (SceneManager.GetActiveScene().name == "result")
         {
             bgmManager.SetEndBGM(BGMSTATE.ENDING);
@@ -70,6 +76,6 @@ public class FrameRate
 {
     public FrameRate()
     {
-        Application.targetFrameRate = 120;   //60fps�ɌŒ�
+        Application.targetFrameRate = 120;   
     }
 }

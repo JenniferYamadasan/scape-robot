@@ -6,7 +6,7 @@ public class SEPlayer : MonoBehaviour
     [SerializeField] private PlayerController playerController;
     public void PlaySE(AudioClip se)
     {
-
+        //ジャンプ中とClipが入ってない時移動音を鳴らさないようにする
         if (m_audioSource == null || playerController.isDie) return;
         m_audioSource.PlayOneShot(se);
     }

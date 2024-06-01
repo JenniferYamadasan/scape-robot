@@ -4,38 +4,27 @@ using UnityEngine;
 
 public class FoldCollision : MonoBehaviour
 {
-    //©g‚ª°•”G‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©
-    public bool isCollsion { get; private set; } =false;
+    // è¡çªãŒç™ºç”Ÿã—ã¦ã„ã‚‹ã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°
+    public bool isCollsion { get; private set; } = false;
 
-    [SerializeField] BoxCollider2D collider2D;
+    // BoxCollider2Dã®å‚ç…§
+    [SerializeField] private BoxCollider2D collider2D;
+
+    // è¡çªã—ã¦ã„ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
     public GameObject collsionGameObject;
-    //°‚ÉG‚ê‚½‚çisCollsion‚ğtrue‚É‚·‚é
-    //void OnTriggerStay2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Ground") || collision.gameObject.layer == 8)
-    //    {
-    //        isCollsion = true;
-    //    }
-    //}
-
-    ////°‚É—£‚ê‚½‚çisCollsion‚ğfalse‚É‚·‚é
-    //void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Ground") || collision.gameObject.layer == 8)
-    //    {
-    //        isCollsion = false;
-    //    }
-    //}
 
     void Update()
     {
-        // ƒIƒuƒWƒFƒNƒg‚ğ‚¿ã‚°‚½Û‚ÉOnTriggerExit‚ª”½‰‚µ‚È‚­‚È‚éˆ×A‚±‚±‚ÅÕ“Ë”»’è‚ğs‚Á‚Ä‚¢‚é
+        // ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒãƒˆãƒªã‚¬ãƒ¼ã‹ã‚‰å‡ºãŸã‹ã‚’åˆ¤å®šã™ã‚‹ãŸã‚ã®å‡¦ç†
         Collider2D[] colliders = Physics2D.OverlapBoxAll(collider2D.bounds.center, collider2D.size, 0);
-        //Œ»İ°‚ÉG‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©
+
+        // ç¾åœ¨åœ°é¢ã«æ¥è§¦ã—ã¦ã„ã‚‹ã‹ã©ã†ã‹
         bool isTouchingGround = false;
+
+        // ã™ã¹ã¦ã®æ¤œå‡ºã•ã‚ŒãŸCollider2Dã‚’ãƒã‚§ãƒƒã‚¯
         foreach (Collider2D col in colliders)
         {
-            //G‚ê‚½ƒIƒuƒWƒFƒNƒg‚É‚æ‚Á‚ÄƒIƒuƒWƒFƒNƒg‚ÌƒxƒNƒgƒ‹‚ğ‰Šú‰»‚µ‚½‚èA•¨—‹““®‚ğ–³Œø‰»‚µ‚½‚è‚µ‚Ä‚¢‚é
+            // æ¤œå‡ºã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒGroundã‚¿ã‚°ã‚’æŒã¡ã€ã‹ã¤ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒ8ã®å ´åˆ
             if (col.gameObject.CompareTag("Ground") && col.gameObject.layer == 8)
             {
                 collsionGameObject = col.gameObject;
@@ -43,6 +32,7 @@ public class FoldCollision : MonoBehaviour
             }
         }
 
+        // æ¥è§¦çŠ¶æ…‹ã‚’æ›´æ–°
         isCollsion = isTouchingGround;
     }
 }

@@ -13,6 +13,7 @@ public enum DIRECTION
     RIGHT=0,
     LEFT,
 }
+
 public class PlayerController : MonoBehaviour
 {
     /// <summary>
@@ -119,6 +120,7 @@ public class PlayerController : MonoBehaviour
     
     void CheackFold()
     {
+        //多重判定回避
         if (playerAnimationController.isFold) return;
         //移動できる床に触れている際、移動している床のベクトル方向に対してPlayerが挟まっていた場合潰れるアニメーションを流す。
         if (isMoveGround)
@@ -150,15 +152,10 @@ public class PlayerController : MonoBehaviour
         //ここで実際に移動する Y座標を0にするとジャンプができないようになるため、別途現在のY座標を足している
         rb2D.velocity = new Vector2(inputVec.x * moveSpeed + vector.x, 0) + new Vector2(0, rb2D.velocity.y);
 
-        if (!isMoveGround)
+        //地面に触れてて
+        if (!isMoveGround && footCollsion.isHalf && inputVec.y < 0)
         {
-            if (footCollsion.isHalf)
-            {
-                if (inputVec.y < 0)
-                {
-                    footCollsion.HalfTrigger();
-                }
-            }
+            footCollsion.HalfTrigger();
         }
 
 
@@ -325,7 +322,6 @@ public class PlayerController : MonoBehaviour
             {
                 isMoveGround = true;
                 foldObj = mobileObstacle.gameObject;
-                //transform.SetParent(mobileObstacle.transform);
             }
             //そうでは無かったら移動しないようにする。
             else if(result == -1)
@@ -333,7 +329,6 @@ public class PlayerController : MonoBehaviour
                 isMoveGround= false;
                 //ベクトル初期化
                 vector = Vector2.zero;
-                //transform.SetParent(null);
             }
         }
     }

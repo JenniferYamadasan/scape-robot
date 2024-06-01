@@ -14,6 +14,7 @@ public class PlayerHaveItem : MonoBehaviour
 
     void Update()
     {
+        //アイテムを持っている間はベクトルを初期化し続ける
         if (hasItem != null)
         {
             hasItem.transform.localPosition = Vector3.zero;

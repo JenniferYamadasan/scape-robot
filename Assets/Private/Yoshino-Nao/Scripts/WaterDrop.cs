@@ -9,7 +9,7 @@ public class WaterDrop : MonoBehaviour
 
     private Transform m_tf = null;
     private Rigidbody2D m_rb = null;
-    // Start is called before the first frame update
+
     void Start()
     { 
         m_rb = GetComponent<Rigidbody2D>();
@@ -26,6 +26,7 @@ public class WaterDrop : MonoBehaviour
             m_rb.AddForce(-Vector3.up * m_dropSpeed, ForceMode2D.Force);
         }
     }
+
     //水滴生成時の初期化関数(WaterDropGeneraterが呼び出す)
     public void SetUp(float radius,float dropSpeed)
     {
