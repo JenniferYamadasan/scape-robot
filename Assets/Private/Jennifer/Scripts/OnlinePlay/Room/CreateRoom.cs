@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CreateRoom : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] InputField roomNameInput;
+    [SerializeField] NetworkManager networkManager;
 
-    // Update is called once per frame
-    void Update()
+    public void OnCreateRoomButtonClicked()
     {
-        
+        string roomName = roomNameInput.text;
+        if (!string.IsNullOrEmpty(roomName))
+        {
+            networkManager.CreateRoom(roomName);
+        }
+        else
+        {
+            Debug.LogWarning("Room name is empty!");
+        }
     }
 }

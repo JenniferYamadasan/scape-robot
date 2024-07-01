@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class JoinRoom : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public InputField roomNameInput;
+    public NetworkManager networkManager;
 
-    // Update is called once per frame
-    void Update()
+    public void OnJoinRoomButtonClicked()
     {
-        
+        string roomName = roomNameInput.text;
+        if (!string.IsNullOrEmpty(roomName))
+        {
+            networkManager.JoinRoom(roomName);
+        }
+        else
+        {
+            Debug.LogWarning("Room name is empty!");
+        }
     }
 }

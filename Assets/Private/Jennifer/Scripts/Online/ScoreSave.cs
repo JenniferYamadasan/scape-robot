@@ -7,7 +7,7 @@ public class ScoreSave : MonoBehaviour
     [SerializeField] Loginsignin loginsignin;
 
     [SerializeField] ScoreLoad scoreLoad;
-    public void SaveScore(int Score , string userName)
+    public void SaveScore(int Score, string userName)
     {
         NCMBObject scoreClass = new NCMBObject("ScoreClass");
         scoreClass["score"] = Score;
@@ -23,7 +23,6 @@ public class ScoreSave : MonoBehaviour
                 Debug.Log("success");
             }
         });
-
         scoreLoad.LoadScore();
     }
 }
